@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import { Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import store from "./redux/store";
 import setAuthToken from "./redux/auth/auth.utils";
 import { loadUser } from "./redux/auth/auth.actions";
 
 import Header from "./components/organisms/Header/Header.component";
-import Alert from "./components/Alert/Alert.component";
+// import Alert from "./components/Alert/Alert.component";
 import HomePage from "./modules/HomePage/HomePage.component";
 import QuestionsPage from "./modules/QuestionsPage/QuestionsPage.component";
 import AllTagsPage from "./modules/AllTagsPage/AllTagsPage.component";
@@ -23,10 +23,10 @@ import Tags from "./components/Tags";
 import SettingPage from "./components/organisms/Setting/Setting.component";
 import Profil from "./modules/AllUsersPage/Profil";
 import PagesChalenges from "./components/PagesChalenges";
-
 import { BaseRoute, LayoutRoute } from "./Router";
 
 import "./App.css";
+import Test from "./components/test/test";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -50,6 +50,13 @@ const App = () => {
           >
             <HomePage />
           </LayoutRoute>
+          <Route
+            exact
+            path="/challenges/create"
+            title="CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers"
+          >
+            <Test />
+          </Route>
           <LayoutRoute
             exact
             path="/questions"
