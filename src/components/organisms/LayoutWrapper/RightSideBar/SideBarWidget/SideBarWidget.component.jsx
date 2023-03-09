@@ -1,192 +1,159 @@
 import React, { Fragment } from "react";
 import "./SideBarWidget.styles.scss";
 import { makeStyles } from "@mui/styles";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Avatar } from "@mui/material";
-import { Button } from "@mui/material";
+import { Button, styled } from "@mui/material";
+import BG from "../../../../../assets/bg.png";
 import { Grid, Item } from "@mui/material";
 const usestyle = makeStyles({
-  Image: {
-    alignItems: "center",
-    margin: "14px auto",
-    width: "50px",
-    height: "50px",
-  },
-  type0: {
-    textDecoration: "underline",
-    color: "#2e7d32",
-  },
-  SPAN: {
-    margin: "6px 40px",
-    paddingLeft: "20px",
-  },
-  types: {
-    margin: "7px 25px 7px 0px ",
-    width: "100%",
-  },
-
-  types1: {
-    textAlign: "center",
-    alignItems: "center",
-    margin: "25px auto",
-    listStyleType: "none",
-  },
-  type2: {
-    width: "80%",
-    margin: "5px 25px",
-    paddingTop: "13px",
-    textAlign: "center",
-    marginBottom: "50px",
-  },
-  gridDiv: {
-    margin: "35px 65px",
-    width: "63%",
-    border: "none",
-    padding: "10px auto",
-  },
-  grid: {
-    border: "0.5px solid rgba(255,255,255,0.3)",
-    fontSize: "4px",
-    backgroundColor: "#22242a",
-    padding: "5px 4px",
-  },
-  colortype: {
-    color: "#2e7d32",
-    fontSize: "11px",
-    opacity: "1",
-    fontWeight: "bold",
-  },
-  Other: {
-    color: "rgb(37 99 235)",
-    fontSize: "11px",
-    fontWeight: "bold",
-  },
-  redcolor: {
-    color: "red",
-    fontWeight: "bold",
-    fontSize: "11px",
-  },
-  link: {
-    textAlign: "center",
-    padding: "10px",
+  Component: {
+    backgroundColor: "#313250",
+    borderRadius: "8px",
   },
 });
-const SideBarWidget = () => {
+const CustomButton = styled(Button)(({ theme }) => ({
+  padding: "0.7rem",
+  fontSize: "1rem",
+  width: "16rem",
+  marginLeft: "12px",
+  borderRadius: "8px",
+  marginBottom: "12px",
+}));
+
+const Action = () => {
+  const Role = "admin";
   const classes = usestyle();
   return (
-    <Fragment>
-      <div
-        className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16"
-        data-tracker="cb=1"
-      >
-        <div>
-          <div className={classes.gridDiv}>
-            <Grid
-              container
-              rowSpacing={0}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+    <>
+      <Box className={classes.Component} sx={{ padding: "12px", marginTop: "3rem", marginBottom: "22px" }}>
+        <Typography variant="h4" style={{ fontWeight: "600", paddingLeft: "12px" }}>
+          Actions
+        </Typography>
+        <Grid container>
+          <Grid xs={12}>
+            <CustomButton
+              variant={Role === "admin" ? "contained" : "outlined"}
+              color="success"
+              sx={{ color: "white", backgroundColor: "#55e675", display: Role === "admin" ? "block" : "none" }}
             >
-              <Grid item xs={6} className={classes.grid}>
-                <Typography variant="h6" className={classes.Other}>
-                  Questions
-                </Typography>
-                <Typography variant="h2">21</Typography>
-              </Grid>
-              <Grid item xs={6} className={classes.grid}>
-                <Typography variant="h6" className={classes.redcolor}>
-                  Answer
-                </Typography>
-                <Typography variant="h2">71</Typography>
-              </Grid>
-              <Grid item xs={6} className={classes.grid}>
-                <Typography variant="h6" className={classes.colortype}>
-                  Best Answer
-                </Typography>
-                <Typography variant="h2">19</Typography>
-              </Grid>
-              <Grid item xs={6} className={classes.grid}>
-                <Typography variant="h6" className={classes.Other}>
-                  Questions
-                </Typography>
-                <Typography variant="h2">21</Typography>
-              </Grid>
-            </Grid>
-          </div>
+              CREATE EVENT
+            </CustomButton>
+            <CustomButton
+              variant={Role === "admin" ? "outlined" : "contained"}
+              color="success"
+              sx={{
+                backgroundColor: Role !== "admin" ? "#55e675" : null,
+                color: Role === "admin" ? "#55e675" : "white",
+              }}
+            >
+              ASK QUESTION
+            </CustomButton>
+            <CustomButton variant="outlined" color="success" sx={{ color: "#55e675" }}>
+              CREATE CHALLENGE
+            </CustomButton>
+          </Grid>
+          <Grid xs={12}></Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+};
 
-          <div className={classes.types}>
-            <span style={{ margin: "5px 40px" }}>
-              <Button
-                variant="contained"
-                disableElevation
-                color="error"
-                style={{ color: "white", borderRaduis: "0px" }}
-              >
-                Questions
-              </Button>
-              <Button
-                variant="outlined"
-                style={{ color: "white", borderRaduis: "0px" }}
-              >
-                Answers
-              </Button>
-            </span>
-          </div>
-
-          {/* <div className={classes.SPAN}>
-          <Stack direction="row" spacing={1}>
-              <Chip label="primary" color="primary" variant="outlined" />
-              <Chip label="success" color="success" variant="outlined" />
-              <Chip label="info" color="info" variant="outlined" />
-            </Stack>
-          </div> */}
-        </div>
-        <hr style={{ margin: "0" }}></hr>
-
-        <div className={classes.types1}>
-          <Typography variant="h4" component="div" className={classes.types1}>
-            Recent questions
+const FeaturedEvent = () => {
+  const classes = usestyle();
+  return (
+    <>
+      <Box
+        className={classes.Component}
+        sx={{ paddingTop: "40px", paddingBottom: "40px", paddingLeft: "9px", backgroundImage: `url(${BG})` }}
+      >
+        <Typography
+          variant="h4"
+          style={{ fontWeight: "600", fontSize: "2.4rem", marginBottom: "-7px", paddingLeft: "12px" }}
+        >
+          TechX Summit
+        </Typography>
+        <Box p={2} sx={{ textAlign: "initial", justifyContent: "center", display: "grid", color: "#eaeaea" }}>
+          <Typography
+            variant="body"
+            style={{ fontSize: "1.3rem", color: "#eaeaea", textAlign: "left", paddingRight: "15px" }}
+          >
+            A conference on Emerging Techologies.The TechX summit is a one-day conference aimed at showcasing the latest
+            trends and emerging technologies in worlds of technologie.
           </Typography>
-        </div>
-
-        <ul style={{ listStyleType: "none", marginRight: "5px" }}>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <span>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </span>
-            <span>Lorem ipsun dolor assetsdsffsfds ?</span>
-          </li>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <span>
-              <Avatar src="/broken-image.jpg" />
-            </span>
-            <span>Lorem ipsun dolor assetsdsfdsfsd ?</span>
-          </li>
-          <li
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <span>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            </span>
-            <span>Lorem ipsun dolor assetssdfdsfhd ?</span>
-          </li>
-        </ul>
-      </div>
+        </Box>
+      </Box>
+    </>
+  );
+};
+const PopularChange = () => {
+  const classes = usestyle();
+  const Difficult = "easy";
+  return (
+    <>
+      <Typography variant="h4" style={{ fontSize: "2rem", fontWeight: "600", marginTop: "22px" }}>
+        Popular challenges
+      </Typography>
+      <Box className={classes.Component} p={3}>
+        <Grid container>
+          <Grid xs={11}>
+            <Typography variant="h7" sx={{ fontSize: "1.4rem", fontWeight: "600" }}>
+              Code Your Way Out.
+            </Typography>
+          </Grid>
+          <Grid xs={1} sx={{ display: "grid", justifyContent: "center", alignContent: "center" }}>
+            {Difficult === "Difficult" ? (
+              <Box sx={{ height: "14px", width: "14px", borderRadius: "100%", backgroundColor: "red" }} />
+            ) : null}
+            {Difficult === "easy" ? (
+              <Box sx={{ height: "14px", width: "14px", borderRadius: "100%", backgroundColor: "red" }} />
+            ) : null}
+          </Grid>
+        </Grid>
+        <Typography variant="body1" style={{ color: "#eaeaea", fontSize: "1.3rem", marginTop: "1rem" }}>
+          A programming Challenge to Solve Complex Algorigthm
+        </Typography>
+        <Grid container mt={"12px"}>
+          <Grid xs={5}>
+            <Typography
+              sx={{
+                backgroundColor: "yellow",
+                borderRadius: "12px",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                color: "white",
+                padding: "3px",
+              }}
+            >
+              Algorigthm
+            </Typography>
+          </Grid>
+          <Grid xs={5} ml={"12px"}>
+            <Typography
+              sx={{
+                backgroundColor: "#2788e1",
+                borderRadius: "12px",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                color: "white",
+                padding: "3px",
+              }}
+            >
+              React
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+};
+const SideBarWidget = () => {
+  return (
+    <Fragment>
+      <Action />
+      <FeaturedEvent />
+      <PopularChange />
     </Fragment>
   );
 };
