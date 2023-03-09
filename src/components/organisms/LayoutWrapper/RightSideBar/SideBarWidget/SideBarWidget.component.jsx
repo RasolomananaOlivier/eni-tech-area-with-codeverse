@@ -9,8 +9,6 @@ import { Grid, Item } from "@mui/material";
 const usestyle = makeStyles({
   Component: {
     backgroundColor: "#313250",
-    padding: "12px",
-    marginTop: "7rem",
     borderRadius: "8px",
   },
 });
@@ -27,7 +25,7 @@ const Action = () => {
   const classes = usestyle();
   return (
     <>
-      <Box className={classes.Component}>
+      <Box className={classes.Component} sx={{ padding: "12px", marginTop: "3rem", marginBottom: "22px" }}>
         <Typography variant="h4" style={{ fontWeight: "600" }}>
           Actions
         </Typography>
@@ -54,13 +52,93 @@ const Action = () => {
 };
 
 const FeaturedEvent = () => {
-  return <></>;
+  const classes = usestyle();
+  return (
+    <>
+      <Box className={classes.Component} sx={{ paddingTop: "40px", paddingBottom: "40px" }}>
+        <Typography
+          variant="h4"
+          style={{ fontWeight: "600", fontSize: "2.4rem", textAlign: "center", marginBottom: "-7px" }}
+        >
+          TechX Summit
+        </Typography>
+        <Box p={2} sx={{ textAlign: "initial", justifyContent: "center", display: "grid", color: "#eaeaea" }}>
+          <Typography variant="body" style={{ fontSize: "1.3rem", color: "#eaeaea", textAlign: "justify" }}>
+            A conference on Emerging Techologies.The TechX summit is a one-day conference aimed at showcasing the latest
+            trends and emerging technologies in worlds of technologie.
+          </Typography>
+        </Box>
+      </Box>
+    </>
+  );
+};
+const PopularChange = () => {
+  const classes = usestyle();
+  const Difficult = "easy";
+  return (
+    <>
+      <Typography variant="h4" style={{ fontSize: "2rem", fontWeight: "600", marginTop: "22px" }}>
+        Popular challenges
+      </Typography>
+      <Box className={classes.Component} p={3}>
+        <Grid container>
+          <Grid xs={11}>
+            <Typography variant="h7" sx={{ fontSize: "1.4rem", fontWeight: "600" }}>
+              Code Your Way Out.
+            </Typography>
+          </Grid>
+          <Grid xs={1} sx={{ display: "grid", justifyContent: "center", alignContent: "center" }}>
+            {Difficult === "Difficult" ? (
+              <Box sx={{ height: "14px", width: "14px", borderRadius: "100%", backgroundColor: "red" }} />
+            ) : null}
+            {Difficult === "easy" ? (
+              <Box sx={{ height: "14px", width: "14px", borderRadius: "100%", backgroundColor: "red" }} />
+            ) : null}
+          </Grid>
+        </Grid>
+        <Typography variant="body1" style={{ color: "#eaeaea", fontSize: "1.3rem", marginTop: "1rem" }}>
+          A programming Challenge to Solve Complex Algorigthm
+        </Typography>
+        <Grid container mt={"12px"}>
+          <Grid xs={5}>
+            <Typography
+              sx={{
+                backgroundColor: "yellow",
+                borderRadius: "12px",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                color: "white",
+                padding: "3px",
+              }}
+            >
+              Algorigthm
+            </Typography>
+          </Grid>
+          <Grid xs={5} ml={"12px"}>
+            <Typography
+              sx={{
+                backgroundColor: "#2788e1",
+                borderRadius: "12px",
+                textAlign: "center",
+                fontSize: "1.2rem",
+                color: "white",
+                padding: "3px",
+              }}
+            >
+              React
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
 };
 const SideBarWidget = () => {
   return (
     <Fragment>
       <Action />
       <FeaturedEvent />
+      <PopularChange />
     </Fragment>
   );
 };
