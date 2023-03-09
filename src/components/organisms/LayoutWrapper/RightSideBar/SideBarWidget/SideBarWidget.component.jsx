@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { Typography } from "@mui/material";
 import { Avatar } from "@mui/material";
 import { Button } from "@mui/material";
+//change
 import { Grid, Item } from "@mui/material";
 const usestyle = makeStyles({
   Image: {
@@ -75,17 +76,10 @@ const SideBarWidget = () => {
   const classes = usestyle();
   return (
     <Fragment>
-      <div
-        className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16"
-        data-tracker="cb=1"
-      >
+      <div className="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__grayscale mb16" data-tracker="cb=1">
         <div>
           <div className={classes.gridDiv}>
-            <Grid
-              container
-              rowSpacing={0}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
+            <Grid container rowSpacing={0} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <Grid item xs={6} className={classes.grid}>
                 <Typography variant="h6" className={classes.Other}>
                   Questions
@@ -115,18 +109,10 @@ const SideBarWidget = () => {
 
           <div className={classes.types}>
             <span style={{ margin: "5px 40px" }}>
-              <Button
-                variant="contained"
-                disableElevation
-                color="error"
-                style={{ color: "white", borderRaduis: "0px" }}
-              >
+              <Button variant="contained" disableElevation color="error" style={{ color: "white", borderRaduis: "0px" }}>
                 Questions
               </Button>
-              <Button
-                variant="outlined"
-                style={{ color: "white", borderRaduis: "0px" }}
-              >
+              <Button variant="outlined" style={{ color: "white", borderRaduis: "0px" }}>
                 Answers
               </Button>
             </span>
