@@ -21,7 +21,7 @@ import ProfilePage from "./modules/ProfilePage/ProfilePage.component";
 import NotFound from "./modules/NotFound/NotFound.component";
 import Tags from "./components/Tags";
 import SettingPage from "./components/organisms/Setting/Setting.component";
-import Profil from "./modules/AllUsersPage/Profil";
+import Profil from "./modules/ProfilePage/NewProfilePage";
 import PagesChalenges from "./components/PagesChalenges";
 
 import { BaseRoute, LayoutRoute } from "./Router";
@@ -43,34 +43,18 @@ const App = () => {
         <Header />
         {/* <Alert /> */}
         <Switch>
-          <LayoutRoute
-            exact
-            path="/"
-            title="CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers"
-          >
+          <LayoutRoute exact path="/" title="CLONE Stack Overflow - Where Developers Learn, Share, & Build Careers">
             <HomePage />
           </LayoutRoute>
-          <LayoutRoute
-            exact
-            path="/questions"
-            title="All Questions - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/questions" title="All Questions - CLONE Stack Overflow">
             <QuestionsPage />
           </LayoutRoute>
 
-          <LayoutRoute
-            exact
-            path="/Profil"
-            title="All Questions - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/Profil" title="All Questions - CLONE Stack Overflow">
             <Profil />
           </LayoutRoute>
 
-          <LayoutRoute
-            exact
-            path="/Chalenges"
-            title="All Questions - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/Chalenges" title="All Questions - CLONE Stack Overflow">
             <PagesChalenges />
           </LayoutRoute>
           <LayoutRoute exact path="/tags" title="Tags - CLONE Stack Overflow">
@@ -79,11 +63,7 @@ const App = () => {
           <LayoutRoute exact path="/users" title="Users - CLONE Stack Overflow">
             <AllUsersPage />
           </LayoutRoute>
-          <BaseRoute
-            exact
-            path="/register"
-            title="Sign Up - CLONE Stack Overflow"
-          >
+          <BaseRoute exact path="/register" title="Sign Up - CLONE Stack Overflow">
             <Register />
           </BaseRoute>
           <BaseRoute exact path="/login" title="Log In - CLONE Stack Overflow">
@@ -92,32 +72,16 @@ const App = () => {
           <BaseRoute exact path="/Tags1" title="Log In - CLONE Stack Overflow">
             <Tags />
           </BaseRoute>
-          <LayoutRoute
-            exact
-            path="/questions/:id"
-            title="Users - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/questions/:id" title="Users - CLONE Stack Overflow">
             <Post />
           </LayoutRoute>
-          <LayoutRoute
-            exact
-            path="/users/:id"
-            title="Users - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/users/:id" title="Users - CLONE Stack Overflow">
             <ProfilePage />
           </LayoutRoute>
-          <LayoutRoute
-            exact
-            path="/tags/:tagname"
-            title="Users - CLONE Stack Overflow"
-          >
+          <LayoutRoute exact path="/tags/:tagname" title="Users - CLONE Stack Overflow">
             <TagPage />
           </LayoutRoute>
-          <BaseRoute
-            exact
-            path="/add/question"
-            title="Ask a Question - CLONE Stack Overflow"
-          >
+          <BaseRoute exact path="/add/question" title="Ask a Question - CLONE Stack Overflow">
             <PostForm />
           </BaseRoute>
           <BaseRoute exact path="/settings" title="ENI Tech Area | Settings">
