@@ -4,7 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { Box, Typography } from "@mui/material";
 import { Avatar } from "@mui/material";
 import { Button, styled } from "@mui/material";
-//change
+import BG from "../../../../../assets/bg.png";
 import { Grid, Item } from "@mui/material";
 const usestyle = makeStyles({
   Component: {
@@ -22,20 +22,29 @@ const CustomButton = styled(Button)(({ theme }) => ({
 }));
 
 const Action = () => {
+  const Role = "admin";
   const classes = usestyle();
   return (
     <>
       <Box className={classes.Component} sx={{ padding: "12px", marginTop: "3rem", marginBottom: "22px" }}>
-        <Typography variant="h4" style={{ fontWeight: "600" }}>
+        <Typography variant="h4" style={{ fontWeight: "600", paddingLeft: "12px" }}>
           Actions
         </Typography>
         <Grid container>
           <Grid xs={12}>
             <CustomButton
-              variant="contained"
+              variant={Role === "admin" ? "contained" : "outlined"}
+              color="success"
+              sx={{ color: "white", backgroundColor: "#55e675", display: Role === "admin" ? "block" : "none" }}
+            >
+              CREATE EVENT
+            </CustomButton>
+            <CustomButton
+              variant={Role === "admin" ? "outlined" : "contained"}
               color="success"
               sx={{
-                backgroundColor: "#55e675",
+                backgroundColor: Role !== "admin" ? "#55e675" : null,
+                color: Role === "admin" ? "#55e675" : "white",
               }}
             >
               ASK QUESTION
@@ -55,15 +64,21 @@ const FeaturedEvent = () => {
   const classes = usestyle();
   return (
     <>
-      <Box className={classes.Component} sx={{ paddingTop: "40px", paddingBottom: "40px" }}>
+      <Box
+        className={classes.Component}
+        sx={{ paddingTop: "40px", paddingBottom: "40px", paddingLeft: "9px", backgroundImage: `url(${BG})` }}
+      >
         <Typography
           variant="h4"
-          style={{ fontWeight: "600", fontSize: "2.4rem", textAlign: "center", marginBottom: "-7px" }}
+          style={{ fontWeight: "600", fontSize: "2.4rem", marginBottom: "-7px", paddingLeft: "12px" }}
         >
           TechX Summit
         </Typography>
         <Box p={2} sx={{ textAlign: "initial", justifyContent: "center", display: "grid", color: "#eaeaea" }}>
-          <Typography variant="body" style={{ fontSize: "1.3rem", color: "#eaeaea", textAlign: "justify" }}>
+          <Typography
+            variant="body"
+            style={{ fontSize: "1.3rem", color: "#eaeaea", textAlign: "left", paddingRight: "15px" }}
+          >
             A conference on Emerging Techologies.The TechX summit is a one-day conference aimed at showcasing the latest
             trends and emerging technologies in worlds of technologie.
           </Typography>
