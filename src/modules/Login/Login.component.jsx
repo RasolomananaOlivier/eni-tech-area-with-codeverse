@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import React, { Fragment } from "react";
 
 import AuthForm from "../../components/organisms/AuthForm/AuthForm.component";
@@ -10,13 +11,13 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div className="auth-page">
+      <Box className="auth-page" sx={{ pt: 5 }}>
         <div className="register-content">
           <div className="register-grid">
             <AuthForm action={"Log in"} />
           </div>
         </div>
-      </div>
+      </Box>
       <Footer />
     </Fragment>
   );

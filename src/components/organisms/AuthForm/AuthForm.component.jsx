@@ -1,12 +1,15 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { Link, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../../assets/LogoGlyphMd.svg";
 import { ReactComponent as ExternalLink } from "../../../assets/ExternalLink.svg";
 
 import "./AuthForm.styles.scss";
+import { loginUser } from "../../../api/authApi";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../../redux/reducers/userSlice";
+import token from "../../../utils/token";
+import { setAuth } from "../../../redux/reducers/authSlice";
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +22,23 @@ const AuthForm = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {};
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await loginUser(email, password);
+      dispatch(setUser(res.data.user));
+      dispatch(setAuth({ isLogged: true }));
+      token.set(res.data.tokens.accessToken);
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      dispatch(setAuth({ isLogged: false }));
+      navigate("/login");
+    }
+  };
 
   return (
     <Fragment>
@@ -60,6 +79,7 @@ const AuthForm = () => {
                 className="s-btn s-btn__primary"
                 id="submit-button"
                 name="submit-button"
+                type="submit"
               >
                 action
               </button>

@@ -12,7 +12,6 @@ import Logo from "../../../assets/logo.png";
 import "./Header.styles.scss";
 
 const Header = () => {
-  let history = useHistory();
   const [searchState, setSearchState] = useState(false);
 
   // const authLinks = (
@@ -64,11 +63,7 @@ const Header = () => {
 
   const SearchBar = () => {
     return (
-      <form
-        onSubmit={() => history.push("/questions")}
-        className="small-search-form"
-        autoComplete="off"
-      >
+      <form className="small-search-form" autoComplete="off">
         <input
           className="small-search"
           autoComplete="off"
@@ -100,7 +95,6 @@ const Header = () => {
 
         <form
           id="search"
-          onSubmit={() => history.push("/questions")}
           className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
           autoComplete="off"
         >

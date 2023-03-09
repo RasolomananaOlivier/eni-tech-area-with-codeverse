@@ -13,6 +13,9 @@ import Tags from "../../components/Tags";
 
 import { useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
+import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
+import { useQuery } from "@tanstack/react-query";
+import { getQuestionsByUserTags } from "../../api/questionApi";
 
 const itemsPerPage = 10;
 
@@ -32,11 +35,18 @@ const HomePage = () => {
 
   const handlePaginationChange = (e, value) => setPage(value);
 
-  // return loading || posts === null ? (
-  //   <Spinner type="page" width="75px" height="200px" />
-  // ) : (
+  const questionsQuery = useQuery({
+    queryKey: ["questions", "suggestions"],
+    queryFn: getQuestionsByUserTags,
+  });
+
+  if (questionsQuery.isLoading) {
+    return <div>Loading</div>;
+  }
+
+  console.log(questionsQuery.data);
   return (
-    <Fragment>
+    <LayoutWrapper>
       <Box
         id="mainbar"
         className="homepage fc-black-800"
@@ -101,7 +111,7 @@ const HomePage = () => {
         />
         <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} />
       </Box>
-    </Fragment>
+    </LayoutWrapper>
   );
 };
 

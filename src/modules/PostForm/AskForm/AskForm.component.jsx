@@ -4,7 +4,6 @@ import { badWordsFilter } from "../../../utils/censorBadWords";
 
 import "./AskForm.styles.scss";
 import { AppTagsInput } from "../../../components/Tags";
-import { useHistory } from "react-router-dom";
 
 const AskForm = () => {
   const [formData, setFormData] = useState({
@@ -60,7 +59,6 @@ const AskForm = () => {
     return errors;
   };
 
-  const history = useHistory();
   const onSubmit = async (e) => {
     e.preventDefault();
     // const errors = validateFormData();
@@ -76,8 +74,6 @@ const AskForm = () => {
       tags: "",
     });
     markdownEditorRef.current.cleanEditorState();
-
-    history.push("/");
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {

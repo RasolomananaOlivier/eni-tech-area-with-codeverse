@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   id: "54321",
   email: "john.doe@example.com",
-  firstname: "John",
-  lastname: "Doe",
-  fullname: "John Doe",
+  name: {
+    first: "John",
+    last: "Doe",
+    full: "John Doe",
+  },
   password: "Passw0rd!",
   imageUrl: "https://randomuser.me/api/portraits/men/72.jpg",
   role: "User",
