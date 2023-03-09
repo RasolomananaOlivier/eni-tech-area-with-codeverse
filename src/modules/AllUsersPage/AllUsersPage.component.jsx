@@ -1,7 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getUsers } from "../../redux/users/users.actions";
 import handleSorting from "../../utils/handleSorting";
 
 import UserPanel from "./UserPanel/UserPanel.component";
@@ -14,11 +11,7 @@ import "./AllUsersPage.styles.scss";
 
 const itemsPerPage = 18;
 
-const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
-  useEffect(() => {
-    getUsers();
-  }, [getUsers]);
-
+const AllUsersPage = () => {
   const [page, setPage] = useState(1);
   const [fetchSearch, setSearch] = useState("");
   const [sortType, setSortType] = useState("Popular");
@@ -31,15 +24,13 @@ const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
     setPage(1);
   };
 
-  return loading || users === null ? (
-    <Spinner type="page" width="75px" height="200px" />
-  ) : (
+  return (
     <Fragment>
       <div id="mainbar" className="users-page fc-black-800">
         <h1 className="headline">Users</h1>
         <div className="headline-count">
           <span>
-            {new Intl.NumberFormat("en-IN").format(users.length)} users
+            {/* {new Intl.NumberFormat("en-IN").format(users.length)} users */}
           </span>
         </div>
         <div className="users-box pl16 pr16 pb16">
@@ -56,7 +47,7 @@ const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
         </div>
         <div className="user-browser">
           <div className="grid-layout">
-            {users
+            {/* {users
               .filter((user) =>
                 user.username.toLowerCase().includes(fetchSearch.toLowerCase())
               )
@@ -67,29 +58,21 @@ const AllUsersPage = ({ getUsers, user: { users, loading } }) => {
               )
               .map((user, index) => (
                 <UserPanel key={index} user={user} />
-              ))}
+              ))} */}
+            users
           </div>
         </div>
-        <Pagination
+        {/* <Pagination
           page={page}
           itemList={users.filter((user) =>
             user.username.toLowerCase().includes(fetchSearch.toLowerCase())
           )}
           itemsPerPage={itemsPerPage}
           handlePaginationChange={handlePaginationChange}
-        />
+        /> */}
       </div>
     </Fragment>
   );
 };
 
-AllUsersPage.propTypes = {
-  getUsers: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
-
-export default connect(mapStateToProps, { getUsers })(AllUsersPage);
+export default AllUsersPage;

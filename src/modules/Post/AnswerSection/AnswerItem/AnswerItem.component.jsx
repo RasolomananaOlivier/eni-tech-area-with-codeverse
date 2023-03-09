@@ -1,8 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { deleteAnswer } from "../../../../redux/answers/answers.actions";
 
 import { ReactComponent as UpVote } from "../../../../assets/ArrowUpLg.svg";
 import { ReactComponent as DownVote } from "../../../../assets/ArrowDownLg.svg";
@@ -89,16 +86,4 @@ const AnswerItem = ({
   );
 };
 
-AnswerItem.propTypes = {
-  auth: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired,
-  answer: PropTypes.object.isRequired,
-  deleteAnswer: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  post: state.post,
-});
-
-export default connect(mapStateToProps, { deleteAnswer })(AnswerItem);
+export default AnswerItem;

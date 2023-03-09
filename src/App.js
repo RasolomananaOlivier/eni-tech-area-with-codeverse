@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { Switch } from "react-router-dom";
 // test
-import store from "./redux/store";
-import setAuthToken from "./redux/auth/auth.utils";
-import { loadUser } from "./redux/auth/auth.actions";
+import { store } from "./redux/store";
 // change
 import Header from "./components/organisms/Header/Header.component";
 import Alert from "./components/Alert/Alert.component";
@@ -28,15 +26,11 @@ import { BaseRoute, LayoutRoute } from "./Router";
 
 import "./App.css";
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+// if (localStorage.token) {
+//   setAuthToken(localStorage.token);
+// }
 
 const App = () => {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
-
   return (
     <Provider store={store}>
       <div className="App">
@@ -50,7 +44,7 @@ const App = () => {
           >
             <HomePage />
           </LayoutRoute>
-          <LayoutRoute
+          {/* <LayoutRoute
             exact
             path="/questions"
             title="All Questions - CLONE Stack Overflow"
@@ -125,7 +119,7 @@ const App = () => {
           </BaseRoute>
           <BaseRoute path="*" title="Error 404">
             <NotFound />
-          </BaseRoute>
+          </BaseRoute> */}
         </Switch>
       </div>
     </Provider>

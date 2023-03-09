@@ -21,14 +21,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-const ChangePassword = ({
-  auth: {
-    user: { role },
-  },
-  open,
-  setOpen,
-  setTagsOpen,
-}) => {
+const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
   const handleModalClose = () => {
     setPassChangeSuccess(false);
   };
@@ -246,8 +239,4 @@ const ChangePassword = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, {})(ChangePassword);
+export default ChangePassword;

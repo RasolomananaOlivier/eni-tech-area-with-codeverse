@@ -1,13 +1,6 @@
 import React, { useEffect, Fragment, useState } from "react";
 import moment from "moment";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import {
-  getComments,
-  deleteComment,
-  addComment,
-} from "../../../../redux/comments/comments.actions";
 
 import Spinner from "../../../../components/molecules/Spinner/Spinner.component";
 import TagBadge from "../../../../components/molecules/TagBadge/TagBadge.component";
@@ -133,23 +126,4 @@ const CommentCell = ({
   );
 };
 
-CommentCell.propTypes = {
-  auth: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired,
-  addComment: PropTypes.func.isRequired,
-  deleteComment: PropTypes.func.isRequired,
-  getComments: PropTypes.func.isRequired,
-  comment: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  post: state.post,
-  comment: state.comment,
-});
-
-export default connect(mapStateToProps, {
-  deleteComment,
-  getComments,
-  addComment,
-})(CommentCell);
+export default CommentCell;

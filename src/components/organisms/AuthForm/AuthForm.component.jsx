@@ -2,15 +2,13 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login } from "../../../redux/auth/auth.actions";
-import { register } from "../../../redux/auth/auth.actions";
 
 import { ReactComponent as Logo } from "../../../assets/LogoGlyphMd.svg";
 import { ReactComponent as ExternalLink } from "../../../assets/ExternalLink.svg";
 
 import "./AuthForm.styles.scss";
 
-const AuthForm = ({ register, login, action }) => {
+const AuthForm = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,14 +19,7 @@ const AuthForm = ({ register, login, action }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (action === "Sign up") {
-      register({ email, password });
-    } else {
-      login({ email, password });
-    }
-  };
+  const onSubmit = async (e) => {};
 
   return (
     <Fragment>
@@ -70,12 +61,12 @@ const AuthForm = ({ register, login, action }) => {
                 id="submit-button"
                 name="submit-button"
               >
-                {action}
+                action
               </button>
             </div>
           </form>
           <div className="fs-caption license fc-black-500">
-            By clicking “{action}”, you agree to our{" "}
+            By clicking action, you agree to our{" "}
             <Link
               to="https://stackoverflow.com/legal/terms-of-service/public"
               className="-link"
@@ -105,14 +96,4 @@ const AuthForm = ({ register, login, action }) => {
   );
 };
 
-AuthForm.propTypes = {
-  register: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { login, register })(AuthForm);
+export default AuthForm;

@@ -1,36 +1,25 @@
-import React, {Fragment} from 'react';
-import {Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { Fragment } from "react";
 
-import AuthForm from '../../components/organisms/AuthForm/AuthForm.component';
+import AuthForm from "../../components/organisms/AuthForm/AuthForm.component";
 import Footer from "../../components/organisms/Footer/Footer.component";
 
-const Login = ({isAuthenticated}) => {
-  if (isAuthenticated) {
-    return <Redirect to='/' />;
-  }
+const Login = () => {
+  // if (isAuthenticated) {
+  //   return <Redirect to='/' />;
+  // }
 
   return (
     <Fragment>
-      <div className='auth-page'>
-        <div className='register-content'>
-          <div className='register-grid'>
-            <AuthForm action={'Log in'} />
+      <div className="auth-page">
+        <div className="register-content">
+          <div className="register-grid">
+            <AuthForm action={"Log in"} />
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </Fragment>
   );
 };
 
-Login.propTypes = {
-  isAuthenticated: PropTypes.bool,
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, null)(Login);
+export default Login;

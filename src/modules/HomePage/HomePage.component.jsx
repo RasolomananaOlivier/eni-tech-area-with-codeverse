@@ -1,7 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getPosts, getPostsByUserTags } from "../../redux/posts/posts.actions";
 import LinkButton from "../../components/molecules/LinkButton/LinkButton.component";
 import PostItem from "../../components/molecules/PostItem/PostItem.component";
 import Spinner from "../../components/molecules/Spinner/Spinner.component";
@@ -19,11 +16,7 @@ import { Box } from "@mui/material";
 
 const itemsPerPage = 10;
 
-const HomePage = ({
-  getPosts,
-  getPostsByUserTags,
-  post: { posts, loading },
-}) => {
+const HomePage = () => {
   const URL = useLocation();
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
@@ -34,18 +27,15 @@ const HomePage = ({
     }
   }, [URL]);
 
-  useEffect(() => {
-    getPostsByUserTags();
-  }, [getPostsByUserTags]);
-
   const [page, setPage] = useState(1);
   const [sortType, setSortType] = useState("Month");
 
   const handlePaginationChange = (e, value) => setPage(value);
 
-  return loading || posts === null ? (
-    <Spinner type="page" width="75px" height="200px" />
-  ) : (
+  // return loading || posts === null ? (
+  //   <Spinner type="page" width="75px" height="200px" />
+  // ) : (
+  return (
     <Fragment>
       <Box
         id="mainbar"
@@ -69,7 +59,7 @@ const HomePage = ({
           sx={{ px: 3, pr: 4.5 }}
         >
           <span>
-            {new Intl.NumberFormat("en-IN").format(posts.length)} questions
+            {/* {new Intl.NumberFormat("en-IN").format(posts.length)} questions */}
           </span>
           <div className="btns-filter">
             <ButtonGroup
@@ -91,19 +81,19 @@ const HomePage = ({
               .map((post, index) => (
                 <PostItem key={index} post={post} />
               ))} */}
-            {posts.map((post, index) => (
+            {/* {posts.map((post, index) => (
               <PostItem key={index} post={post} />
-            ))}
+            ))} */}
           </div>
         </Box>
-        <Pagination
+        {/* <Pagination
           page={page}
           itemList={posts
             .sort(handleSorting(sortType))
             .filter(handleFilter(sortType))}
           itemsPerPage={itemsPerPage}
           handlePaginationChange={handlePaginationChange}
-        />
+        /> */}
         <ChangePassword
           open={open}
           setOpen={setOpen}
@@ -115,16 +105,4 @@ const HomePage = ({
   );
 };
 
-HomePage.propTypes = {
-  getPosts: PropTypes.func.isRequired,
-  getPostsByUserTags: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  post: state.post,
-});
-
-export default connect(mapStateToProps, { getPosts, getPostsByUserTags })(
-  HomePage
-);
+export default HomePage;
