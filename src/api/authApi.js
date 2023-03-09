@@ -23,7 +23,7 @@ export const registerUser = (username, password) => {
   return axios.post(_registerUser, body, config_headers);
 };
 
-export const loginUser = (email, password) => {
+export const loginUser = async (email, password) => {
   const config_headers = {
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +31,9 @@ export const loginUser = (email, password) => {
     },
   };
 
-  const body = JSON.stringify({ email, password });
+  const body = { email, password };
 
-  return axios.post(_loginUser, body, config_headers);
+  const res = await axios.post(_loginUser, body, config_headers);
+
+  return res.data;
 };

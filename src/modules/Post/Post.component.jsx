@@ -1,9 +1,6 @@
 import React, { useEffect, Fragment } from "react";
 import moment from "moment";
 import { useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getPost } from "../../redux/posts/posts.actions";
 
 import LinkButton from "../../components/molecules/LinkButton/LinkButton.component";
 import Spinner from "../../components/molecules/Spinner/Spinner.component";
@@ -14,17 +11,10 @@ import "./Post.styles.scss";
 import censorBadWords from "../../utils/censorBadWords";
 import { Avatar, Box, Link, Stack, Typography } from "@mui/material";
 
-const Post = ({ getPost, post: { post, loading } }) => {
+const Post = () => {
   const { id } = useParams();
 
-  useEffect(() => {
-    getPost(id);
-    // eslint-disable-next-line
-  }, [getPost]);
-
-  return loading || post === null ? (
-    <Spinner type="page" width="75px" height="200px" />
-  ) : (
+  return (
     <Fragment>
       <Box id="mainbar" className="post" sx={{ bgcolor: "#323741" }}>
         <Stack
@@ -48,7 +38,8 @@ const Post = ({ getPost, post: { post, loading } }) => {
         </Stack>
         <Box className="question-header fc-black-800 " sx={{ px: 2.5 }}>
           <Typography variant="h5" fontWeight={"bold"}>
-            '{censorBadWords(post.title)}'
+            {/* '{censorBadWords(post.title)}' */}
+            title
           </Typography>
 
           <div>
@@ -62,9 +53,10 @@ const Post = ({ getPost, post: { post, loading } }) => {
         <div className="question-date fc-black-800 pl24">
           <div className="grid-cell">
             <span className="fc-light">Asked</span>
-            <time dateTime={moment(post.created_at).fromNow(true)}>
+            {/* <time dateTime={moment(post.created_at).fromNow(true)}>
               {moment(post.created_at).fromNow(true)} ago
-            </time>
+            </time> */}
+            time
           </div>
         </div>
         <div className="question-main pl24 pt16">
@@ -76,13 +68,4 @@ const Post = ({ getPost, post: { post, loading } }) => {
   );
 };
 
-Post.propTypes = {
-  getPost: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  post: state.post,
-});
-
-export default connect(mapStateToProps, { getPost })(Post);
+export default Post;

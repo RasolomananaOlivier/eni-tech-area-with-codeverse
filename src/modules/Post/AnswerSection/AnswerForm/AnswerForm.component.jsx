@@ -1,7 +1,4 @@
 import React, { Fragment, useState, useRef } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addAnswer } from "../../../../redux/answers/answers.actions";
 
 import LinkButton from "../../../../components/molecules/LinkButton/LinkButton.component";
 import MarkdownEditor from "../../../../components/organisms/MarkdownEditor/MarkdownEditor.component";
@@ -19,7 +16,7 @@ const AnswerForm = ({ addAnswer, auth, post: { post } }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addAnswer(post.id, { content });
+    // addAnswer(post.id, { content });
     setFormData({
       content: "",
     });
@@ -61,15 +58,4 @@ const AnswerForm = ({ addAnswer, auth, post: { post } }) => {
   );
 };
 
-AnswerForm.propTypes = {
-  auth: PropTypes.object.isRequired,
-  addAnswer: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  post: state.post,
-});
-
-export default connect(mapStateToProps, { addAnswer })(AnswerForm);
+export default AnswerForm;

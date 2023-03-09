@@ -1,8 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { logout } from "../../../redux/auth/auth.actions";
 
 import { ReactComponent as Search } from "../../../assets/Search.svg";
 // import { ReactComponent as Logo } from "../../../assets/LogoMd.svg";
@@ -14,26 +11,26 @@ import Logo from "../../../assets/logo.png";
 
 import "./Header.styles.scss";
 
-const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
-  let history = useHistory();
+const Header = () => {
   const [searchState, setSearchState] = useState(false);
 
-  const authLinks = (
-    <div className="btns">
-      {loading || user === null ? (
-        <Spinner width="50px" height="50px" />
-      ) : // <Link to={`/users/${user.id}`} title={user.username}>
-      //   <img alt="user-logo" className="logo" src={user.gravatar} />
-      // </Link>
-      null}
-      <LinkButton
-        text={"Log out"}
-        link={"/login"}
-        type={"s-btn__filled"}
-        handleClick={logout}
-      />
-    </div>
-  );
+  // const authLinks = (
+  //   <div className="btns">
+  //     {loading || user === null ? (
+  //       <Spinner width="50px" height="50px" />
+  //     ) :
+  //     <Link to={`/users/${user.id}`} title={user.username}>
+  //       <img alt="user-logo" className="logo" src={user.gravatar} />
+  //     </Link>
+  //     null}
+  //     <LinkButton
+  //       text={"Log out"}
+  //       link={"/login"}
+  //       type={"s-btn__filled"}
+  //       handleClick={logout}
+  //     />
+  //   </div>
+  // );
 
   const authTabs = (
     <div className="s-navigation">
@@ -66,11 +63,7 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
   const SearchBar = () => {
     return (
-      <form
-        onSubmit={() => history.push("/questions")}
-        className="small-search-form"
-        autoComplete="off"
-      >
+      <form className="small-search-form" autoComplete="off">
         <input
           className="small-search"
           autoComplete="off"
@@ -84,9 +77,10 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     );
   };
 
-  return loading ? (
-    ""
-  ) : (
+  // return loading ? (
+  //   ""
+  // ) : (
+  return (
     <Fragment>
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bs-md">
         <div className="hamburger">
@@ -96,12 +90,11 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" />
           </Link>
-          {!loading && <Fragment>{guestTabs}</Fragment>}
+          {/* {!loading && <Fragment>{guestTabs}</Fragment>} */}
         </div>
 
         <form
           id="search"
-          onSubmit={() => history.push("/questions")}
           className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
           autoComplete="off"
         >
@@ -122,7 +115,7 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             className="search-icon"
             onClick={() => setSearchState(!searchState)}
           />
-          {!loading && <Fragment>{true ? authLinks : guestLinks}</Fragment>}
+          {/* {!loading && <Fragment>{true ? authLinks : guestLinks}</Fragment>} */}
         </div>
       </nav>
       {searchState && <SearchBar />}
@@ -130,13 +123,4 @@ const Header = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   );
 };
 
-Header.propTypes = {
-  logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-
-export default connect(mapStateToProps, { logout })(Header);
+export default Header;
