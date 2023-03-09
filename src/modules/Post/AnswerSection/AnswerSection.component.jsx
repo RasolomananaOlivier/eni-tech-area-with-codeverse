@@ -1,7 +1,4 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getAnswers } from "../../../redux/answers/answers.actions";
 import handleSorting from "../../../utils/handleSorting";
 
 import AnswerItem from "./AnswerItem/AnswerItem.component";
@@ -11,12 +8,7 @@ import ButtonGroup from "../../../components/molecules/ButtonGroup/ButtonGroup.c
 
 import "./AnswerSection.styles.scss";
 
-const AnswerSection = ({ getAnswers, answer, post: { post } }) => {
-  useEffect(() => {
-    getAnswers(post.id);
-    // eslint-disable-next-line
-  }, [getAnswers]);
-
+const AnswerSection = () => {
   const [sortType, setSortType] = useState("Newest");
 
   // console.log(answer);
@@ -35,7 +27,7 @@ const AnswerSection = ({ getAnswers, answer, post: { post } }) => {
             />
           </div>
         </div>
-        {answer.loading === null ? (
+        {/* {answer.loading === null ? (
           <Spinner width="25px" height="25px" />
         ) : (
           answer.answers?.sort(handleSorting(sortType)).map((answer, index) => (
@@ -43,7 +35,8 @@ const AnswerSection = ({ getAnswers, answer, post: { post } }) => {
               <AnswerItem answer={answer} />
             </div>
           ))
-        )}
+        )} */}
+        answers
         <div className="add-answer">
           <AnswerForm />
         </div>
@@ -52,15 +45,4 @@ const AnswerSection = ({ getAnswers, answer, post: { post } }) => {
   );
 };
 
-AnswerSection.propTypes = {
-  getAnswers: PropTypes.func.isRequired,
-  answer: PropTypes.object.isRequired,
-  post: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  answer: state.answer,
-  post: state.post,
-});
-
-export default connect(mapStateToProps, { getAnswers })(AnswerSection);
+export default AnswerSection;

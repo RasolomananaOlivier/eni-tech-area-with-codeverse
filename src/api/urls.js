@@ -10,16 +10,8 @@ export const registerUser = config.BASE_URL + "/api/users";
 export const loginUser = config.BASE_URL + "/api/v1/auth/login/local";
 
 // Posts
-export const allPostsData = config.BASE_URL + "/api/posts";
-export const allPostsDataByUserTags =
+export const questionsByUserTags =
   config.BASE_URL + "/api/v1/questions/suggestions";
-export const singlePostData = config.BASE_URL + "/api/v1/questions/{id}";
-export const allTagPostsData = config.BASE_URL + "/api/posts/tag/{tagName}";
-export const createSinglePost = config.BASE_URL + "/api/v1/questions";
-export const deleteSinglePost = config.BASE_URL + "/api/posts/{id}";
-export const allAnswers = config.BASE_URL + "/api/v1/questions/{id}/answers";
-export const allPostTags =
-  config.BASE_URL + "/api/v1/questions/{id}/questionTags";
 
 // Answers
 export const allAnswersData =
