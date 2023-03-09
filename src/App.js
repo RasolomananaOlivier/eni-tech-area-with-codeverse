@@ -15,7 +15,7 @@ const App = () => {
     <QueryClientProvider client={clientQuery}>
       <Provider store={store}>
         <div className="App">
-          <Header />
+          {/* <Header /> */}
           {/* <Alert /> */}
           <Routes>
             {ROUTES.map(({ element, path, title }) => (
