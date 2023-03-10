@@ -7,6 +7,7 @@ export const resetUserPasswordUrl =
   config.BASE_URL + "/api/v1/auth/resetpassword";
 export const storeUserTagsUrl =
   config.BASE_URL + "/api/v1/users/:userId/usertags";
+export const userByIdUrl = config.BASE_URL + "/api/v1/users/:userId";
 
 // Auth
 export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
@@ -14,9 +15,12 @@ export const registerUser = config.BASE_URL + "/api/users";
 export const loginUser = config.BASE_URL + "/api/v1/auth/login/local";
 
 // Questions
-export const questionsByUserTags =
+export const questionsByUserTagsUrl =
   config.BASE_URL + "/api/v1/questions/suggestions";
-export const createQuestion = config.BASE_URL + "/api/v1/questions";
+export const createQuestionUrl = config.BASE_URL + "/api/v1/questions";
+export const getQuestionsUrl = config.BASE_URL + "/api/v1/questions";
+export const getQuestionByIdUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId";
 
 // Answers
 export const getAnswersUrl =

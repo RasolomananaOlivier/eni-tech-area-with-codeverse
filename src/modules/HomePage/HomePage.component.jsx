@@ -7,14 +7,16 @@ import AskQuest from "./AskQuestion";
 import Profil from "../ProfilePage/NewProfilePage";
 import { useLocation, useRoutes } from "react-router-dom";
 import { Box } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
+import { useQueries, useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags } from "../../api/questionApi";
-// import { useAuth } from "../../hooks/useAuth";
+import { getUserById } from "../../api/usersApi";
+import { useAuth } from "../../hooks/useAuth";
+import { getAnswers } from "../../api/answersApi";
 
 const itemsPerPage = 10;
 
 const HomePage = () => {
-  // useAuth();
+  useAuth();
   console.log("homepage mount");
   const location = useLocation();
 
@@ -37,11 +39,30 @@ const HomePage = () => {
     queryFn: getQuestionsByUserTags,
   });
 
-  // if (questionsQuery.isLoading) {
-  //   return <div>Loading</div>;
-  // }
+  const questionsOwnersQueries = useQueries({
+    queries: (questionsQuery?.data?.data?.questions ?? []).map((question) => {
+      return {
+        queryKey: ["user", question.userId],
+        queryFn: async () => {
+          const user = await getUserById(question.userId);
+          const answers = await getAnswers(question.id);
 
-  console.log(questionsQuery.data, "query");
+          return {
+            ...question,
+            username: user.data.user.name.full,
+            answersCount: answers.data.answers.length,
+          };
+        },
+        enabled: !!questionsQuery.data,
+      };
+    }),
+  });
+
+  console.log(
+    questionsOwnersQueries.map((userQuery) => userQuery.data),
+    "query"
+  );
+
   return (
     <LayoutWrapper>
       <AskQuest />
