@@ -1,34 +1,14 @@
 import axios from "axios";
-import token from "../utils/token";
 
-import {
-  loadUserData as _loadUserData,
-  registerUser as _registerUser,
-  loginUser as _loginUser,
-  verifyTokenUrl,
-} from "./urls";
+import { loginUser as _loginUser, verifyTokenUrl } from "./urls";
 
-export const verifyToken = async () => {
-  const config = {
+export const verifyToken = async (token) => {
+  const res = await axios.get(verifyTokenUrl, {
     headers: {
-      Authorization: "Bearer " + token.get(),
+      Authorization: "Bearer " + token,
     },
-  };
-  const res = await axios.get(verifyTokenUrl, config);
+  });
   return res.data;
-};
-
-export const registerUser = (username, password) => {
-  const config_headers = {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-  };
-
-  const body = JSON.stringify({ username, password });
-
-  return axios.post(_registerUser, body, config_headers);
 };
 
 export const loginUser = async (email, password) => {

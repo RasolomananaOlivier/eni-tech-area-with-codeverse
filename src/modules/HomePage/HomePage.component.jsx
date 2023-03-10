@@ -22,6 +22,7 @@ const itemsPerPage = 10;
 
 const HomePage = () => {
   useAuth();
+  console.log("homepage mount");
   const URL = useLocation();
 
   const [open, setOpen] = React.useState(false);

@@ -3,6 +3,10 @@ import config from "../config";
 // Users
 export const usersData = config.BASE_URL + "/api/users";
 export const profileData = config.BASE_URL + "/api/v1/users/{id}";
+export const resetUserPasswordUrl =
+  config.BASE_URL + "/api/v1/auth/resetpassword";
+export const storeUserTagsUrl =
+  config.BASE_URL + "/api/v1/users/:userId/usertags";
 
 // Auth
 export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
