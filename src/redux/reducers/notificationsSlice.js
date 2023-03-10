@@ -3,45 +3,80 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
   {
     id: "1",
-    type: "like",
     userId: "555",
-    content: "Your post has been liked by John.",
+    content: {
+      type: "comment",
+      questionId: 1,
+      questionBy: 1,
+      answerId: 2,
+      answerBy: 1,
+      initiateBy: 2,
+      content:
+        "Debitis provident quod. Nostrum nobis blanditiis. Impedit occaecati ut maxime ut magnam rerum sed. Asperiores est quos.",
+    },
     createdAt: "2022-12-02T10:30:00Z",
     updatedAt: "2022-12-02T10:30:00Z",
   },
   {
     id: "2",
-    type: "follow",
     userId: "556",
-    content: "You have a new follower! Jane is now following you.",
+    content: {
+      type: "answer",
+      questionId: 3,
+      questionBy: 1,
+      initiateBy: 2,
+      content: "Quia perspiciatis quaerat quaerat est.",
+    },
     createdAt: "2022-12-02T13:00:00Z",
     updatedAt: "2022-12-02T13:00:00Z",
   },
   {
     id: "3",
-    type: "comment",
     userId: "557",
-    content: "Your post has received a new comment from Peter.",
+    content: {
+      type: "event",
+      eventId: 2,
+      content:
+        "Eius ullam fugit harum porro distinctio unde nobis praesentium.",
+    },
     createdAt: "2022-12-03T15:00:00Z",
     updatedAt: "2022-12-03T15:00:00Z",
   },
   {
     id: "4",
-    type: "message",
     userId: "558",
-    content: "You have a new message from Sarah.",
+    content: {
+      type: "vote",
+      questionId: 3,
+      questionBy: 1,
+      answerId: 20,
+      answerBy: 2,
+      initiateBy: 1,
+      voteType: "up",
+    },
     createdAt: "2022-12-05T10:45:00Z",
     updatedAt: "2022-12-05T10:45:00Z",
   },
   {
     id: "5",
-    type: "mention",
     userId: "559",
     content: "You have been mentioned by David in his post.",
     createdAt: "2022-12-06T08:30:00Z",
     updatedAt: "2022-12-06T08:30:00Z",
   },
-  // More objects can be added here
+  {
+    id: "4",
+    userId: "558",
+    content: {
+      type: "challengeAnswer",
+      challengeId: 3,
+      challengeBy: 1,
+      initiateBy: 20,
+      content: 2,
+    },
+    createdAt: "2022-12-05T10:45:00Z",
+    updatedAt: "2022-12-05T10:45:00Z",
+  },
 ];
 
 export const notificationsSlice = createSlice({
