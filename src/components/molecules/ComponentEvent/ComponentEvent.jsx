@@ -1,7 +1,8 @@
-import { TextareaAutosize, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
-import "./cardStyle.css";
-import { TextField, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import "./EventStyle.css";
+import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
 export default function RuleComponent() {
   const table = [
     {
@@ -21,13 +22,13 @@ export default function RuleComponent() {
     <div style={{ backgroundColor: "#16173a", width: "100%" }}>
       <div className="box2" style={{ borderRadius: "5px" }}>
         <div className="Input">
-          <h1>Challenge</h1>
+          <h1>Event Title</h1>
           <TextField fullWidth id="fullWidth" style={{ width: "100%" }} />
         </div>
 
         <div className="Input">
           <div class="new-project-form__input-group new-project-form__input-group--textarea">
-            <h1>Description Project </h1>
+            <h1>Description </h1>
             <textarea
               name="project-text"
               id="project-text"
@@ -42,7 +43,7 @@ export default function RuleComponent() {
           </div>
 
           <div className="Input">
-            <h1>Tags</h1>
+            <h1>Background Pictures</h1>
             <TextField
               fullWidth
               id="fullWidth"
@@ -50,26 +51,28 @@ export default function RuleComponent() {
             />
           </div>
 
-          <div className="Input">
-            <h1>Difficulty</h1>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="female"
-              name="radio-buttons-group"
-              colo
+          <div className="Input1">
+            <h1>Event Picture</h1>
+            <TextField
+              fullWidth
+              id="fullWidth"
+              style={{ width: "100%", backgroundColor: "#313250" }}
+            />
+          </div>
+
+          <div className="button">
+            <Button
+              variant="contained"
+              color="success"
+              style={{
+                borderRadius: "30px",
+                padding: "10px 16px",
+                textTransform: "none",
+                fontSize: "14px",
+              }}
             >
-              <FormControlLabel
-                value="Difficult"
-                control={<Radio />}
-                label="Difficult"
-              />
-              <FormControlLabel
-                value="Medium"
-                control={<Radio />}
-                label="Medium"
-              />
-              <FormControlLabel value="Easy" control={<Radio />} label="Easy" />
-            </RadioGroup>
+              Create Event
+            </Button>
           </div>
         </div>
       </div>
