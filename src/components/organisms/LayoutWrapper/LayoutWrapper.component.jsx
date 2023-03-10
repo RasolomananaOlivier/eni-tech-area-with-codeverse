@@ -12,22 +12,13 @@ const Header = () => {
   return (
     <Box position="relative">
       <img src={Image} alt="" width="100%" height={260} />
-      <Box
-        position="absolute"
-        top={60}
-        display="flex"
-        flexDirection="column"
-        gap={2}
-        sx={{ width: "50%", px: 8 }}
-      >
+      <Box position="absolute" top={60} display="flex" flexDirection="column" gap={2} sx={{ width: "50%", px: 8 }}>
         <Typography variant="h4" fontWeight="bold">
           Share & grow the world's knowledge!
         </Typography>
         <Typography>
-          We want to connect the people who have knowledge to the people who
-          need it, to bring together people with different perspectives so they
-          can understand each other better, and to empower everyone to share
-          their knowledge.
+          We want to connect the people who have knowledge to the people who need it, to bring together people with different
+          perspectives so they can understand each other better, and to empower everyone to share their knowledge.
         </Typography>
       </Box>
     </Box>
@@ -60,11 +51,7 @@ const Profil = () => {
         <Box sx={{ width: "100%", display: { xs: "grid", sm: "flex" } }}>
           <Box className="Avatar" sx={{ width: { xs: "100%", sm: "50%" } }}>
             <Grid container>
-              <Grid
-                xs={3.5}
-                sm={1.7}
-                sx={{ paddingLeft: { xs: "5px", sm: "0" } }}
-              >
+              <Grid xs={3.5} sm={1.7} sx={{ paddingLeft: { xs: "5px", sm: "0" } }}>
                 <Avatar
                   sx={{
                     height: "70px",
@@ -73,11 +60,7 @@ const Profil = () => {
                   }}
                 ></Avatar>
               </Grid>
-              <Grid
-                xs={8.5}
-                sm={7}
-                sx={{ display: "grid", alignContent: "center" }}
-              >
+              <Grid xs={8.5} sm={7} sx={{ display: "grid", alignContent: "center" }}>
                 <Grid container>
                   <Grid xs={12} sm={10}>
                     <Typography
@@ -156,10 +139,10 @@ const LayoutWrapper = ({ children }) => {
     <>
       <Box sx={{ bgcolor: "#22242a" }}>
         <Box sx={{ position: "relative", top: 68 }}>
-          {location.pathname === "/" ? <Header /> : null}
-          {location.pathname === "/Profil" ? <Profil /> : null}
+          {location.search === "" ? <Header /> : null}
+          {location.search === "?profile" ? <Profil /> : null}
         </Box>
-        <Box className="page" sx={{ position: "relative" }}>
+        <Box className="page" sx={{ position: "relative", mt: "5rem" }}>
           <SideBar />
           <div id="content">
             {children}

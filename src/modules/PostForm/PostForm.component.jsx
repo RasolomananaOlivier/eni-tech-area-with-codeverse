@@ -11,14 +11,12 @@ import Footer from "../../components/organisms/Footer/Footer.component";
 import "./PostForm.styles.scss";
 import { Typography } from "@mui/material";
 
-const PostForm = ({ auth: { isAuthenticated, loading } }) => {
-  if (!true) {
-    return <Redirect to="/login" />;
-  }
+const PostForm = () => {
+  // if (!true) {
+  //   return <Redirect to="/login" />;
+  // }
 
-  return loading === null ? (
-    <Spinner type="page" width="75px" height="200px" />
-  ) : (
+  return(
     <Fragment>
       <div className="post-form-container">
         <div className="post-form-content">
@@ -43,15 +41,11 @@ const PostForm = ({ auth: { isAuthenticated, loading } }) => {
       </div>
       <Footer />
     </Fragment>
-  );
+  )
+
+
 };
 
-PostForm.propTypes = {
-  auth: PropTypes.object.isRequired,
-};
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
 
-export default connect(mapStateToProps, null)(PostForm);
+export default PostForm

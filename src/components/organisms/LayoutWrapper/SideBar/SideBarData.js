@@ -3,7 +3,7 @@ import QuestionAnswerRoundedIcon from "@mui/icons-material/QuestionAnswerRounded
 import StyleRoundedIcon from "@mui/icons-material/StyleRounded";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
-import { AccessibleForward } from "@mui/icons-material";
+import { AccessibleForward, Person } from "@mui/icons-material";
 
 export const SideBarData = [
   {
@@ -15,6 +15,11 @@ export const SideBarData = [
     link: "/tags",
     text: "Tags",
     icon: <StyleRoundedIcon htmlColor="white" />,
+  },
+  {
+    link: "/?profile",
+    text: "profile",
+    icon: <Person htmlColor="white" />,
   },
   {
     link: "/users",
