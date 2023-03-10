@@ -20,23 +20,21 @@ const ChalengeList = () => {
   });
 
   const challenges = useQueries({
-    queries: (challengesQuery?.data?.data?.challenges ?? []).map(
-      (challenge) => {
-        return {
-          queryKey: ["challenge", challenge.userId],
-          queryFn: async () => {
-            const user = await getUserById(challenge?.userId);
-            // TODO: get challenges tags
-            return {
-              ...challenge,
-              username: user?.data?.user?.name?.full,
-              tags: ["React", "JS"],
-            };
-          },
-          enabled: challengesQuery.data !== undefined,
-        };
-      }
-    ),
+    queries: (challengesQuery?.data?.data?.challenges ?? []).map((challenge) => {
+      return {
+        queryKey: ["challenge", challenge.userId],
+        queryFn: async () => {
+          const user = await getUserById(challenge?.userId);
+          // TODO: get challenges tags
+          return {
+            ...challenge,
+            username: user?.data?.user?.name?.full,
+            tags: ["React", "JS"],
+          };
+        },
+        enabled: challengesQuery.data !== undefined,
+      };
+    }),
   });
 
   console.log(challenges);
@@ -156,10 +154,7 @@ const ChalengeList = () => {
               </Typography>
             </Grid>
             <Grid xs={3}>
-              <Typography
-                variant="body"
-                sx={{ textAlign: "end", fontSize: "1.2rem" }}
-              >
+              <Typography variant="body" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
                 Created :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   {List.updatedAt}

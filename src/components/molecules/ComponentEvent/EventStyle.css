@@ -40,13 +40,13 @@
 .box2 h4 {
   opacity: 1;
 }
-input[type="text"] {
+/* input[type="text"] {
   background-color: #313250 !important;
   border-bottom: 3px solid #fff;
   color: #fff !important;
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
   border-radius: 4px;
-}
+} */
 textarea {
   border: 1px solid rgba(255, 255, 255, 0.4) !important;
 }
@@ -57,7 +57,7 @@ input[type="text"]:focus {
   color: #fff !important;
   opacity: 1;
 }
-.Input {
+*/ .Input {
   padding-bottom: 20px;
 }
 .Input h1 {

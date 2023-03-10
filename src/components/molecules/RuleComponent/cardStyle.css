@@ -38,17 +38,17 @@
 .box2 h4 {
   opacity: 1;
 }
-input[type="text"] {
+/* input[type="text"] {
   background-color: #313250 !important;
   color: #fff !important;
   border-radius: 15px;
-}
-input:hover {
+} */
+/* input:hover {
   background-color: #313250 !important;
   color: #fff !important;
   border: #313250;
   border-radius: 15px;
-}
+} */
 textarea {
   border-radius: 15px;
   border-width: 1px;
