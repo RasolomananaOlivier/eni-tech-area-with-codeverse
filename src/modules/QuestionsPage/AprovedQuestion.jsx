@@ -1,5 +1,7 @@
 import React from "react";
-import { Avatar, Box, Grid, Typography, styled, Button } from "@mui/material";
+import { Box, Grid, Typography, styled, Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import "./input.css";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
@@ -11,6 +13,8 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
 }));
 
 export default function AprovedQuestion() {
+  const [form, setForm] = React.useState("none");
+
   return (
     <>
       <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
@@ -69,14 +73,17 @@ export default function AprovedQuestion() {
             </Typography>
           </Grid>
           <Grid xs={6}>
-            <Typography
-              variant="body1"
-              sx={{ fontSize: "1.4rem", color: "#55e575", position: "relative", float: "right", fontWeight: "600" }}
+            <Button
+              onClick={() => setForm(form === "none" ? "block" : "none")}
+              sx={{ fontSize: "1.2rem", color: "#55e575", position: "relative", float: "right", fontWeight: "600" }}
             >
               Comment
-            </Typography>
+            </Button>
           </Grid>
         </Grid>
+      </Box>
+      <Box p={3} sx={{ height: "12rem", display: form, mb: "22px", border: "dotted" }}>
+        <input className="input" style={{ width: "100%", height: "54px" }} placeholder="Write your comment" />
       </Box>
     </>
   );
