@@ -13,16 +13,16 @@ export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
 export const registerUser = config.BASE_URL + "/api/users";
 export const loginUser = config.BASE_URL + "/api/v1/auth/login/local";
 
-// Posts
+// Questions
 export const questionsByUserTags =
   config.BASE_URL + "/api/v1/questions/suggestions";
+export const createQuestion = config.BASE_URL + "/api/v1/questions";
 
 // Answers
-export const allAnswersData =
-  config.BASE_URL + "/api/v1/questions/{questionId}/answers";
-export const allAnswersComment =
-  config.BASE_URL +
-  "/api/v1/questions/{questionId}/answers/{answerId}/comments";
+export const getAnswersUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers";
+export const createAnswerUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers";
 
 export const createSingleAnswer =
   config.BASE_URL + "/api/v1/questions/{postId}/answers";
@@ -30,11 +30,10 @@ export const deleteSingleAnswer =
   config.BASE_URL + "/api/posts/answers/{AnswerId}";
 
 // Comments
-export const allCommentsData = config.BASE_URL + "/api/posts/comments/{id}";
-export const createSingleComment =
-  config.BASE_URL + "/api/posts/comments/{postId}";
-export const deleteSingleComment =
-  config.BASE_URL + "/api/posts/comments/{CommentId}";
+export const getCommentsUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
+export const createCommentUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
 
 // Tags
 export const allTagsData = config.BASE_URL + "/api/tags";

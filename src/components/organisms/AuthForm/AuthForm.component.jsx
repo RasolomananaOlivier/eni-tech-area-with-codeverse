@@ -79,7 +79,12 @@ const AuthForm = () => {
               />
             </div>
             <div className="grid gs4 gsy fd-column js-auth-item ">
-              <Button variant="contained" color="success" disableElevation>
+              <Button
+                variant="contained"
+                color="success"
+                disableElevation
+                type="submit"
+              >
                 Login
               </Button>
             </div>
