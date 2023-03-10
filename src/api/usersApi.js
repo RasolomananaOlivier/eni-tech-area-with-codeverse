@@ -18,7 +18,6 @@ export const storeUserTags = async (userId, tags) => {
 };
 
 export const getUserById = async (userId) => {
-  // console.log("userId", userId);
   const res = await axios.get(
     userByIdUrl.replace(":userId", userId),
     withAuthConfig
