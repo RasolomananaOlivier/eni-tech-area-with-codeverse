@@ -2,13 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   id: "1",
-  title: "30-Day Plank Challenge",
-  content:
-    "Complete a plank exercise for 30 consecutive days, increasing the time by 5 seconds each day.",
+  title: "How many planets are in the solar system?",
+  question: "How many planets are there in the solar system as of 2023?",
+  answer: "As of 2023, there are eight planets in the solar system.",
+  difficulty: "easy",
   userId: "123",
-  endAt: "2023-04-08T12:00:00Z",
-  createdAt: "2023-03-01T09:23:45Z",
-  updatedAt: "2023-03-08T16:42:12Z",
+  endAt: "2023-04-10",
+  createdAt: "2023-03-01T14:30:00Z",
+  updatedAt: "2023-03-05T10:15:00Z",
 };
 
 export const challengeSlice = createSlice({

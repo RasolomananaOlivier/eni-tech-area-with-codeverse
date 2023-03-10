@@ -53,3 +53,9 @@ export const createVote =
 export const getVotesCount =
   config.BASE_URL +
   "/api/v1/questions/{questionId}/answers/{answerId}/votes/counts";
+
+// Challenges
+export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";
+export const getChallengeByIdUrl =
+  config.BASE_URL + "/api/v1/challenges/:challengeId";
+export const createChallengeUrl = config.BASE_URL + "/api/v1/challenges";
