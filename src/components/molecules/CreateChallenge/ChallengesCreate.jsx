@@ -7,7 +7,7 @@ export default function ChallengesCreate() {
       <div className="card-child">
         <div>
           <Typography variant="h2" component="div">
-            Create challenge
+            Create Challenge
           </Typography>
           <Typography variant="p">Challenge and test others</Typography>
         </div>

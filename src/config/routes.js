@@ -21,8 +21,13 @@ const ROUTES = [
   },
   {
     title: "CreateEvents",
-    path: "/Events/Create",
+    path: "/events/create",
     element: <CreateEvents />,
+  },
+  {
+    title: "CreateEvents",
+    path: "/challenges/create",
+    element: <CreateChallengePage />,
   },
   {
     title: "profile",
