@@ -21,7 +21,7 @@ const Header = () => {
         sx={{ width: "50%", px: 8 }}
       >
         <Typography variant="h4" fontWeight="bold">
-          Share & grow the world's knowledge!
+          Share & grow the Appworld's knowledge!
         </Typography>
         <Typography>
           We want to connect the people who have knowledge to the people who
@@ -154,7 +154,7 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <>
-      <Box sx={{ bgcolor: "#22242a" }}>
+      <Box>
         <Box sx={{ position: "relative", top: 68 }}>
           {location.pathname === "/" ? <Header /> : null}
           {location.pathname === "/Profil" ? <Profil /> : null}
