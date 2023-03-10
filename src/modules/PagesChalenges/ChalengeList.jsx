@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Grid, styled } from "@mui/material";
+
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
   width: "7rem",
