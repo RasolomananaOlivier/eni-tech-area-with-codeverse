@@ -6,7 +6,7 @@ import ProfilePage from "../modules/ProfilePage/NewProfilePage/Profile.Page";
 import PagesChalenges from "../modules/PagesChalenges";
 import EventsPage from "../modules/EventsPage";
 import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
-
+import Notification from "../modules/NotificationPage/NotificationPage";
 // test
 const ROUTES = [
   {
@@ -23,6 +23,16 @@ const ROUTES = [
     title: "Create Event",
     path: "/events/create",
     element: <CreateEvents />,
+  },
+  {
+    title: "Create Challenge",
+    path: "/challenges/create",
+    element: <CreateChallengePage />,
+  },
+  {
+    title: "Notification Page",
+    path: "/notifications",
+    element: <Notification />,
   },
   {
     title: "Profile",
