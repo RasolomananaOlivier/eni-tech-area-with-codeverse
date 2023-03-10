@@ -1,38 +1,9 @@
 import axios from "axios";
+import { getAnswersUrl } from "./urls";
 
-import {
-  allAnswersData as _allAnswersData,
-  createSingleAnswer as _createSingleAnswer,
-  deleteSingleAnswer as _deleteSingleAnswer,
-  allAnswersComment as _allAnswersComment,
-} from "./urls";
-
-export const allAnswersData = (questionId) => {
-  return axios.get(_allAnswersData.replace("{questionId}", questionId));
-};
-
-export const allAnswerCommets = (questionId, answerId) => {
-  return axios.get(
-    _allAnswersComment
-      .replace("{questionId}", questionId)
-      .replace("{answerId}", answerId)
+export const getAnswers = async (questionId) => {
+  const res = await axios.get(
+    getAnswersUrl.replace("{questionId}", questionId)
   );
-};
-
-export const createSingleAnswer = (postId, formData) => {
-  const config_headers = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  return axios.post(
-    _createSingleAnswer.replace("{postId}", postId),
-    formData,
-    config_headers
-  );
-};
-
-export const deleteSingleAnswer = (AnswerId) => {
-  return axios.delete(_deleteSingleAnswer.replace("{AnswerId}", AnswerId));
+  return res.data;
 };
