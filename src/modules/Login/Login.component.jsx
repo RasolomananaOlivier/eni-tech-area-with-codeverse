@@ -11,11 +11,7 @@ const Login = () => {
   return (
     <Fragment>
       <Box className="auth-page" sx={{ pt: 5 }}>
-        <div className="register-content">
-          <div className="register-grid">
-            <AuthForm action={"Log in"} />
-          </div>
-        </div>
+        <AuthForm action={"Log in"} />
       </Box>
       <Footer />
     </Fragment>

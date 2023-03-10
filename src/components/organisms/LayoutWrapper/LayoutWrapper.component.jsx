@@ -15,7 +15,7 @@ const Header = () => {
       <img src={Image} alt="" width="100%" height={260} />
       <Box position="absolute" top={60} display="flex" flexDirection="column" gap={2} sx={{ width: "50%", px: 8 }}>
         <Typography variant="h4" fontWeight="bold">
-          Share & grow the world's knowledge!
+          Share & grow the Appworld's knowledge!
         </Typography>
         <Typography>
           We want to connect the people who have knowledge to the people who need it, to bring together people with different
@@ -31,7 +31,7 @@ const LayoutWrapper = ({ children }) => {
 
   return (
     <>
-      <Box sx={{ bgcolor: "#22242a" }}>
+      <Box>
         <Box sx={{ position: "relative", top: 68 }}>
           <Header />
         </Box>

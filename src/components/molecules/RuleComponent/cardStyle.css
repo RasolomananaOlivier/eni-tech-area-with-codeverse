@@ -1,0 +1,64 @@
+.flexbox {
+  display: flex;
+  position: relative;
+  margin-top: 20%;
+  margin-left: 65%;
+}
+.box3 {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: start;
+  border-radius: 15px;
+  padding: 27px 25px;
+  background-color: #4a4a6c;
+}
+
+.box {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: #313250;
+  padding: 20px;
+  border-radius: 5px;
+  height: 103vh;
+  overflow-y: hidden;
+  width: 75%;
+}
+
+.box-child {
+  margin-bottom: 25px;
+}
+.box2 {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: absolute;
+  background-color: #313250;
+  top: 43%;
+  border-radius: 5px !important;
+  padding: 20px;
+  left: 110px;
+  width: 54%;
+}
+.box2 h4 {
+  opacity: 1;
+}
+input[type="text"] {
+  background-color: #313250 !important;
+  color: #fff !important;
+  border-radius: 15px;
+}
+input:hover {
+  background-color: #313250 !important;
+  color: #fff !important;
+  border: #313250;
+  border-radius: 15px;
+}
+textarea {
+  border-radius: 15px;
+  border-width: 1px;
+  color: #fff;
+  opacity: 1;
+}
+.Input {
+  padding-bottom: 20px;
+}
+.Input h1 {
+  font-size: medium;
+  font-weight: bold;
+}
