@@ -53,6 +53,9 @@ export const notificationsSlice = createSlice({
         ...action.payload,
       };
     },
+    addNotification: (state, action) => {
+      state.push(action.payload);
+    },
   },
 });
 
