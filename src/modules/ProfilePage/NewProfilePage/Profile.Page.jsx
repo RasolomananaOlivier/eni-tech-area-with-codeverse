@@ -5,8 +5,11 @@ import Image1 from "../../../assets/profil.png";
 import RightSideBar from "../../../components/organisms/LayoutWrapper/RightSideBar/RightSideBar.component";
 import SideBar from "../../../components/organisms/LayoutWrapper/SideBar/SideBar.component";
 import Image from "../../../assets/home-students-2.jpg";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function ProfilePage() {
+  useAuth();
+
   const Profil = () => {
     const [open, setOpen] = React.useState(false);
     let role = "admin";
@@ -35,13 +38,23 @@ export default function ProfilePage() {
             <Grid xs={7}>
               <Grid container>
                 <Grid xs={1.8}>
-                  <Avatar src={Image1} sx={{ height: "80px", width: "80px" }} alt="" />
+                  <Avatar
+                    src={Image1}
+                    sx={{ height: "80px", width: "80px" }}
+                    alt=""
+                  />
                 </Grid>
                 <Grid xs={10}>
-                  <Typography variant="h4" sx={{ fontWeight: "600", color: "white" }}>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontWeight: "600", color: "white" }}
+                  >
                     Aria Stone
                   </Typography>
-                  <Typography variant="body1" sx={{ fontSize: "1.3rem", textDecoration: "underline" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontSize: "1.3rem", textDecoration: "underline" }}
+                  >
                     ljnxr@zohomail.com
                   </Typography>
                   <Typography variant="h4" sx={{ fontWeight: "600" }}>
