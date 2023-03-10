@@ -1,6 +1,7 @@
 import CreateChallengePage from "../components/CreateChallengePage/CreateChallengePage";
 import HomePage from "../modules/HomePage/HomePage.component";
 import Login from "../modules/Login/Login.component";
+import ProfilePage from "../modules/ProfilePage/NewProfilePage/Profile.Page";
 
 const ROUTES = [
   {
@@ -17,6 +18,11 @@ const ROUTES = [
     title: "Challenge",
     path: "/challenges/create",
     element: <CreateChallengePage />,
+  },
+  {
+    title: "profile",
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ];
 
