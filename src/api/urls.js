@@ -8,6 +8,10 @@ export const resetUserPasswordUrl =
 export const storeUserTagsUrl =
   config.BASE_URL + "/api/v1/users/:userId/usertags";
 export const userByIdUrl = config.BASE_URL + "/api/v1/users/:userId";
+export const userChallengesUrl =
+  config.BASE_URL + "/api/v1/users/:userId/challenges";
+export const userQuestionsUrl =
+  config.BASE_URL + "/api/v1/users/:userId/questions";
 
 // Auth
 export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
@@ -53,3 +57,7 @@ export const createVote =
 export const getVotesCount =
   config.BASE_URL +
   "/api/v1/questions/{questionId}/answers/{answerId}/votes/counts";
+
+// Challenges
+export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";
+export const createChallenge = config.BASE_URL + "/api/v1/challenges";
