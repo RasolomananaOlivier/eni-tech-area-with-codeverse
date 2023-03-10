@@ -1,3 +1,4 @@
+import CreateEvents from "../components/molecules/CreateEvents/CreateEvents";
 import CreateChallengePage from "../components/CreateChallengePage/CreateChallengePage";
 import HomePage from "../modules/HomePage/HomePage.component";
 import Login from "../modules/Login/Login.component";
@@ -6,6 +7,7 @@ import PagesChalenges from "../modules/PagesChalenges";
 import EventsPage from "../modules/EventsPage";
 import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
 
+// test
 const ROUTES = [
   {
     title: "Home",
@@ -18,22 +20,27 @@ const ROUTES = [
     element: <Login />,
   },
   {
-    title: "profile",
+    title: "Create Event",
+    path: "/events/create",
+    element: <CreateEvents />,
+  },
+  {
+    title: "Profile",
     path: "/profile",
     element: <ProfilePage />,
   },
   {
-    title: "challenge",
+    title: "Challenge",
     path: "/challenges",
     element: <PagesChalenges />,
   },
   {
-    title: "event",
-    path: "/Event",
+    title: "Event",
+    path: "/events",
     element: <EventsPage />,
   },
   {
-    title: "questions",
+    title: "Questions",
     path: "/questions",
     element: <QuestionPage />,
   },

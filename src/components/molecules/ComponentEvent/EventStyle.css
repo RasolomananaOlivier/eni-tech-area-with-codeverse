@@ -1,0 +1,69 @@
+.flexbox {
+  display: flex;
+  position: relative;
+  margin-top: 20%;
+  margin-left: 65%;
+}
+.box3 {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: start;
+  border-radius: 5px;
+  padding: 27px 25px;
+  background-color: #4a4a6c;
+}
+.Input1 {
+  width: 30%;
+}
+.box {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: #313250;
+  padding: 20px;
+  border-radius: 5px;
+  height: 100vh;
+  overflow-y: hidden;
+  width: 75%;
+}
+
+.box-child {
+  margin-bottom: 25px;
+}
+.box2 {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  position: absolute;
+  background-color: #313250;
+  top: 43%;
+  border-radius: 5px !important;
+  padding: 20px;
+  left: 110px;
+  width: 54%;
+}
+.box2 h4 {
+  opacity: 1;
+}
+input[type="text"] {
+  background-color: #313250 !important;
+  border-bottom: 3px solid #fff;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 4px;
+}
+textarea {
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  border: none !important;
+  color: #fff !important;
+  opacity: 1;
+}
+.Input {
+  padding-bottom: 20px;
+}
+.Input h1 {
+  font-size: medium;
+  font-weight: bold;
+}
+.button {
+  padding-top: 25px;
+}

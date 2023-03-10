@@ -11,8 +11,8 @@ import { Box } from "@mui/material";
 const clientQuery = new QueryClient();
 const App = () => {
   return (
-    <QueryClientProvider client={clientQuery}>
-      <Provider store={store}>
+    <Provider store={store}>
+      <QueryClientProvider client={clientQuery}>
         <Box className="App" sx={{ bgcolor: "#313250" }}>
           {/* <Header /> */}
           {/* <Alert /> */}
@@ -22,8 +22,8 @@ const App = () => {
             ))}
           </Routes>
         </Box>
-      </Provider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </Provider>
   );
 };
 

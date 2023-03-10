@@ -16,9 +16,9 @@ export default function AprovedQuestion() {
       <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
         <Grid container>
           <Grid xs={6}>
-            <Grid container>
+            <Grid container alignItems={"center"}>
               <Grid xs={1.2}>
-                <Typography variant="h5" sx={{ color: "#55e575", fontWeight: "600" }}>
+                <Typography variant="h4" sx={{ color: "#55e575", fontWeight: "600" }}>
                   12
                 </Typography>
               </Grid>
@@ -55,13 +55,14 @@ export default function AprovedQuestion() {
             <Typography variant="body1" sx={{ fontSize: "1.4rem", position: "relative", float: "right" }}>
               Answered :
               <Box component={"span"} sx={{ fontWeight: "600" }}>
+                {" "}
                 10 days ago
               </Box>
             </Typography>
           </Grid>
         </Grid>
 
-        <Grid container>
+        <Grid container mt={2}>
           <Grid xs={6}>
             <Typography variant="body1" sx={{ fontSize: "1.4rem" }}>
               2 comments
