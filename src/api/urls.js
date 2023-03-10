@@ -5,7 +5,7 @@ export const usersData = config.BASE_URL + "/api/users";
 export const profileData = config.BASE_URL + "/api/v1/users/{id}";
 
 // Auth
-export const loadUserData = config.BASE_URL + "/api/auth";
+export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
 export const registerUser = config.BASE_URL + "/api/users";
 export const loginUser = config.BASE_URL + "/api/v1/auth/login/local";
 

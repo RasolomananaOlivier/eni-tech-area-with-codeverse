@@ -11,16 +11,19 @@ import "./HomePage.styles.scss";
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
 import Tags from "../../components/Tags";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useRoutes } from "react-router-dom";
 import { Box } from "@mui/material";
 import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
 import { useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags } from "../../api/questionApi";
+import { useAuth } from "../../hooks/useAuth";
 
 const itemsPerPage = 10;
 
 const HomePage = () => {
+  useAuth();
   const URL = useLocation();
+
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
 
@@ -44,7 +47,7 @@ const HomePage = () => {
     return <div>Loading</div>;
   }
 
-  console.log(questionsQuery.data);
+  console.log(questionsQuery.data, "query");
   return (
     <LayoutWrapper>
       <Box

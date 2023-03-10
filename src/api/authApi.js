@@ -1,13 +1,21 @@
 import axios from "axios";
+import token from "../utils/token";
 
 import {
   loadUserData as _loadUserData,
   registerUser as _registerUser,
   loginUser as _loginUser,
+  verifyTokenUrl,
 } from "./urls";
 
-export const loadUserData = () => {
-  return axios.get(_loadUserData);
+export const verifyToken = async () => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+  const res = await axios.get(verifyTokenUrl, config);
+  return res.data;
 };
 
 export const registerUser = (username, password) => {

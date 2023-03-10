@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import { store } from "./redux/store";
 import Header from "./components/organisms/Header/Header.component";
 
@@ -18,8 +18,8 @@ const App = () => {
           {/* <Header /> */}
           {/* <Alert /> */}
           <Routes>
-            {ROUTES.map(({ element, path, title }) => (
-              <Route key={title} path={path} element={element} />
+            {ROUTES.map(({ path, element }) => (
+              <Route path={path} element={element} key={path} />
             ))}
           </Routes>
         </div>

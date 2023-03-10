@@ -28,6 +28,7 @@ const AuthForm = () => {
     e.preventDefault();
     try {
       const res = await loginUser(email, password);
+
       dispatch(setUser(res.data.user));
       dispatch(setAuth({ isLogged: true }));
       token.set(res.data.tokens.accessToken);
@@ -79,7 +80,7 @@ const AuthForm = () => {
                 className="s-btn s-btn__primary"
                 id="submit-button"
                 name="submit-button"
-                type="submit"
+                // type="submit"
               >
                 action
               </button>
