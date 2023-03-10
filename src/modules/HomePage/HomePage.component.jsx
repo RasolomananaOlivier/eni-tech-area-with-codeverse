@@ -16,12 +16,12 @@ import { Box } from "@mui/material";
 import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
 import { useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags } from "../../api/questionApi";
-import { useAuth } from "../../hooks/useAuth";
+// import { useAuth } from "../../hooks/useAuth";
 
 const itemsPerPage = 10;
 
 const HomePage = () => {
-  useAuth();
+  // useAuth();
   console.log("homepage mount");
   const URL = useLocation();
 

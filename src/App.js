@@ -3,13 +3,11 @@ import { Provider } from "react-redux";
 import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import { store } from "./redux/store";
 import Header from "./components/organisms/Header/Header.component";
-
 import "./App.css";
 import ROUTES from "./config/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const clientQuery = new QueryClient();
-
 const App = () => {
   return (
     <QueryClientProvider client={clientQuery}>

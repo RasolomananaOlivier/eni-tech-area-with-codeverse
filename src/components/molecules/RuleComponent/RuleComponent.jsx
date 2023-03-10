@@ -18,21 +18,16 @@ export default function RuleComponent() {
     },
   ];
   return (
-    <div>
+    <div style={{ backgroundColor: "#202050", width: "100%" }}>
       <div className="box2" style={{ borderRadius: "5px" }}>
         <div className="Input">
           <h1>Challenge</h1>
-          <TextField
-            fullWidth
-            label="Enter Your challenge"
-            id="fullWidth"
-            style={{ width: "100%" }}
-          />
+          <TextField fullWidth id="fullWidth" style={{ width: "100%" }} />
         </div>
 
         <div className="Input">
           <div class="new-project-form__input-group new-project-form__input-group--textarea">
-            <h1>Description du project </h1>
+            <h1>Description Project </h1>
             <textarea
               name="project-text"
               id="project-text"
@@ -40,7 +35,7 @@ export default function RuleComponent() {
               style={{
                 width: "100%",
                 backgroundColor: "#313250",
-                border: " 1px solid rgba(255, 255, 255, 0.4);",
+                border: " 1px solid rgba(255, 255, 255, 0.2);",
                 borderRadius: "15px !important",
               }}
             ></textarea>
@@ -50,18 +45,18 @@ export default function RuleComponent() {
             <h1>Tags</h1>
             <TextField
               fullWidth
-              label="Some tags"
               id="fullWidth"
               style={{ width: "100%", backgroundColor: "#313250" }}
             />
           </div>
 
           <div className="Input">
-            <h1>difficulty</h1>
+            <h1>Difficulty</h1>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="female"
               name="radio-buttons-group"
+              colo
             >
               <FormControlLabel
                 value="Difficult"
@@ -88,7 +83,7 @@ export default function RuleComponent() {
               <div className="box3">
                 <Typography
                   variant="h6"
-                  style={{ paddingBottom: "20px", fontWeight: "bold" }}
+                  style={{ paddingBottom: "10px", fontWeight: "bold" }}
                 >
                   {param.title}
                 </Typography>
