@@ -10,27 +10,23 @@ import MobileSideBar from "../../organisms/MobileSideBar/MobileSideBar.component
 import Logo from "../../../assets/logo.png";
 
 import "./Header.styles.scss";
+import { useSelector } from "react-redux";
+import { selectAuth } from "../../../redux/selectors/authSelector";
 
 const Header = () => {
   const [searchState, setSearchState] = useState(false);
+  const auth = useSelector(selectAuth);
 
-  // const authLinks = (
-  //   <div className="btns">
-  //     {loading || user === null ? (
-  //       <Spinner width="50px" height="50px" />
-  //     ) :
-  //     <Link to={`/users/${user.id}`} title={user.username}>
-  //       <img alt="user-logo" className="logo" src={user.gravatar} />
-  //     </Link>
-  //     null}
-  //     <LinkButton
-  //       text={"Log out"}
-  //       link={"/login"}
-  //       type={"s-btn__filled"}
-  //       handleClick={logout}
-  //     />
-  //   </div>
-  // );
+  const authLinks = (
+    <div className="btns">
+      <LinkButton
+        text={"Log out"}
+        link={"/login"}
+        type={"s-btn__filled"}
+        // handleClick={logout}
+      />
+    </div>
+  );
 
   const authTabs = (
     <div className="s-navigation">
@@ -77,9 +73,6 @@ const Header = () => {
     );
   };
 
-  // return loading ? (
-  //   ""
-  // ) : (
   return (
     <Fragment>
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bs-md">
@@ -115,7 +108,7 @@ const Header = () => {
             className="search-icon"
             onClick={() => setSearchState(!searchState)}
           />
-          {/* {!loading && <Fragment>{true ? authLinks : guestLinks}</Fragment>} */}
+          <Fragment>{auth.isLogged ? authLinks : guestLinks}</Fragment>
         </div>
       </nav>
       {searchState && <SearchBar />}
