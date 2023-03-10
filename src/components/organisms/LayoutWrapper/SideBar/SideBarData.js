@@ -32,7 +32,7 @@ export const SideBarData = [
     icon: <NotificationsRoundedIcon htmlColor="white" />,
   },
   {
-    link: "/Chalenges",
+    link: "/challenge",
     text: "Chalenges",
     icon: <AccessibleForward htmlColor="white" />,
   },
