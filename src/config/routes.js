@@ -3,6 +3,7 @@ import HomePage from "../modules/HomePage/HomePage.component";
 import Login from "../modules/Login/Login.component";
 import ProfilePage from "../modules/ProfilePage/NewProfilePage/Profile.Page";
 import PagesChalenges from "../modules/PagesChalenges";
+import EventsPage from "../modules/EventsPage";
 
 const ROUTES = [
   {
@@ -16,19 +17,19 @@ const ROUTES = [
     element: <Login />,
   },
   {
-    title: "Challenge",
-    path: "/challenges/create",
-    element: <CreateChallengePage />,
-  },
-  {
     title: "profile",
     path: "/profile",
     element: <ProfilePage />,
   },
   {
     title: "challenge",
-    path: "/challenge",
+    path: "/challenges",
     element: <PagesChalenges />,
+  },
+  {
+    title: "event",
+    path: "/Event",
+    element: <EventsPage />,
   },
 ];
 

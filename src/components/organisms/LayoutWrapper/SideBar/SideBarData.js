@@ -4,6 +4,7 @@ import StyleRoundedIcon from "@mui/icons-material/StyleRounded";
 import PeopleAltRoundedIcon from "@mui/icons-material/PeopleAltRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import { AccessibleForward, Person } from "@mui/icons-material";
+import EventIcon from "@mui/icons-material/Event";
 
 export const SideBarData = [
   {
@@ -20,6 +21,11 @@ export const SideBarData = [
     link: "/profile",
     text: "profile",
     icon: <Person htmlColor="white" />,
+  },
+  {
+    link: "/Event",
+    text: "Event",
+    icon: <EventIcon htmlColor="white" />,
   },
   {
     link: "/users",
