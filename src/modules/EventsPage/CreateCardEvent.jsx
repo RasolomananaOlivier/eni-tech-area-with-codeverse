@@ -11,6 +11,13 @@ export default function CreateCardEvent() {
         "Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day.",
       picture: ImageCard,
     },
+    {
+      id: 1,
+      title: "Events.",
+      content:
+        "Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day. Complete a 30-day yoga challenge, practicing a different pose each day.",
+      picture: ImageCard,
+    },
   ];
   return (
     <>
@@ -32,7 +39,7 @@ export default function CreateCardEvent() {
                 mt={3}
                 component={"img"}
                 src={List.picture}
-                sx={{ width: "52rem", height: "26rem", borderRadius: "12px", objectFit: "cover" }}
+                sx={{ width: "100%", height: "26rem", borderRadius: "12px", objectFit: "cover" }}
                 alt=""
               />
             </Box>

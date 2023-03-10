@@ -4,6 +4,7 @@ import Login from "../modules/Login/Login.component";
 import ProfilePage from "../modules/ProfilePage/NewProfilePage/Profile.Page";
 import PagesChalenges from "../modules/PagesChalenges";
 import EventsPage from "../modules/EventsPage";
+import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
 
 const ROUTES = [
   {
@@ -30,6 +31,11 @@ const ROUTES = [
     title: "event",
     path: "/Event",
     element: <EventsPage />,
+  },
+  {
+    title: "questions",
+    path: "/questions",
+    element: <QuestionPage />,
   },
 ];
 
