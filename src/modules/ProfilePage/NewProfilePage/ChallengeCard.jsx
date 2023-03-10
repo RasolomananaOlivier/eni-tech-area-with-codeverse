@@ -13,14 +13,15 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
 const ChallengeCard = () => {
   const Array = [
     {
-      id: 1,
+      id: 2,
       title: "How to efficiently sort a large dataset in Python ?",
       content:
         "I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in sort function , but it takes too long to complete...",
       difficult: "Difficult",
       tag: "React",
-      chalenger: "Aria Stane",
+      username: "Aria Stane",
       updatedAt: "10 days ago",
+      TimeLeft: "20 days",
     },
     {
       id: 2,
@@ -29,8 +30,9 @@ const ChallengeCard = () => {
         "I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in sort function , but it takes too long to complete...",
       difficult: "Difficult",
       tag: "React",
-      chalenger: "Aria Stane",
+      username: "Aria Stane",
       updatedAt: "10 days ago",
+      TimeLeft: "20 days",
     },
   ];
   return (
@@ -42,29 +44,37 @@ const ChallengeCard = () => {
         <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
           <Grid container justifyContent={"center"}>
             <Grid xs={8}>
-              <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px" }}>
-                {List.title}
+              <Typography variant="body1" sx={{ fontSize: "1.4rem" }}>
+                Time Left :
+                <Box component={"span"} sx={{ fontWeight: "600" }}>
+                  {" "}
+                  {List.TimeLeft}
+                </Box>
               </Typography>
             </Grid>
             <Grid xs={4}>
               <Typography
-                p={1}
+                p={0.7}
+                px={2}
                 sx={{
                   backgroundColor: "hsl(7.42deg 75.61% 51.76%)",
                   textAlign: "center",
                   display: "inline",
-                  width: "12rem",
                   position: "relative",
                   float: "right",
-                  borderRadius: "12px",
+                  borderRadius: "22px",
                   fontWeight: "600",
                 }}
                 variant="body1"
               >
-                {List.difficult}
+                {/* {List.difficult} */}
+                Medium
               </Typography>
             </Grid>
           </Grid>
+          <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px", marginTop: "12px" }}>
+            {List.title}
+          </Typography>
           <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.3rem" }}>
             {List.content}
           </Typography>
@@ -100,7 +110,7 @@ const ChallengeCard = () => {
               <Typography variant="body1" sx={{ fontSize: "1.2rem" }}>
                 Challenger :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
-                  {List.chalenger}
+                  {List.username}
                 </Box>
               </Typography>
             </Grid>
