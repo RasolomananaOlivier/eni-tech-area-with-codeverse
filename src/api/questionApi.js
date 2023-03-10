@@ -5,6 +5,7 @@ import {
   createQuestionUrl,
   getQuestionByIdUrl,
   getQuestionsUrl,
+  getUserQuestionsUrl,
   questionsByUserTagsUrl,
 } from "./urls";
 
@@ -54,5 +55,20 @@ export const getQuestionById = async (questionId) => {
     getQuestionByIdUrl.replace(":questionId", questionId),
     config
   );
+  return res.data;
+};
+
+export const getUserQuestions = async (userId) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+
+  const res = await axios.get(
+    getUserQuestionsUrl.replace(":userId", userId),
+    config
+  );
+  // console.log("called", res);
   return res.data;
 };

@@ -26,8 +26,8 @@ const ROUTES = [
     element: <ProfilePage />,
   },
   {
-    title: "challenge",
-    path: "/challenge",
+    title: "Challenges",
+    path: "/challenges",
     element: <PagesChalenges />,
   },
 ];

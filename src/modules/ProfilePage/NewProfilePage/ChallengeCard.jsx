@@ -1,5 +1,9 @@
 import React from "react";
 import { Box, Typography, Grid, styled } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
+import { selectUserId } from "../../../redux/selectors/userSelector";
+import { getUserChallenges } from "../../../api/challengesApi";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
@@ -11,6 +15,14 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
 }));
 
 const ChallengeCard = () => {
+  const currentUserId = useSelector(selectUserId);
+  const challengesQuery = useQuery({
+    queryKey: ["users", currentUserId, "challenges"],
+    queryFn: ({ queryKey }) => getUserChallenges(queryKey[1]),
+  });
+
+  console.log("user challenges", challengesQuery);
+
   const Array = [
     {
       id: 1,
@@ -35,14 +47,31 @@ const ChallengeCard = () => {
   ];
   return (
     <Box p={3}>
-      <Typography variant="h5" style={{ fontWeight: "600", fontSize: "1.7rem", marginBottom: "32px" }}>
+      <Typography
+        variant="h5"
+        style={{ fontWeight: "600", fontSize: "1.7rem", marginBottom: "32px" }}
+      >
         Your Challenges.
       </Typography>
       {Array?.map((List) => (
-        <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
+        <Box
+          p={3}
+          sx={{
+            borderRadius: "8px",
+            backgroundColor: "#4a4a6c",
+            marginBottom: "2rem",
+          }}
+        >
           <Grid container justifyContent={"center"}>
             <Grid xs={8}>
-              <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px" }}>
+              <Typography
+                variant="h4"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "2rem",
+                  marginBottom: "9px",
+                }}
+              >
                 {List.title}
               </Typography>
             </Grid>
@@ -105,7 +134,10 @@ const ChallengeCard = () => {
               </Typography>
             </Grid>
             <Grid xs={3}>
-              <Typography variant="body" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
+              <Typography
+                variant="body"
+                sx={{ textAlign: "end", fontSize: "1.2rem" }}
+              >
                 Created :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   {List.updatedAt}

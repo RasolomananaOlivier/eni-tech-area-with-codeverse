@@ -20,7 +20,9 @@ export const useAuth = () => {
       console.log("verification process", res);
       dispatch(setUser(res.data.user));
       dispatch(setAuth({ isLogged: true }));
-      navigate("/");
+      if (location.pathname === "/login") {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
       if (location.pathname !== "/login") {
