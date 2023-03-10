@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../../redux/reducers/userSlice";
 import token from "../../../utils/token";
 import { setAuth } from "../../../redux/reducers/authSlice";
+import { Button } from "@mui/material";
 
 const AuthForm = () => {
   const [formData, setFormData] = useState({
@@ -78,14 +79,9 @@ const AuthForm = () => {
               />
             </div>
             <div className="grid gs4 gsy fd-column js-auth-item ">
-              <button
-                className="s-btn s-btn__primary"
-                id="submit-button"
-                name="submit-button"
-                // type="submit"
-              >
-                action
-              </button>
+              <Button variant="contained" color="success" disableElevation>
+                Login
+              </Button>
             </div>
           </form>
           <div className="fs-caption license fc-black-500">
