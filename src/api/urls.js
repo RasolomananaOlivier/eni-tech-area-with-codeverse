@@ -32,11 +32,6 @@ export const getAnswersUrl =
 export const createAnswerUrl =
   config.BASE_URL + "/api/v1/questions/:questionId/answers";
 
-export const createSingleAnswer =
-  config.BASE_URL + "/api/v1/questions/{postId}/answers";
-export const deleteSingleAnswer =
-  config.BASE_URL + "/api/posts/answers/{AnswerId}";
-
 // Comments
 export const getCommentsUrl =
   config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
@@ -52,11 +47,11 @@ export const userTags = config.BASE_URL + "/api/v1/users/{id}/usertags";
 export const changePass = config.BASE_URL + "/api/v1/auth/resetpassword";
 
 // votes
-export const createVote =
-  config.BASE_URL + "/api/v1/questions/{questionId}/answers/{answerId}/votes";
-export const getVotesCount =
+export const createVoteUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/votes";
+export const getVotesCountUrl =
   config.BASE_URL +
-  "/api/v1/questions/{questionId}/answers/{answerId}/votes/counts";
+  "/api/v1/questions/:questionId/answers/:answerId/votes/counts";
 
 // Challenges
 export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";

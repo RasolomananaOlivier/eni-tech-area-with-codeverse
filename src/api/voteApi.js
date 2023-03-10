@@ -1,19 +1,38 @@
 import axios from "axios";
+import token from "../utils/token";
 
-import {
-  createVote as _createVote,
-  getVotesCount as _getVotesCount,
-} from "./urls";
+import { createVoteUrl, getVotesCountUrl } from "./urls";
 
-export const createVote = async (type) => {
-  console.log("called");
-  return await axios.post(_createVote, { type });
+export const createVote = async (questionId, answerId) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+  const res = await axios.post(
+    createVoteUrl
+      .replace(":questionId", questionId)
+      .replace(":answerId", answerId),
+    { type: "up" },
+    config
+  );
+
+  return res.data;
 };
 
 export const countVotes = async (questionId, answerId) => {
-  return await axios.get(
-    _getVotesCount
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+
+  const res = await axios.get(
+    getVotesCountUrl
       .replace("{questionId}", questionId)
-      .replace("{answerId}", answerId)
+      .replace("{answerId}", answerId),
+    config
   );
+
+  return res.data;
 };
