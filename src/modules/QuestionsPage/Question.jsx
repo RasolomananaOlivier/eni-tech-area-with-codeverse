@@ -10,7 +10,7 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
   marginRight: "12px",
 }));
 
-export default function Question({ name, firstname, key, content, createdDate, title, picture }) {
+export default function Question({ name, firstname, key, content, createdDate, title, picture, setOpen }) {
   return (
     <>
       <Box p={3} key={key} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
@@ -33,6 +33,7 @@ export default function Question({ name, firstname, key, content, createdDate, t
               </Grid>
               <Grid xs={4}>
                 <Button
+                  onClick={() => setOpen(true)}
                   color="success"
                   variant="contained"
                   sx={{ position: "relative", backgroundColor: "#55e575", float: "right", borderRadius: "20px" }}
@@ -41,7 +42,7 @@ export default function Question({ name, firstname, key, content, createdDate, t
                 </Button>
               </Grid>
             </Grid>
-            <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "12px" }}>
+            <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px" }}>
               {title}
             </Typography>
             <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>

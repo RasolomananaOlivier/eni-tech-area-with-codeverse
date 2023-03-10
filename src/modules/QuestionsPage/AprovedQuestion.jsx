@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography, styled, Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box, Grid, Typography, styled, Button, OutlinedInput } from "@mui/material";
 import "./input.css";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
@@ -82,8 +81,39 @@ export default function AprovedQuestion() {
           </Grid>
         </Grid>
       </Box>
-      <Box p={3} sx={{ height: "12rem", display: form, mb: "22px", border: "dotted" }}>
-        <input className="input" style={{ width: "100%", height: "54px" }} placeholder="Write your comment" />
+      <Box p={4} pb={4} sx={{ display: form, mb: "32px", border: "1px solid #a19e9e", borderRadius: "12px" }}>
+        <Typography variant="body1" sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}>
+          Add your comment here
+        </Typography>
+        <input
+          class="input2"
+          style={{
+            width: "100%",
+            height: "54px",
+            borderRadius: "12px",
+            color: "white",
+            paddingLeft: "12px",
+            fontSize: "1.2rem",
+            border: "1px solid white",
+            backgroundColor: "hsl(238.06deg 24.03% 25.29%)",
+          }}
+          placeholder="Write your comment"
+        />
+        <Button
+          variant="contained"
+          color="success"
+          sx={{
+            position: "relative",
+            float: "center",
+            fontSize: "1rem",
+            marginTop: "20px",
+            backgroundColor: "hsl(133.24deg 74.36% 61.76%)",
+            width: "10rem",
+            borderRadius: "20px",
+          }}
+        >
+          Submit
+        </Button>
       </Box>
     </>
   );
