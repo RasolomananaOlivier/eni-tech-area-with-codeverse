@@ -2,20 +2,22 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import "./HomePage.styles.scss";
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
-import Tags from "../../components/Tags";
-
-import { useLocation } from "react-router-dom";
+import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
+import AskQuest from "./AskQuestion";
+import Profil from "../ProfilePage/NewProfilePage";
+import { useLocation, useRoutes } from "react-router-dom";
 import { Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags } from "../../api/questionApi";
-import AskQuest from "./AskQuestion";
-import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
-import Profil from "../ProfilePage/NewProfilePage";
+import { useAuth } from "../../hooks/useAuth";
 
 const itemsPerPage = 10;
 
 const HomePage = () => {
+  // useAuth();
+  console.log("homepage mount");
   const location = useLocation();
+
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
 
@@ -39,12 +41,10 @@ const HomePage = () => {
   //   return <div>Loading</div>;
   // }
 
-  // console.log(questionsQuery.data);
-  console.log(location.pathname);
+  console.log(questionsQuery.data, "query");
   return (
     <LayoutWrapper>
-      {location.search === "" ? <AskQuest /> : null}
-      {location.search === "?profile" ? <Profil /> : null}
+      <AskQuest />
     </LayoutWrapper>
   );
 };

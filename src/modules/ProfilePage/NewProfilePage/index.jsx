@@ -12,8 +12,23 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   marginRight: "12px",
 }));
+const ComponentTags = styled(Box)(({ theme }) => ({
+  width: "12rem",
+  display: "flex",
+  justifyContent: "center",
+  pt: "5px",
+  pb: "5px",
+  borderRadius: "12px",
+  marginRight: "12px",
+}));
+const CountScoreTags = styled(Box)(({ theme }) => ({
+  display: "flex",
+  width: "3rem",
+  borderRadius: "12px",
+  justifyContent: "center",
+}));
 
-const Profil = () => {
+const ProfilComponent = () => {
   const QuestionCard = () => {
     return (
       <Box p={3}>
@@ -33,7 +48,7 @@ const Profil = () => {
                   </Typography>
                 </Grid>
                 <Grid xs={4}>
-                  <Typography variant="h6">
+                  <Typography variant="body1" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
                     Asked :{" "}
                     <Box component={"span"} sx={{ fontWeight: "600" }}>
                       10 days ago
@@ -41,10 +56,10 @@ const Profil = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem" }}>
-                How to efficiently sort a large dataset in Python ?
+              <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "12px" }}>
+                How to efficiently sort a large dataset in Python?
               </Typography>
-              <Typography variant="body1" sx={{ fontSize: "1.2rem" }}>
+              <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>
                 I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in
                 sort function , but it takes too long to complete...
               </Typography>
@@ -92,7 +107,7 @@ const Profil = () => {
         <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c" }}>
           <Grid container justifyContent={"center"}>
             <Grid xs={8}>
-              <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem" }}>
+              <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px" }}>
                 How to efficiently sort a large dataset in Python ?
               </Typography>
             </Grid>
@@ -107,6 +122,7 @@ const Profil = () => {
                   position: "relative",
                   float: "right",
                   borderRadius: "12px",
+                  fontWeight: "600",
                 }}
                 variant="body1"
               >
@@ -114,7 +130,7 @@ const Profil = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.2rem" }}>
+          <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.3rem" }}>
             I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in sort
             function , but it takes too long to complete...
           </Typography>
@@ -145,9 +161,9 @@ const Profil = () => {
               Full stack
             </TagsOptions>
           </Box>
-          <Grid container justifyContent={"center"}>
+          <Grid container justifyContent={"center"} mt={"6px"}>
             <Grid xs={9}>
-              <Typography variant="h6">
+              <Typography variant="body1" sx={{ fontSize: "1.2rem" }}>
                 Challenger :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   Aria Stane
@@ -155,7 +171,7 @@ const Profil = () => {
               </Typography>
             </Grid>
             <Grid xs={3}>
-              <Typography variant="h6" sx={{ textAlign: "end" }}>
+              <Typography variant="body" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
                 Created :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   10 days ago
@@ -167,14 +183,126 @@ const Profil = () => {
       </Box>
     );
   };
+  const Tags = () => {
+    return (
+      <>
+        <Box p={3}>
+          <Typography variant="h5" style={{ fontWeight: "600", fontSize: "1.7rem", marginBottom: "32px" }}>
+            Your Tags.
+          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Box
+              sx={{
+                width: "11rem",
+                display: "flex",
+                justifyContent: "center",
+                pt: "5px",
+                pb: "5px",
+                borderRadius: "12px",
+                marginRight: "12px",
+                backgroundColor: "hsl(64.84deg 75.61% 51.76%)",
+              }}
+            >
+              <Box sx={{ display: "flex", width: "4rem" }}>
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  React
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "3rem",
+                  borderRadius: "12px",
+                  justifyContent: "center",
+                  backgroundColor: "hsl(64.66deg 92.8% 50.98%)",
+                }}
+              >
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  12
+                </Typography>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "11rem",
+                display: "flex",
+                justifyContent: "center",
+                pt: "5px",
+                pb: "5px",
+                borderRadius: "12px",
+                marginRight: "12px",
+                backgroundColor: "hsl(224.41deg 59.62% 41.76%)",
+              }}
+            >
+              <Box sx={{ display: "flex", width: "4rem" }}>
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  React
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "3rem",
+                  borderRadius: "12px",
+                  justifyContent: "center",
+                  backgroundColor: "hsl(223.8deg 66.53% 48.04%)",
+                }}
+              >
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  12
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                width: "11rem",
+                display: "flex",
+                justifyContent: "center",
+                pt: "5px",
+                pb: "5px",
+                borderRadius: "12px",
+                backgroundColor: "hsl(64.84deg 75.61% 51.76%)",
+                marginRight: "12px",
+              }}
+            >
+              <Box sx={{ display: "flex", width: "4rem" }}>
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  React
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  width: "3rem",
+                  borderRadius: "12px",
+                  justifyContent: "center",
+                  backgroundColor: "hsl(64.66deg 92.8% 50.98%)",
+                }}
+              >
+                <Typography variant="h7" sx={{ fontSize: "1.2rem" }}>
+                  12
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </>
+    );
+  };
   return (
     <>
       <Box id="mainbar" className="homepage fc-black-800" sx={{ bgcolor: "#313250" }}>
-        <QuestionCard />
-        <ChallengeCard />
+        <Tags />
+        <Box sx={{ marginBottom: "40px" }}>
+          <QuestionCard />
+        </Box>
+        <Box sx={{ marginBottom: "40px" }}>
+          <ChallengeCard />
+        </Box>
       </Box>
     </>
   );
 };
 
-export default Profil;
+export default ProfilComponent;

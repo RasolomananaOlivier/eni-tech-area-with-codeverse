@@ -3,11 +3,10 @@ import React, { Fragment } from "react";
 
 import AuthForm from "../../components/organisms/AuthForm/AuthForm.component";
 import Footer from "../../components/organisms/Footer/Footer.component";
+import { useAuth } from "../../hooks/useAuth";
 
 const Login = () => {
-  // if (isAuthenticated) {
-  //   return <Redirect to='/' />;
-  // }
+  useAuth();
 
   return (
     <Fragment>

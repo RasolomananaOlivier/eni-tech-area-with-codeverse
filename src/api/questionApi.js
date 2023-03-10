@@ -1,14 +1,9 @@
 import axios from "axios";
-import token from "../utils/token";
+import { withAuthConfig } from "../config/headersConfig";
 
 import { questionsByUserTags } from "./urls";
 
 export const getQuestionsByUserTags = async () => {
-  const config = {
-    headers: {
-      Authorization: "Bearer " + token.get(),
-    },
-  };
-  const res = await axios.get(questionsByUserTags, config);
+  const res = await axios.get(questionsByUserTags, withAuthConfig);
   return res.data;
 };

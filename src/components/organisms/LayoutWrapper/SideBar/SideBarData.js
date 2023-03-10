@@ -17,7 +17,7 @@ export const SideBarData = [
     icon: <StyleRoundedIcon htmlColor="white" />,
   },
   {
-    link: "/?profile",
+    link: "/profile",
     text: "profile",
     icon: <Person htmlColor="white" />,
   },

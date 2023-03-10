@@ -1,6 +1,6 @@
 import HomePage from "../modules/HomePage/HomePage.component";
 import Login from "../modules/Login/Login.component";
-import Profil from "../modules/ProfilePage/NewProfilePage";
+import ProfilePage from "../modules/ProfilePage/NewProfilePage/Profile.Page";
 
 const ROUTES = [
   {
@@ -12,6 +12,11 @@ const ROUTES = [
     title: "Login",
     path: "/login",
     element: <Login />,
+  },
+  {
+    title: "profile",
+    path: "/profile",
+    element: <ProfilePage />,
   },
 ];
 
