@@ -27,10 +27,13 @@ const AuthForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("login process");
       const res = await loginUser(email, password);
+
+      console.log("login res", res);
+      token.set(res.data.tokens.accessToken);
       dispatch(setUser(res.data.user));
       dispatch(setAuth({ isLogged: true }));
-      token.set(res.data.tokens.accessToken);
 
       navigate("/");
     } catch (error) {
@@ -79,7 +82,7 @@ const AuthForm = () => {
                 className="s-btn s-btn__primary"
                 id="submit-button"
                 name="submit-button"
-                type="submit"
+                // type="submit"
               >
                 action
               </button>

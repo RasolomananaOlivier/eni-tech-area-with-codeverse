@@ -1,19 +1,18 @@
 import axios from "axios";
+import { withAuthConfig } from "../config/headersConfig";
 
-import {
-  usersData as _usersData,
-  profileData as _profileData,
-  userTags as _userTags,
-} from "./urls";
+import { resetUserPasswordUrl, storeUserTagsUrl } from "./urls";
 
-export const usersData = () => {
-  return axios.get(_usersData);
+export const resetUserPassword = async (password, confirmedPassword) => {
+  const res = await axios.post(resetUserPasswordUrl, withAuthConfig);
+  return res.data;
 };
 
-export const profileData = (id) => {
-  return axios.get(_profileData.replace("{id}", id));
-};
-
-export const userTags = (userId) => {
-  return axios.get(_userTags.replace("{id}", userId));
+export const storeUserTags = async (userId, tags) => {
+  const res = await axios.post(
+    storeUserTagsUrl.replace(":userId", userId),
+    { tags },
+    withAuthConfig
+  );
+  return res.data;
 };
