@@ -21,7 +21,7 @@ export default function UploadFile({ open, setOpen }) {
     reader.onload = (evt) => {
       const bstr = evt.target.result;
       // const wb = XLSX.read(bstr, { type: "binary" });
-      // const wsname = wb.SheetNames[0];
+      // const wsname= wb.SheetNames[0];
       // const ws = wb.Sheets[wsname];
       // const data = XLSX.utils.sheet_to_json(ws, {
       //   header: [
@@ -40,43 +40,43 @@ export default function UploadFile({ open, setOpen }) {
       // setVerificationResults(data);
     };
     reader.readAsBinaryString(file[0]);
-  };
 
-  const handleSubmit = () => {
-    //your event
-    setOpen(false);
-  };
+    const handleSubmit = () => {
+      //your event
+      setOpen(false);
+    };
 
-  return (
-    <Dialog
-      open={open}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      fullWidth
-      maxWidth={"sm"}
-    >
-      <Box p={6}>
-        <h1 style={{ textAlign: "center" }}>Upload user</h1>
-        <Box sx={{ display: "grid", justifyContent: "center" }}>
-          {/* <FileUploader multiple={true} handleChange={handleChange} name="file" types={fileTypes} /> */}
-          {verificationResults ? (
-            <ValidationInfo
-              fileName={file[0].name}
-              verificationResults={verificationResults}
-            />
-          ) : null}
+    return (
+      <Dialog
+        open={open}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        fullWidth
+        maxWidth={"sm"}
+      >
+        <Box p={6}>
+          <h1 style={{ textAlign: "center" }}>Upload user</h1>
           <Box sx={{ display: "grid", justifyContent: "center" }}>
-            <Button
-              color="primary"
-              variant="outlined"
-              sx={{ marginTop: "2rem", width: "6rem" }}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
+            {/* <FileUploader multiple={true} handleChange={handleChange} name="file" types={fileTypes} /> */}
+            {verificationResults ? (
+              <ValidationInfo
+                fileName={file[0].name}
+                verificationResults={verificationResults}
+              />
+            ) : null}
+            <Box sx={{ display: "grid", justifyContent: "center" }}>
+              <Button
+                color="primary"
+                variant="outlined"
+                sx={{ marginTop: "2rem", width: "6rem" }}
+                onClick={handleSubmit}
+              >
+                Submit
+              </Button>
+            </Box>
           </Box>
         </Box>
-      </Box>
-    </Dialog>
-  );
+      </Dialog>
+    );
+  };
 }

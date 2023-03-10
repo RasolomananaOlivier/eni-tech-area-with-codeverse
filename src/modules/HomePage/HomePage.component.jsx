@@ -10,7 +10,7 @@ import { Box } from "@mui/material";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags } from "../../api/questionApi";
 import { getUserById } from "../../api/usersApi";
-// import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 import { getAnswers } from "../../api/answersApi";
 
 const itemsPerPage = 10;

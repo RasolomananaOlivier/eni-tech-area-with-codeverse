@@ -1,25 +1,36 @@
-import axios from 'axios';
+import axios from "axios";
+import token from "../utils/token";
+import { createCommentUrl, getCommentsUrl } from "./urls";
 
-import {
-  allCommentsData as _allCommentsData,
-  createSingleComment as _createSingleComment,
-  deleteSingleComment as _deleteSingleComment
-} from './urls';
-
-export const allCommentsData = (id) => {
-  return axios.get(_allCommentsData.replace('{id}', id));
-}
-
-export const createSingleComment = (postId, formData) => {
-  const config_headers = {
+export const getComments = async (questionId, answerId) => {
+  const config = {
     headers: {
-      "Content-Type": "application/json",
+      Authorization: "Bearer " + token.get(),
     },
   };
 
-  return axios.post(_createSingleComment.replace('{postId}', postId), formData, config_headers);
-}
+  const res = await axios.get(
+    getCommentsUrl
+      .replace(":questionId", questionId)
+      .replace(":answerId", answerId),
+    config
+  );
+  return res.data;
+};
 
-export const deleteSingleComment = (CommentId) => {
-  return axios.delete(_deleteSingleComment.replace('{CommentId}', CommentId));
-}
+export const createComment = async (questionId, answerId, content) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+
+  const res = await axios.get(
+    createCommentUrl
+      .replace(":questionId", questionId)
+      .replace(":answerId", answerId),
+    { content },
+    config
+  );
+  return res.data;
+};

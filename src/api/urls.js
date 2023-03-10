@@ -7,22 +7,26 @@ export const resetUserPasswordUrl =
   config.BASE_URL + "/api/v1/auth/resetpassword";
 export const storeUserTagsUrl =
   config.BASE_URL + "/api/v1/users/:userId/usertags";
+export const userByIdUrl = config.BASE_URL + "/api/v1/users/:userId";
 
 // Auth
 export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
 export const registerUser = config.BASE_URL + "/api/users";
 export const loginUser = config.BASE_URL + "/api/v1/auth/login/local";
 
-// Posts
-export const questionsByUserTags =
+// Questions
+export const questionsByUserTagsUrl =
   config.BASE_URL + "/api/v1/questions/suggestions";
+export const createQuestionUrl = config.BASE_URL + "/api/v1/questions";
+export const getQuestionsUrl = config.BASE_URL + "/api/v1/questions";
+export const getQuestionByIdUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId";
 
 // Answers
-export const allAnswersData =
-  config.BASE_URL + "/api/v1/questions/{questionId}/answers";
-export const allAnswersComment =
-  config.BASE_URL +
-  "/api/v1/questions/{questionId}/answers/{answerId}/comments";
+export const getAnswersUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers";
+export const createAnswerUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers";
 
 export const createSingleAnswer =
   config.BASE_URL + "/api/v1/questions/{postId}/answers";
@@ -30,11 +34,10 @@ export const deleteSingleAnswer =
   config.BASE_URL + "/api/posts/answers/{AnswerId}";
 
 // Comments
-export const allCommentsData = config.BASE_URL + "/api/posts/comments/{id}";
-export const createSingleComment =
-  config.BASE_URL + "/api/posts/comments/{postId}";
-export const deleteSingleComment =
-  config.BASE_URL + "/api/posts/comments/{CommentId}";
+export const getCommentsUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
+export const createCommentUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
 
 // Tags
 export const allTagsData = config.BASE_URL + "/api/tags";
