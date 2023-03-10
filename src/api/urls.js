@@ -21,6 +21,8 @@ export const createQuestion = config.BASE_URL + "/api/v1/questions";
 // Answers
 export const getAnswersUrl =
   config.BASE_URL + "/api/v1/questions/:questionId/answers";
+export const createAnswerUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers";
 
 export const createSingleAnswer =
   config.BASE_URL + "/api/v1/questions/{postId}/answers";
@@ -29,6 +31,8 @@ export const deleteSingleAnswer =
 
 // Comments
 export const getCommentsUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
+export const createCommentUrl =
   config.BASE_URL + "/api/v1/questions/:questionId/answers/:answerId/comments";
 
 // Tags
