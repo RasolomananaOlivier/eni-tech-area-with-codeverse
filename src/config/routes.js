@@ -7,6 +7,7 @@ import PagesChalenges from "../modules/PagesChalenges";
 import EventsPage from "../modules/EventsPage";
 import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
 
+// test
 const ROUTES = [
   {
     title: "Home",
