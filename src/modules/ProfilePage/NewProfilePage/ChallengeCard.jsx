@@ -18,7 +18,7 @@ const ChallengeCard = () => {
   const currentUserId = useSelector(selectUserId);
   const challengesQuery = useQuery({
     queryKey: ["users", currentUserId, "challenges"],
-    queryFn: ({ queryKey }) => getUserChallenges(queryKey[1]),
+    queryFn: getUserChallenges,
   });
 
   console.log("user challenges", challengesQuery);
@@ -107,22 +107,6 @@ const ChallengeCard = () => {
             >
               {List.tag}
             </TagsOptions>
-            {/* <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#e14927",
-                }}
-              >
-                Laravel
-              </TagsOptions>
-              <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#8427e1",
-                }}
-              >
-                Full stack
-              </TagsOptions> */}
           </Box>
           <Grid container justifyContent={"center"} mt={"12px"}>
             <Grid xs={9}>

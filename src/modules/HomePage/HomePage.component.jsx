@@ -16,7 +16,7 @@ import { getAnswers } from "../../api/answersApi";
 const itemsPerPage = 10;
 
 const HomePage = () => {
-  useAuth();
+  // useAuth();
   console.log("homepage mount");
   const location = useLocation();
 
