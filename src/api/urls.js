@@ -13,6 +13,7 @@ export const userChallengesUrl =
 export const userQuestionsUrl =
   config.BASE_URL + "/api/v1/users/:userId/questions";
 
+
 // Auth
 export const verifyTokenUrl = config.BASE_URL + "/api/v1/auth/whoami";
 export const registerUser = config.BASE_URL + "/api/users";
@@ -25,6 +26,8 @@ export const createQuestionUrl = config.BASE_URL + "/api/v1/questions";
 export const getQuestionsUrl = config.BASE_URL + "/api/v1/questions";
 export const getQuestionByIdUrl =
   config.BASE_URL + "/api/v1/questions/:questionId";
+export const getUserQuestionsUrl =
+  config.BASE_URL + "/api/v1/users/:userId/questions";
 
 // Answers
 export const getAnswersUrl =
@@ -61,3 +64,4 @@ export const getVotesCount =
 // Challenges
 export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";
 export const createChallenge = config.BASE_URL + "/api/v1/challenges";
+

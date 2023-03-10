@@ -23,6 +23,7 @@ const QuestionCard = () => {
   });
 
   console.log(questionsQuery);
+
   const Array = [
     {
       id: 2,

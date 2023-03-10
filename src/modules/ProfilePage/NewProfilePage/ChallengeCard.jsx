@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { selectUserId } from "../../../redux/selectors/userSelector";
 import { getUserChallenges } from "../../../api/usersApi";
 
+
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
   width: "7rem",
@@ -22,17 +23,17 @@ const ChallengeCard = () => {
   });
 
   console.log("challenges user", challengesQuery);
+
   const Array = [
     {
-      id: 2,
+      id: 1,
       title: "How to efficiently sort a large dataset in Python ?",
       content:
         "I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in sort function , but it takes too long to complete...",
       difficult: "Difficult",
       tag: "React",
-      username: "Aria Stane",
+      chalenger: "Aria Stane",
       updatedAt: "10 days ago",
-      TimeLeft: "20 days",
     },
     {
       id: 2,
@@ -41,9 +42,8 @@ const ChallengeCard = () => {
         "I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in sort function , but it takes too long to complete...",
       difficult: "Difficult",
       tag: "React",
-      username: "Aria Stane",
+      chalenger: "Aria Stane",
       updatedAt: "10 days ago",
-      TimeLeft: "20 days",
     },
   ];
   return (
@@ -65,25 +65,28 @@ const ChallengeCard = () => {
         >
           <Grid container justifyContent={"center"}>
             <Grid xs={8}>
-              <Typography variant="body1" sx={{ fontSize: "1.4rem" }}>
-                Time Left :
-                <Box component={"span"} sx={{ fontWeight: "600" }}>
-                  {" "}
-                  {List.TimeLeft}
-                </Box>
+              <Typography
+                variant="h4"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "2rem",
+                  marginBottom: "9px",
+                }}
+              >
+                {List.title}
               </Typography>
             </Grid>
             <Grid xs={4}>
               <Typography
-                p={0.7}
-                px={2}
+                p={1}
                 sx={{
                   backgroundColor: "hsl(7.42deg 75.61% 51.76%)",
                   textAlign: "center",
                   display: "inline",
+                  width: "12rem",
                   position: "relative",
                   float: "right",
-                  borderRadius: "22px",
+                  borderRadius: "12px",
                   fontWeight: "600",
                 }}
                 variant="body1"
@@ -103,6 +106,7 @@ const ChallengeCard = () => {
           >
             {List.title}
           </Typography>
+
           <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.3rem" }}>
             {List.content}
           </Typography>
@@ -116,29 +120,13 @@ const ChallengeCard = () => {
             >
               {List.tag}
             </TagsOptions>
-            {/* <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#e14927",
-                }}
-              >
-                Laravel
-              </TagsOptions>
-              <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#8427e1",
-                }}
-              >
-                Full stack
-              </TagsOptions> */}
           </Box>
           <Grid container justifyContent={"center"} mt={"12px"}>
             <Grid xs={9}>
               <Typography variant="body1" sx={{ fontSize: "1.2rem" }}>
                 Challenger :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
-                  {List.username}
+                  {List.chalenger}
                 </Box>
               </Typography>
             </Grid>
