@@ -3,10 +3,10 @@ import ChallengesCreate from '../molecules/CreateChallenge/ChallengesCreate';
 import RuleComponent from '../molecules/RuleComponent/RuleComponent';
 const Test = () => {
     return (
-        <>
-                <ChallengesCreate/>
-                <RuleComponent/>  
-        </>
+        <div>
+             <ChallengesCreate/>
+            <RuleComponent/>  
+        </div>
     );
 }
 
