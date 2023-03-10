@@ -1,6 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Grid, styled } from "@mui/material";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { getChallenges } from "../../api/challengesApi";
+import { getUserById } from "../../api/usersApi";
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
   width: "7rem",
@@ -11,6 +14,33 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
 }));
 
 const ChalengeList = () => {
+  const challengesQuery = useQuery({
+    queryKey: ["challenges"],
+    queryFn: getChallenges,
+  });
+
+  const challenges = useQueries({
+    queries: (challengesQuery?.data?.data?.challenges ?? []).map(
+      (challenge) => {
+        return {
+          queryKey: ["challenge", challenge.userId],
+          queryFn: async () => {
+            const user = await getUserById(challenge?.userId);
+            // TODO: get challenges tags
+            return {
+              ...challenge,
+              username: user?.data?.user?.name?.full,
+              tags: ["React", "JS"],
+            };
+          },
+          enabled: challengesQuery.data !== undefined,
+        };
+      }
+    ),
+  });
+
+  console.log(challenges);
+
   const Array = [
     {
       id: 2,
@@ -38,7 +68,14 @@ const ChalengeList = () => {
   return (
     <>
       {Array?.map((List) => (
-        <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
+        <Box
+          p={3}
+          sx={{
+            borderRadius: "8px",
+            backgroundColor: "#4a4a6c",
+            marginBottom: "2rem",
+          }}
+        >
           <Grid container justifyContent={"center"}>
             <Grid xs={8}>
               <Typography variant="body1" sx={{ fontSize: "1.4rem" }}>
@@ -68,7 +105,15 @@ const ChalengeList = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px", marginTop: "12px" }}>
+          <Typography
+            variant="h4"
+            style={{
+              fontWeight: "600",
+              fontSize: "2rem",
+              marginBottom: "9px",
+              marginTop: "12px",
+            }}
+          >
             {List.title}
           </Typography>
           <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.3rem" }}>
@@ -111,7 +156,10 @@ const ChalengeList = () => {
               </Typography>
             </Grid>
             <Grid xs={3}>
-              <Typography variant="body" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
+              <Typography
+                variant="body"
+                sx={{ textAlign: "end", fontSize: "1.2rem" }}
+              >
                 Created :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   {List.updatedAt}

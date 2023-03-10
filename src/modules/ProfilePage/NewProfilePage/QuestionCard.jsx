@@ -1,6 +1,10 @@
 import React from "react";
 import { Box, Grid, Typography, styled, Avatar } from "@mui/material";
 import Image from "../../../assets/profil.png";
+import { useQuery } from "@tanstack/react-query";
+import { useSelector } from "react-redux";
+import { selectUserId } from "../../../redux/selectors/userSelector";
+import { getUserQuestions } from "../../../api/questionApi";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
@@ -12,6 +16,13 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
 }));
 
 const QuestionCard = () => {
+  const currentUserId = useSelector(selectUserId);
+  const questionsQuery = useQuery({
+    queryKey: ["users", currentUserId, "questions"],
+    queryFn: ({ queryKey }) => getUserQuestions(queryKey[1]),
+  });
+
+  console.log("user questions", questionsQuery);
   const Array = [
     {
       id: 2,
@@ -42,14 +53,30 @@ const QuestionCard = () => {
   ];
   return (
     <Box p={3}>
-      <Typography variant="h5" style={{ fontWeight: "600", fontSize: "1.7rem", marginBottom: "32px" }}>
+      <Typography
+        variant="h5"
+        style={{ fontWeight: "600", fontSize: "1.7rem", marginBottom: "32px" }}
+      >
         Your Questions.
       </Typography>
       {Array.map((List) => (
-        <Box p={3} key={List.id} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
+        <Box
+          p={3}
+          key={List.id}
+          sx={{
+            borderRadius: "8px",
+            backgroundColor: "#4a4a6c",
+            marginBottom: "2rem",
+          }}
+        >
           <Grid container>
             <Grid xs={1.3}>
-              <Avatar sizes="large" sx={{ height: "50px", width: "50px" }} alt="" src={List.picture} />
+              <Avatar
+                sizes="large"
+                sx={{ height: "50px", width: "50px" }}
+                alt=""
+                src={List.picture}
+              />
             </Grid>
             <Grid xs={10}>
               <Grid container justifyContent={"center"}>
@@ -59,7 +86,10 @@ const QuestionCard = () => {
                   </Typography>
                 </Grid>
                 <Grid xs={4}>
-                  <Typography variant="body1" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ textAlign: "end", fontSize: "1.2rem" }}
+                  >
                     Asked :{" "}
                     <Box component={"span"} sx={{ fontWeight: "600" }}>
                       {List.updatedAt}
@@ -67,7 +97,15 @@ const QuestionCard = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "12px" }}>
+              <Typography
+                variant="h4"
+                mt={"20px"}
+                style={{
+                  fontWeight: "600",
+                  fontSize: "2rem",
+                  marginBottom: "12px",
+                }}
+              >
                 {List.title}
               </Typography>
               <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>
