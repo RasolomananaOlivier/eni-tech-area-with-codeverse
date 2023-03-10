@@ -6,8 +6,10 @@ import Question from "./Question";
 import AprovedQuestion from "./AprovedQuestion";
 import AnswerQuestion from "./AnswerQuestion";
 import Image from "../../assets/profil.png";
+import ModalAddQuestion from "./ModalAddQuestion";
 
 export default function QuestionPage() {
+  const [openModal, setOpenModal] = React.useState(false);
   const Array = [
     {
       id: 1,
@@ -41,14 +43,17 @@ export default function QuestionPage() {
                 {Array?.map((List) => (
                   <>
                     <Question
+                      setOpen={setOpenModal}
                       key={List.id}
                       name={List.name}
                       firstname={List.firstname}
                       content={List.content}
                       createdDate={List.createdDate}
                       picture={List.picture}
+                      title={List.title}
                     />
-
+                    {/* get id from modal */}
+                    <ModalAddQuestion open={openModal} setOpen={setOpenModal} content={List.content} title={List.title} />
                     <Typography variant="h4" mb={3} sx={{ fontWeight: "400" }}>
                       Answers.
                     </Typography>

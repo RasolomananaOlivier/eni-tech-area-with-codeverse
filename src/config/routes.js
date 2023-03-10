@@ -51,7 +51,7 @@ const ROUTES = [
   },
   {
     title: "Questions",
-    path: "/questions",
+    path: "/questions/:id",
     element: <QuestionPage />,
   },
 ];
