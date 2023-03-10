@@ -1,16 +1,24 @@
-import {createStore, applyMiddleware} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import rootReducer from './root-reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./reducers/authSlice";
+import userReducer from "./reducers/userSlice";
+import questionReducer from "./reducers/questionSlice";
+import questionsReducer from "./reducers/questionsSlice";
+import answersReducer from "./reducers/answersSlice";
+import commentsReducer from "./reducers/commentsSlice";
+import notificationsReducer from "./reducers/notificationsSlice";
+import challengesReducer from "./reducers/challengesSlice";
+import challengeReducer from "./reducers/challengeSlice";
 
-const initialState = {};
-
-const middleware = [thunk];
-
-const store = createStore(
-  rootReducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
-
-export default store;
+export const store = configureStore({
+  reducer: {
+    auth: authReducer,
+    user: userReducer,
+    question: questionReducer,
+    questions: questionsReducer,
+    answers: answersReducer,
+    comments: commentsReducer,
+    notifications: notificationsReducer,
+    challenges: challengesReducer,
+    challenge: challengeReducer,
+  },
+});

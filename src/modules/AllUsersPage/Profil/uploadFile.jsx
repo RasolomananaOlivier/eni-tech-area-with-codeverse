@@ -7,6 +7,7 @@ import "./styles.css";
 import { Dialog, Button } from "@mui/material";
 
 //import verifier from "./url";
+//change
 
 const fileTypes = ["xls", "xlsx", "docx"];
 
@@ -18,8 +19,8 @@ export default function UploadFile({ open, setOpen }) {
     const reader = new FileReader();
 
     reader.onload = (evt) => {
-      // const bstr = evt.target.result;
-      // // const wb = XLSX.read(bstr, { type: "binary" });
+      const bstr = evt.target.result;
+      // const wb = XLSX.read(bstr, { type: "binary" });
       // const wsname = wb.SheetNames[0];
       // const ws = wb.Sheets[wsname];
       // const data = XLSX.utils.sheet_to_json(ws, {
@@ -58,9 +59,19 @@ export default function UploadFile({ open, setOpen }) {
         <h1 style={{ textAlign: "center" }}>Upload user</h1>
         <Box sx={{ display: "grid", justifyContent: "center" }}>
           {/* <FileUploader multiple={true} handleChange={handleChange} name="file" types={fileTypes} /> */}
-          {verificationResults ? <ValidationInfo fileName={file[0].name} verificationResults={verificationResults} /> : null}
+          {verificationResults ? (
+            <ValidationInfo
+              fileName={file[0].name}
+              verificationResults={verificationResults}
+            />
+          ) : null}
           <Box sx={{ display: "grid", justifyContent: "center" }}>
-            <Button color="primary" variant="outlined" sx={{ marginTop: "2rem", width: "6rem" }} onClick={handleSubmit}>
+            <Button
+              color="primary"
+              variant="outlined"
+              sx={{ marginTop: "2rem", width: "6rem" }}
+              onClick={handleSubmit}
+            >
               Submit
             </Button>
           </Box>

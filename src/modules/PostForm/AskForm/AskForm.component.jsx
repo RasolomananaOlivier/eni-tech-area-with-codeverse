@@ -1,15 +1,11 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addPost } from "../../../redux/posts/posts.actions";
 import MarkdownEditor from "../../../components/organisms/MarkdownEditor/MarkdownEditor.component";
 import { badWordsFilter } from "../../../utils/censorBadWords";
 
 import "./AskForm.styles.scss";
 import { AppTagsInput } from "../../../components/Tags";
-import { useHistory } from "react-router-dom";
 
-const AskForm = ({ addPost }) => {
+const AskForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -63,7 +59,6 @@ const AskForm = ({ addPost }) => {
     return errors;
   };
 
-  const history = useHistory();
   const onSubmit = async (e) => {
     e.preventDefault();
     // const errors = validateFormData();
@@ -71,7 +66,7 @@ const AskForm = ({ addPost }) => {
     // if there are errors, don't submit
     // if (errors.length > 0) return;
 
-    addPost({ title, content, tags: tagName });
+    // addPost({ title, content, tags: tagName });
 
     setFormData({
       title: "",
@@ -79,8 +74,6 @@ const AskForm = ({ addPost }) => {
       tags: "",
     });
     markdownEditorRef.current.cleanEditorState();
-
-    history.push("/");
   };
 
   const updateConvertedContent = (htmlConvertedContent) => {
@@ -162,8 +155,4 @@ const AskForm = ({ addPost }) => {
   );
 };
 
-AskForm.propTypes = {
-  addPost: PropTypes.func.isRequired,
-};
-
-export default connect(null, { addPost })(AskForm);
+export default AskForm;
