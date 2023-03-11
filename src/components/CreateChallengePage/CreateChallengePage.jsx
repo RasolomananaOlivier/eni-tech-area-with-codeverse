@@ -1,6 +1,6 @@
 import React from "react";
-import ChallengesCreate from "../molecules/CreateChallenge/ChallengesCreate";
-import RuleComponent from "../molecules/RuleComponent/RuleComponent";
+import ChallengesCreate from "./ChallengesCreate";
+import RuleComponent from "./RuleComponent";
 const CreateChallengePage = () => {
   return (
     <div>

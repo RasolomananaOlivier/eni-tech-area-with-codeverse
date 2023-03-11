@@ -50,9 +50,10 @@ const AuthForm = () => {
           <Logo className="icon" />
         </div> */}
         <div className="form-container">
+          <h1 style={{ textAlign: "center", fontSize: "2rem", fontWeight: "600" }}>Login</h1>
           <form className="login-form" onSubmit={(e) => onSubmit(e)}>
-            <div>
-              <label className="form-label s-label fc-black-600">Email</label>
+            <div style={{ marginBottom: "22px" }}>
+              {/* <label className="form-label s-label fc-black-600">Email</label> */}
               <input
                 className="form-input s-input"
                 type="email"
@@ -61,10 +62,11 @@ const AuthForm = () => {
                 onChange={(e) => onChange(e)}
                 id="email"
                 required
+                placeholder="Email*"
               />
             </div>
-            <div>
-              <label className="form-label s-label fc-black-600">Password</label>
+            <div style={{ marginBottom: "22px" }}>
+              {/* <label className="form-label s-label fc-black-600">Password</label> */}
               <input
                 className="form-input s-input"
                 type="password"
@@ -73,6 +75,7 @@ const AuthForm = () => {
                 onChange={(e) => onChange(e)}
                 id="password"
                 required
+                placeholder="password*"
               />
             </div>
             <div className="grid gs4 gsy fd-column js-auth-item ">
@@ -81,7 +84,7 @@ const AuthForm = () => {
               </Button>
             </div>
           </form>
-          <div className="fs-caption license fc-black-500">
+          {/* <div className="fs-caption license fc-black-500">
             By clicking action, you agree to our{" "}
             <Link to="https://stackoverflow.com/legal/terms-of-service/public" className="-link">
               terms of service
@@ -94,8 +97,8 @@ const AuthForm = () => {
             <Link to="https://stackoverflow.com/legal/cookie-policy" className="-link">
               cookie policy
             </Link>
-            <input type="hidden" name="legalLinksShown" value="1" />
-          </div>
+            <input type="hidden" name="legalLinksShown" value="1" /> 
+          </div>*/}
         </div>
       </div>
     </Fragment>

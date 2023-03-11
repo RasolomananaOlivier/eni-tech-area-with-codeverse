@@ -41,7 +41,14 @@
     height: 40px;
   }
 }
-
+input::placeholder {
+  color: white;
+}
+input {
+  // border: dotted;
+  background-color: hsl(240deg 18.68% 35.69%);
+  height: 40px;
+}
 .icon-holder {
   text-align: center;
   margin-bottom: 15px;

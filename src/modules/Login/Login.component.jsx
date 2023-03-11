@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <Fragment>
-      <Box className="auth-page" sx={{ pt: 5 }}>
+      <Box className="auth-page" sx={{ mt: 9, p: 5 }}>
         <AuthForm action={"Log in"} />
       </Box>
       <Footer />

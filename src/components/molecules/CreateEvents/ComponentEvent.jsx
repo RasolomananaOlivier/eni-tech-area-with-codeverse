@@ -54,20 +54,12 @@ export default function RuleComponent() {
 
           <div className="Input">
             <h1>Background Pictures</h1>
-            <TextField
-              fullWidth
-              id="fullWidth"
-              style={{ width: "100%", backgroundColor: "#313250" }}
-            />
+            <TextField fullWidth id="fullWidth" style={{ width: "100%", backgroundColor: "#313250" }} />
           </div>
 
           <div className="Input1">
             <h1>Event Picture</h1>
-            <TextField
-              fullWidth
-              id="fullWidth"
-              style={{ width: "100%", backgroundColor: "#313250" }}
-            />
+            <TextField fullWidth id="fullWidth" style={{ width: "100%", backgroundColor: "#313250" }} />
           </div>
 
           <div className="button">
@@ -104,10 +96,7 @@ export default function RuleComponent() {
           {table.map((param, i) => (
             <div className="box-child" key={i}>
               <div className="box3">
-                <Typography
-                  variant="h6"
-                  style={{ paddingBottom: "10px", fontWeight: "bold" }}
-                >
+                <Typography variant="h6" style={{ paddingBottom: "10px", fontWeight: "bold" }}>
                   {param.title}
                 </Typography>
                 <Typography variant="p">{param.p}</Typography>

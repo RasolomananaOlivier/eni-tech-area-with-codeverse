@@ -1,6 +1,6 @@
 import React from "react";
-import RuleEvents from "../../ruleEvents/RuleEvents";
-import ComponentEvent from "../ComponentEvent/ComponentEvent";
+import RuleEvents from "./RuleEvents";
+import ComponentEvent from "./ComponentEvent";
 export default function CreateEvents() {
   return (
     <div>
