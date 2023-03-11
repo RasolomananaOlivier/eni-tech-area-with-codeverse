@@ -1,15 +1,12 @@
 import React from "react";
 import RightSideBar from "../../components/organisms/LayoutWrapper/RightSideBar/RightSideBar.component";
 import SideBar from "../../components/organisms/LayoutWrapper/SideBar/SideBar.component";
-import { Box, Typography } from "@mui/material";
-import Question from "./Question";
-import AprovedQuestion from "./AprovedQuestion";
-import AnswerQuestion from "./AnswerQuestion";
+import { Box, Stack, Typography } from "@mui/material";
 import Image from "../../assets/profil.png";
-import ModalAddQuestion from "./ModalAddQuestion";
+import Question from "../QuestionsPage/Question";
 import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
 
-export default function QuestionPage() {
+export default function QuestionPageList() {
   const [openModal, setOpenModal] = React.useState(false);
   const Array = [
     {
@@ -36,10 +33,13 @@ export default function QuestionPage() {
   return (
     <LayoutWrapper>
       <Box sx={{ bgcolor: "#313250", width: "230rem" }}>
-        <Box>
-          <Box p={3}>
-            {Array?.map((List) => (
-              <>
+        <Box sx={{ position: "relative" }}>
+          <Stack p={3} spacing={1.5}>
+            <Typography variant="h4">
+              Answer To The Most Hard Questions.
+            </Typography>
+            <Box>
+              {Array?.map((List) => (
                 <Question
                   setOpen={setOpenModal}
                   key={List.id}
@@ -50,33 +50,9 @@ export default function QuestionPage() {
                   picture={List.picture}
                   title={List.title}
                 />
-                {/* get id from modal */}
-                <ModalAddQuestion
-                  open={openModal}
-                  setOpen={setOpenModal}
-                  content={List.content}
-                  title={List.title}
-                />
-                <Typography variant="h4" mb={3} sx={{ fontWeight: "400" }}>
-                  Answers.
-                </Typography>
-                <AprovedQuestion />
-                {List.answer.map((res) => (
-                  <>
-                    <AnswerQuestion
-                      key={res.id}
-                      name={res.name}
-                      firstname={res.firstname}
-                      picture={res.picture}
-                      comment={res.comment}
-                      date={res.createdDate}
-                    />
-                  </>
-                ))}
-              </>
-            ))}
-            {/* <Question /> */}
-          </Box>
+              ))}
+            </Box>
+          </Stack>
         </Box>
       </Box>
     </LayoutWrapper>
