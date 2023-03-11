@@ -81,15 +81,24 @@ export default function AprovedQuestion() {
           </Grid>
         </Grid>
       </Box>
-      <Box p={4} pb={4} sx={{ display: form, mb: "32px", border: "1px solid #a19e9e", borderRadius: "12px" }}>
+      <Box
+        p={4}
+        pb={4}
+        sx={{
+          display: form,
+          mb: "32px",
+          // border: "1px solid #a19e9e",
+          borderRadius: "12px",
+          backgroundColor: "hsl(238.33deg 45% 15.69%)",
+        }}
+      >
         <Typography variant="body1" sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}>
           Add your comment here
         </Typography>
-        <input
-          class="input2"
+        <textarea
+          rows={5}
           style={{
             width: "100%",
-            height: "54px",
             borderRadius: "12px",
             color: "white",
             paddingLeft: "12px",

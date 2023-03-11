@@ -29,13 +29,7 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
     setPassChangeSuccess(false);
     //check the user tags
   };
-  const handleSubmit = ({
-    currentPass,
-    newPass,
-    confirmPass,
-    setSubmitting,
-    resetForm,
-  }) => {
+  const handleSubmit = ({ currentPass, newPass, confirmPass, setSubmitting, resetForm }) => {
     // fake async login
     setTimeout(async () => {
       setSubmitting(false);
@@ -84,14 +78,7 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
         <Grid xs={0} md={6}>
           <Box sx={{ bgcolor: "#1A1C19", position: "relative" }}>
             <Box position="relative">
-              <Box
-                position="absolute"
-                top={150}
-                display="flex"
-                flexDirection="column"
-                gap={2}
-                sx={{ px: 8 }}
-              >
+              <Box position="absolute" top={150} display="flex" flexDirection="column" gap={2} sx={{ px: 8 }}>
                 <Typography color="white" variant="h3" fontWeight="bold">
                   It's important that you change your password!
                 </Typography>
@@ -113,10 +100,7 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
                 .oneOf([ref("newPass")], "Passwords do not match")
                 .required("Password is required"),
             })}
-            onSubmit={(
-              { currentPass, newPass, confirmPass },
-              { setSubmitting, resetForm }
-            ) =>
+            onSubmit={({ currentPass, newPass, confirmPass }, { setSubmitting, resetForm }) =>
               handleSubmit({
                 currentPass,
                 newPass,
@@ -126,34 +110,15 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
               })
             }
             render={(props) => {
-              const {
-                values,
-                touched,
-                errors,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isValid,
-                isSubmitting,
-              } = props;
+              const { values, touched, errors, handleChange, handleBlur, handleSubmit, isValid, isSubmitting } = props;
               return isSubmitting ? (
                 <Spinner />
               ) : (
-                <Paper
-                  sx={{ width: "100%", boxShadow: "none", p: 5 }}
-                  elevation={10}
-                >
+                <Paper sx={{ width: "100%", boxShadow: "none", p: 5 }} elevation={10}>
                   <form onSubmit={handleSubmit}>
                     <Stack>
-                      <FormControl
-                        fullWidth
-                        margin="dense"
-                        error={Boolean(touched.newPass && errors.newPass)}
-                      >
-                        <InputLabel
-                          htmlFor="password-new"
-                          error={Boolean(touched.newPass && errors.newPass)}
-                        >
+                      <FormControl fullWidth margin="dense" error={Boolean(touched.newPass && errors.newPass)}>
+                        <InputLabel htmlFor="password-new" error={Boolean(touched.newPass && errors.newPass)}>
                           {"New Password"}
                         </InputLabel>
                         <Input
@@ -165,27 +130,12 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
                           onBlur={handleBlur}
                           error={Boolean(touched.newPass && errors.newPass)}
                         />
-                        <FormHelperText
-                          error={Boolean(touched.newPass && errors.newPass)}
-                        >
-                          {touched.newPass && errors.newPass
-                            ? errors.newPass
-                            : ""}
+                        <FormHelperText error={Boolean(touched.newPass && errors.newPass)}>
+                          {touched.newPass && errors.newPass ? errors.newPass : ""}
                         </FormHelperText>
                       </FormControl>
-                      <FormControl
-                        fullWidth
-                        margin="dense"
-                        error={Boolean(
-                          touched.confirmPass && errors.confirmPass
-                        )}
-                      >
-                        <InputLabel
-                          htmlFor="password-confirm"
-                          error={Boolean(
-                            touched.confirmPass && errors.confirmPass
-                          )}
-                        >
+                      <FormControl fullWidth margin="dense" error={Boolean(touched.confirmPass && errors.confirmPass)}>
+                        <InputLabel htmlFor="password-confirm" error={Boolean(touched.confirmPass && errors.confirmPass)}>
                           {"Confirm Password"}
                         </InputLabel>
                         <Input
@@ -195,18 +145,10 @@ const ChangePassword = ({ open, setOpen, setTagsOpen }) => {
                           value={values.confirmPass}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          error={Boolean(
-                            touched.confirmPass && errors.confirmPass
-                          )}
+                          error={Boolean(touched.confirmPass && errors.confirmPass)}
                         />
-                        <FormHelperText
-                          error={Boolean(
-                            touched.confirmPass && errors.confirmPass
-                          )}
-                        >
-                          {touched.confirmPass && errors.confirmPass
-                            ? errors.confirmPass
-                            : ""}
+                        <FormHelperText error={Boolean(touched.confirmPass && errors.confirmPass)}>
+                          {touched.confirmPass && errors.confirmPass ? errors.confirmPass : ""}
                         </FormHelperText>
                       </FormControl>
                       <Button
