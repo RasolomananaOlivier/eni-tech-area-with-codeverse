@@ -1,5 +1,5 @@
 // import { Dialog } from "@mui/material";
-import { Box, Modal, Typography, Button, Grid, Avatar, styled, IconButton } from "@mui/material";
+import { Box, Modal, Typography, Button, IconButton } from "@mui/material";
 import React from "react";
 import { Close } from "@mui/icons-material";
 
@@ -50,12 +50,11 @@ export default function ModalAddQuestion({ open, setOpen, content, title }) {
               <Typography variant="body1" sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}>
                 Add your answer here
               </Typography>
-              <input
-                type={"textarea"}
-                class="input2"
+              <textarea
+                type="text"
+                rows={5}
                 style={{
                   width: "100%",
-                  height: "54px",
                   borderRadius: "12px",
                   color: "white",
                   paddingLeft: "12px",
