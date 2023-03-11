@@ -25,6 +25,8 @@ export const getQuestionByIdUrl =
   config.BASE_URL + "/api/v1/questions/:questionId";
 export const getUserQuestionsUrl =
   config.BASE_URL + "/api/v1/users/:userId/questions";
+export const getQuestionTagsUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/questiontags";
 
 // Answers
 export const getAnswersUrl =
@@ -58,6 +60,11 @@ export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";
 export const getChallengeByIdUrl =
   config.BASE_URL + "/api/v1/challenges/:challengeId";
 export const createChallengeUrl = config.BASE_URL + "/api/v1/challenges";
+export const getChallengeTagsUrl =
+  config.BASE_URL + "/api/v1/challenges/:challengeId/challengetags";
 
 export const searchUrl =
   config.BASE_URL + "/api/v1/questions/search?both=:query";
+
+// Events
+export const getEventsUrl = config.BASE_URL + "/api/v1/events";

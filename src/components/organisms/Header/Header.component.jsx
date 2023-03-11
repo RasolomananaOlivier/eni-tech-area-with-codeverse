@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Search } from "../../../assets/Search.svg";
 // import { ReactComponent as Logo } from "../../../assets/LogoMd.svg";
@@ -10,18 +10,25 @@ import MobileSideBar from "../../organisms/MobileSideBar/MobileSideBar.component
 import Logo from "../../../assets/logo.png";
 
 import "./Header.styles.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectAuth } from "../../../redux/selectors/authSelector";
 import { Button } from "@mui/material";
+import { setAuth } from "../../../redux/reducers/authSlice";
 
 const Header = () => {
   const [searchState, setSearchState] = useState(false);
   const auth = useSelector(selectAuth);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const authLinks = (
     <div className="btns">
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          localStorage.clear();
+          navigate("/login");
+          dispatch(setAuth({ isLogged: false }));
+        }}
         color="success"
         variant="contained"
         disableElevation

@@ -1,6 +1,17 @@
 import React from "react";
-import { Box, Grid, Typography, styled, Button, OutlinedInput } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  styled,
+  Button,
+  OutlinedInput,
+} from "@mui/material";
 import "./input.css";
+import { useQuery } from "@tanstack/react-query";
+import { getUserById } from "../../api/usersApi";
+import AnswerQuestion from "./AnswerQuestion";
+import moment from "moment";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
@@ -11,18 +22,34 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
   marginRight: "12px",
 }));
 
-export default function AprovedQuestion() {
+export default function AprovedQuestion({ answer }) {
   const [form, setForm] = React.useState("none");
+
+  const userQuery = useQuery({
+    queryKey: ["users", answer?.userId],
+    queryFn: () => getUserById(answer?.userId),
+  });
 
   return (
     <>
-      <Box p={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
+      <Box
+        p={3}
+        sx={{
+          borderRadius: "8px",
+          backgroundColor: "#4a4a6c",
+          marginBottom: "2rem",
+          // border: "dotted",
+        }}
+      >
         <Grid container>
           <Grid xs={6}>
             <Grid container alignItems={"center"}>
               <Grid xs={1.2}>
-                <Typography variant="h4" sx={{ color: "#55e575", fontWeight: "600" }}>
-                  12
+                <Typography
+                  variant="h4"
+                  sx={{ color: "#55e575", fontWeight: "600" }}
+                >
+                  {answer?.votes}
                 </Typography>
               </Grid>
               <Grid xs={9}>
@@ -34,32 +61,41 @@ export default function AprovedQuestion() {
             <Button
               color="success"
               variant="contained"
-              sx={{ position: "relative", backgroundColor: "#55e575", float: "right", borderRadius: "20px" }}
+              sx={{
+                position: "relative",
+                backgroundColor: "#55e575",
+                float: "right",
+                borderRadius: "20px",
+              }}
             >
               Approve
             </Button>
           </Grid>
         </Grid>
         <Typography variant="body1" sx={{ fontSize: "1.4rem" }} mt={"12px"}>
-          I have a large dataset with millions of records that I need to sort in Python . I've tried using the build-in sort
-          function, but it takes too long to complete...
+          <span
+            dangerouslySetInnerHTML={{
+              __html: answer?.content,
+            }}
+          ></span>
         </Typography>
         <Grid container mt={2}>
           <Grid xs={6}>
             <Typography variant="body1" sx={{ fontSize: "1.4rem" }}>
               By :
               <Box component={"span"} sx={{ fontWeight: "600" }}>
-                {" "}
-                John Doe
+                {userQuery?.data?.data?.user?.name?.full}
               </Box>
             </Typography>
           </Grid>
           <Grid xs={6}>
-            <Typography variant="body1" sx={{ fontSize: "1.4rem", position: "relative", float: "right" }}>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: "1.4rem", position: "relative", float: "right" }}
+            >
               Answered :
               <Box component={"span"} sx={{ fontWeight: "600" }}>
-                {" "}
-                10 days ago
+                {" " + moment(answer?.createdAt).fromNow(true) + " ago"}
               </Box>
             </Typography>
           </Grid>
@@ -74,7 +110,13 @@ export default function AprovedQuestion() {
           <Grid xs={6}>
             <Button
               onClick={() => setForm(form === "none" ? "block" : "none")}
-              sx={{ fontSize: "1.2rem", color: "#55e575", position: "relative", float: "right", fontWeight: "600" }}
+              sx={{
+                fontSize: "1.2rem",
+                color: "#55e575",
+                position: "relative",
+                float: "right",
+                fontWeight: "600",
+              }}
             >
               Comment
             </Button>
@@ -92,7 +134,10 @@ export default function AprovedQuestion() {
           backgroundColor: "hsl(238.33deg 45% 15.69%)",
         }}
       >
-        <Typography variant="body1" sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}>
+        <Typography
+          variant="body1"
+          sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}
+        >
           Add your comment here
         </Typography>
         <textarea
@@ -124,6 +169,8 @@ export default function AprovedQuestion() {
           Submit
         </Button>
       </Box>
+
+      {/* <AnswerQuestion answer={answer} /> */}
     </>
   );
 }

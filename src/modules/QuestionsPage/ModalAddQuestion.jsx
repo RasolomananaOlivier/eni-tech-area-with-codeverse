@@ -28,18 +28,39 @@ export default function ModalAddQuestion({ open, setOpen, content, title }) {
         aria-describedby="modal-modal-description"
       >
         <>
-          <Box sx={style}>
+          <Box sx={{ ...style, maxHeight: 600, overflowY: "scroll" }}>
             <Box>
               <IconButton
-                sx={{ position: "relative", float: "right", top: "-26px", right: "-16px", color: "#eaeaea" }}
+                sx={{
+                  position: "relative",
+                  float: "right",
+                  top: "-26px",
+                  right: "-16px",
+                  color: "#eaeaea",
+                }}
                 onClick={() => setOpen(false)}
               >
                 <Close />
               </IconButton>
             </Box>
 
-            <Box p={3} mt={3} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
-              <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "12px" }}>
+            <Box
+              p={3}
+              mt={3}
+              sx={{
+                borderRadius: "8px",
+                backgroundColor: "#4a4a6c",
+                marginBottom: "2rem",
+              }}
+            >
+              <Typography
+                variant="h4"
+                style={{
+                  fontWeight: "600",
+                  fontSize: "2rem",
+                  marginBottom: "12px",
+                }}
+              >
                 {title}
               </Typography>
               <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>
@@ -47,7 +68,14 @@ export default function ModalAddQuestion({ open, setOpen, content, title }) {
               </Typography>
             </Box>
             <Box mt={2} mb={2}>
-              <Typography variant="body1" sx={{ fontWeight: "600", fontSize: "1.2rem", marginBottom: "6px" }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  fontWeight: "600",
+                  fontSize: "1.2rem",
+                  marginBottom: "6px",
+                }}
+              >
                 Add your answer here
               </Typography>
               <textarea
