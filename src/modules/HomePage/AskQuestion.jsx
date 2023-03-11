@@ -13,11 +13,19 @@ import Tags from "../../components/Tags";
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
 import { Box, Stack, Typography } from "@mui/material";
 import Question from "../QuestionsPage/Question";
+import { useLocation } from "react-router-dom";
 
 const AskQuest = () => {
   const [sortType, setSortType] = useState("Month");
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (location.search === "?first=true") {
+      setOpen(true);
+    }
+  }, []);
 
   const Array = [
     {
@@ -65,7 +73,7 @@ const AskQuest = () => {
         </Box>
       </Box>
       <ChangePassword open={open} setOpen={setOpen} setTagsOpen={setTagsOpen} />
-      {/* <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} /> */}
+      <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} />
     </>
   );
 };
