@@ -4,6 +4,7 @@ import {
   createChallengeUrl,
   getChallengeByIdUrl,
   getChallengesUrl,
+  getChallengeTagsUrl,
   getUserChallengesUrl,
 } from "./urls";
 
@@ -54,5 +55,20 @@ export const getUserChallenges = async (userId) => {
     getUserChallengesUrl.replace(":userId", userId),
     config
   );
+  return res.data;
+};
+
+export const getChallengeTags = async (challengeId) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+
+  const res = await axios.get(
+    getChallengeTagsUrl.replace(":challengeId", challengeId),
+    config
+  );
+
   return res.data;
 };

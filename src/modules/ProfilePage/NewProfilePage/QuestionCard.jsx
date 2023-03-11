@@ -60,17 +60,8 @@ const QuestionCard = () => {
       >
         Your Questions.
       </Typography>
-      {Array.map((List) => (
-        <Question
-          // setOpen={setOpenModal}
-          key={List.id}
-          name={List.name}
-          firstname={List.firstname}
-          content={List.content}
-          createdDate={List.createdDate}
-          picture={List.picture}
-          title={List.title}
-        />
+      {questionsQuery?.data?.data?.questions.map((question) => (
+        <Question question={question} />
       ))}
     </Box>
   );

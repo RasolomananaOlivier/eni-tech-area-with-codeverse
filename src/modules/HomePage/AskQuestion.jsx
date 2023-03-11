@@ -13,6 +13,10 @@ import Tags from "../../components/Tags";
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
 import { Box, Stack, Typography } from "@mui/material";
 import Question from "../QuestionsPage/Question";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { getQuestionsByUserTags, getQuestionTags } from "../../api/questionApi";
+import { getUserById } from "../../api/usersApi";
+import { getAnswers } from "../../api/answersApi";
 import { useLocation } from "react-router-dom";
 
 const AskQuest = () => {
@@ -26,6 +30,36 @@ const AskQuest = () => {
       setOpen(true);
     }
   }, []);
+
+  const questionsQuery = useQuery({
+    queryKey: ["questions", "suggestions"],
+    queryFn: getQuestionsByUserTags,
+  });
+
+  const questionsOwnersQueries = useQueries({
+    queries: (questionsQuery?.data?.data?.questions ?? []).map((question) => {
+      return {
+        queryKey: ["user", question.userId],
+        queryFn: async () => {
+          const user = await getUserById(question.userId);
+          const answers = await getAnswers(question.id);
+          const tags = await getQuestionTags(question.id);
+
+          return {
+            ...question,
+            username: user.data.user.name.full,
+            imageUrl: user.data.user.imageUrl ?? "",
+            answersCount: answers.data.answers.length,
+            tags: tags.data.tags,
+          };
+        },
+        enabled: !!questionsQuery.data,
+      };
+    }),
+  });
+
+  const questions = questionsOwnersQueries.map((userQuery) => userQuery.data);
+  console.log(questions, "query");
 
   const Array = [
     {
@@ -57,15 +91,8 @@ const AskQuest = () => {
             <Stack spacing={1.5}>
               <Typography variant="h3">Questions You May Know.</Typography>
               <Box>
-                {Array?.map((List) => (
-                  <Question
-                    key={List.id}
-                    name={List.name}
-                    firstname={List.firstname}
-                    content={List.content}
-                    createdDate={List.createdDate}
-                    picture={List.picture}
-                  />
+                {questions?.map((question) => (
+                  <Question question={question} />
                 ))}
               </Box>
             </Stack>

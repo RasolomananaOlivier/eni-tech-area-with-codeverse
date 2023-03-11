@@ -15,13 +15,19 @@ export const useAuth = () => {
   async function verify() {
     try {
       const tokenValue = token.get();
-      const res = await verifyToken(tokenValue);
 
-      console.log("verification process", res);
-      dispatch(setUser(res.data.user));
-      dispatch(setAuth({ isLogged: true }));
-      if (location.pathname === "/login") {
-        navigate("/");
+      console.log(tokenValue, location.pathname);
+      if (tokenValue === null && location.pathname !== "/login") {
+        navigate("/login");
+      } else if (tokenValue !== null && location.pathname === "/login") {
+        const res = await verifyToken(tokenValue);
+
+        console.log("verification process", res);
+        dispatch(setUser(res.data.user));
+        dispatch(setAuth({ isLogged: true }));
+        if (location.pathname === "/login") {
+          navigate("/");
+        }
       }
     } catch (error) {
       console.log(error);
