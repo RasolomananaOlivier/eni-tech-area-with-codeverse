@@ -19,3 +19,7 @@
 .component-rule {
   display: flex;
 }
+
+input::placeholder {
+  color: white;
+}

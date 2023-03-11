@@ -1,0 +1,25 @@
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50%;
+  background: #000;
+  right: 0;
+}
+.card-child {
+  position: relative;
+  width: 100%;
+  align-items: center;
+  padding: 113px;
+  bottom: 15px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.component-rule {
+  display: flex;
+}
+
+input::placeholder {
+  color: white;
+}

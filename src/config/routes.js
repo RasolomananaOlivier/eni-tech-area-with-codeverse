@@ -11,6 +11,7 @@ import QuestionPageList from "../modules/QuestionsListPage";
 import ChallengesPage from "../modules/AnswerPagesChalenges";
 import CreateQuestionPage from "../modules/CreateQuestion/CreateQuestionPage";
 import SearchResultPage from "../components/SearchResultPage";
+import CreateEventPage from "../components/CreateEvent/CreateEventPage";
 // test
 const ROUTES = [
   {
@@ -26,7 +27,7 @@ const ROUTES = [
   {
     title: "Create Event",
     path: "/create-event",
-    element: <CreateEvents />,
+    element: <CreateEventPage />,
   },
   {
     title: "Create Challenge",

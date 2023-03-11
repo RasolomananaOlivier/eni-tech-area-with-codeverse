@@ -27,9 +27,7 @@ export default function CreateQuestionPage() {
         <Box sx={{ position: "relative", height: "100%" }}>
           <Stack sx={{ position: "relative", top: 100, px: 10 }}>
             <Typography variant="h2">Ask Question.</Typography>
-            <Typography variant="h6">
-              Share with others what is your problems.
-            </Typography>
+            <Typography variant="h6">Share with others what is your problems.</Typography>
           </Stack>
         </Box>
       </Box>
@@ -62,19 +60,11 @@ export default function CreateQuestionPage() {
           <div className="Input">
             <div class="new-project-form__input-group new-project-form__input-group--textarea">
               <h1> Description </h1>
-              <textarea
-                name="project-text"
-                rows="10"
-                className="title-input s-input"
-              ></textarea>
+              <textarea name="project-text" rows="10" className="title-input s-input"></textarea>
             </div>
             <div className="tag-grid">
               <label className="form-label s-label">Tags</label>
-              <TagsInput
-                classNames={{ tag: "tag-style" }}
-                array={tags}
-                setArray={setTags}
-              />
+              <TagsInput classNames={{ tag: "tag-style" }} array={tags} setArray={setTags} />
             </div>
             <div className="button">
               <Button
@@ -110,10 +100,7 @@ export default function CreateQuestionPage() {
             {table.map((param, i) => (
               <div className="box-child" key={i}>
                 <div className="box3">
-                  <Typography
-                    variant="h6"
-                    style={{ paddingBottom: "10px", fontWeight: "bold" }}
-                  >
+                  <Typography variant="h6" style={{ paddingBottom: "10px", fontWeight: "bold" }}>
                     {param.title}
                   </Typography>
                   <Typography variant="p">{param.p}</Typography>
