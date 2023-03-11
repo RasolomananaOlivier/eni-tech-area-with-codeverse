@@ -8,7 +8,7 @@ import { Box } from "@mui/material";
 
 const RightSideBar = () => {
   return (
-    <Box sx={{ bgcolor: "#16173A", px: 1.5, position: "relative" }}>
+    <Box sx={{ bgcolor: "#16173A", px: 1.5, position: "relative", mb: 10 }}>
       <SideBarWidget />
       {/* <TagsWidget /> */}
     </Box>

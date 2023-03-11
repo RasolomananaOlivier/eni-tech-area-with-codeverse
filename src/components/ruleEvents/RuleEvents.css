@@ -1,11 +1,32 @@
 .card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 50%;
-  background: #000;
-  right: 0;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  height: 103vh;
+  overflow-y: hidden;
+
+  position: relative;
+  top: -58px;
+  right: 28px;
+
+
+
 }
+
+.card-img {
+  background-image: url(../../assets/cover-1.png) !important;
+  width: 100%;
+  height: 340px !important;
+  background-size: cover;
+}
+
+.card-challenge-img {
+  background-image: url(../../assets/cover-2.png) !important;
+  width: 100%;
+  height: 340px !important;
+  background-size: cover;
+}
+
 .card-child {
   position: relative;
   width: 100%;
@@ -14,8 +35,9 @@
   bottom: 15px;
   color: #fff;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
 }
+
 .component-rule {
   display: flex;
 }

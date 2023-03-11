@@ -6,6 +6,7 @@ import { Avatar } from "@mui/material";
 import { Button, styled } from "@mui/material";
 import BG from "../../../../../assets/bg.png";
 import { Grid, Item } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 const usestyle = makeStyles({
   Component: {
     backgroundColor: "#313250",
@@ -22,6 +23,7 @@ const CustomButton = styled(Button)(({ theme }) => ({
 const Action = () => {
   const Role = "admin";
   const classes = usestyle();
+  const navigate = useNavigate();
   return (
     <Stack
       className={classes.Component}
@@ -42,6 +44,7 @@ const Action = () => {
       </Typography>
       <Stack spacing={1.5}>
         <CustomButton
+          onClick={() => navigate("/create-event")}
           variant={Role === "admin" ? "contained" : "outlined"}
           color="success"
           sx={{
@@ -53,6 +56,7 @@ const Action = () => {
           CREATE EVENT
         </CustomButton>
         <CustomButton
+          onClick={() => navigate("/ask-question")}
           variant={Role === "admin" ? "outlined" : "contained"}
           color="success"
           sx={{
@@ -63,6 +67,7 @@ const Action = () => {
           ASK QUESTION
         </CustomButton>
         <CustomButton
+          onClick={() => navigate("/create-challenge")}
           variant="outlined"
           color="success"
           sx={{ color: "#55e675" }}
