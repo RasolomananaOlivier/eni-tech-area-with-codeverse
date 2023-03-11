@@ -21,9 +21,12 @@ export default function CreateCardEvent() {
   ];
   return (
     <>
-      <Box id="mainbar" className="homepage fc-black-800" sx={{ bgcolor: "#313250" }}>
-        <Box p={3}>
-          <Typography variant="h4" style={{ fontWeight: "600", fontSize: "2.3rem" }}>
+      <Box p={3}>
+        <Box>
+          <Typography
+            variant="h4"
+            style={{ fontWeight: "600", fontSize: "2.3rem" }}
+          >
             Events.
           </Typography>
           {Array?.map((List) => (
@@ -31,15 +34,29 @@ export default function CreateCardEvent() {
               p={4}
               key={List.id}
               mt={"20px"}
-              sx={{ backgroundColor: "hsl(238.24deg 18.68% 35.69%)", borderRadius: "12px" }}
+              sx={{
+                backgroundColor: "hsl(238.24deg 18.68% 35.69%)",
+                borderRadius: "12px",
+              }}
             >
-              <Typography sx={{ fontSize: "1.7rem", fontWeight: "600" }}>{List.title}</Typography>
-              <Typography sx={{ fontSize: "1.2rem", mt: "12px", fontWeight: "400" }}>{List.content}</Typography>
+              <Typography sx={{ fontSize: "1.7rem", fontWeight: "600" }}>
+                {List.title}
+              </Typography>
+              <Typography
+                sx={{ fontSize: "1.2rem", mt: "12px", fontWeight: "400" }}
+              >
+                {List.content}
+              </Typography>
               <Box
                 mt={3}
                 component={"img"}
                 src={List.picture}
-                sx={{ width: "100%", height: "26rem", borderRadius: "12px", objectFit: "cover" }}
+                sx={{
+                  width: "100%",
+                  height: "26rem",
+                  borderRadius: "12px",
+                  objectFit: "cover",
+                }}
                 alt=""
               />
             </Box>

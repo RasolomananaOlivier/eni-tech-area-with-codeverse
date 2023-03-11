@@ -6,6 +6,7 @@ import RightSideBar from "../../../components/organisms/LayoutWrapper/RightSideB
 import SideBar from "../../../components/organisms/LayoutWrapper/SideBar/SideBar.component";
 import Image from "../../../assets/home-students-2.jpg";
 import { useAuth } from "../../../hooks/useAuth";
+import LayoutWrapper from "../../../components/organisms/LayoutWrapper/LayoutWrapper.component";
 
 export default function ProfilePage() {
   useAuth();
@@ -87,19 +88,15 @@ export default function ProfilePage() {
     );
   };
   return (
-    <>
-      <Box sx={{ bgcolor: "#22242a" }}>
-        <Box sx={{ position: "relative", top: 68 }}>
+    <LayoutWrapper>
+      <Box sx={{ bgcolor: "#313250", width: "230rem" }}>
+        {/* <Box sx={{ position: "relative", top: 68 }}>
           <Profil />
-        </Box>
-        <Box className="page" sx={{ position: "relative", mt: "5rem" }}>
-          <SideBar />
-          <div id="content">
-            <ProfilComponent />
-            <RightSideBar />
-          </div>
+        </Box> */}
+        <Box sx={{}}>
+          <ProfilComponent />
         </Box>
       </Box>
-    </>
+    </LayoutWrapper>
   );
 }

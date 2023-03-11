@@ -4,6 +4,7 @@ import RightSideBar from "../../components/organisms/LayoutWrapper/RightSideBar/
 import SideBar from "../../components/organisms/LayoutWrapper/SideBar/SideBar.component";
 import Image from "../../assets/home-students-2.jpg";
 import NotifContent from "../NotificationComponent/NotifContent";
+import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
 
 export default function Notification() {
   const Header = () => {
@@ -29,29 +30,12 @@ export default function Notification() {
     );
   };
   return (
-    <>
-      <Box sx={{ bgcolor: "#313250" }}>
-        <Box sx={{ position: "relative", top: 68 }}>
-          <Header />
-        </Box>
-        <Box className="page" sx={{ position: "relative", mt: "5rem" }}>
-          <SideBar />
-
-          <div id="content">
-            <Box
-              sx={{
-                bgcolor: "#313250",
-                width: "46%",
-                position: "absolute",
-                margin: "25px 20px ",
-              }}
-            >
-              <NotifContent />
-            </Box>
-            <RightSideBar />
-          </div>
+    <LayoutWrapper>
+      <Box sx={{ bgcolor: "#313250", width: "230rem" }}>
+        <Box sx={{ p: 3 }}>
+          <NotifContent />
         </Box>
       </Box>
-    </>
+    </LayoutWrapper>
   );
 }

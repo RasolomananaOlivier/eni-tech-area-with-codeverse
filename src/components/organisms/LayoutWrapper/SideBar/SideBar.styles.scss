@@ -6,11 +6,11 @@
   box-shadow: 0 0 0 rgba(12, 13, 14, 0.05);
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   position: relative !important;
-  background-color: #3d3d3d;
 
   .side-bar-tabs {
     float: right;
-    margin-top: 25px;
+    margin-top: 32px;
+    margin-right: 5px;
 
     .public-tabs {
       margin-bottom: 12px;
@@ -19,6 +19,7 @@
     .nav-link {
       text-decoration: none;
       color: #c4c8cc;
+      border-radius: 10px;
 
       li {
         font-size: 13px;
@@ -46,14 +47,14 @@
         width: 160px;
 
         .menu-list-btn {
-          padding-left: 8px;
+          padding: 10px 20px;
         }
       }
     }
 
     .title {
       font-size: 12px;
-      padding-left: 8px;
+      padding: 0 8px;
       margin-bottom: 5px;
     }
 
@@ -62,7 +63,8 @@
         font-weight: bold;
         background: #2d2d2d;
         color: #f2f2f3;
-        border-right: 3px solid #f48024;
+        background-color: #55e575;
+        border-radius: 10px;
       }
 
       .menu-list-text > span {

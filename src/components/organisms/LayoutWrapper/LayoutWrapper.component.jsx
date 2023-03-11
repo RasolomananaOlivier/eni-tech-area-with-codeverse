@@ -45,14 +45,21 @@ const LayoutWrapper = ({ children }) => {
         <Box sx={{ position: "relative", top: 68 }}>
           <Header />
         </Box>
-        <Box className="page" sx={{ position: "relative", mt: "5rem" }}>
+        <Box
+          sx={{
+            position: "relative",
+            mt: "5rem",
+            width: "100vw",
+            display: "flex",
+            justifyContent: "center",
+            px: 5,
+            bgcolor: "#16173A",
+          }}
+        >
           <SideBar />
-          <div id="content">
-            {children}
-            <RightSideBar />
-          </div>
+          {children}
+          <RightSideBar />
         </Box>
-        <Footer />
       </Box>
     </>
   );

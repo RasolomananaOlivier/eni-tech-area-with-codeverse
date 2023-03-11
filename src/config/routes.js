@@ -7,6 +7,7 @@ import PagesChalenges from "../modules/PagesChalenges";
 import EventsPage from "../modules/EventsPage";
 import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
 import Notification from "../modules/NotificationPage/NotificationPage";
+import QuestionPageList from "../modules/QuestionsListPage";
 // test
 const ROUTES = [
   {
@@ -48,6 +49,11 @@ const ROUTES = [
     title: "Event",
     path: "/events",
     element: <EventsPage />,
+  },
+  {
+    title: "Questions",
+    path: "/questions",
+    element: <QuestionPageList />,
   },
   {
     title: "Questions",
