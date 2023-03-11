@@ -10,13 +10,35 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
   marginRight: "12px",
 }));
 
-export default function Question({ name, firstname, key, content, createdDate, title, picture, setOpen }) {
+export default function Question({
+  name,
+  firstname,
+  key,
+  content,
+  createdDate,
+  title,
+  picture,
+  setOpen,
+}) {
   return (
     <>
-      <Box p={3} key={key} sx={{ borderRadius: "8px", backgroundColor: "#4a4a6c", marginBottom: "2rem" }}>
+      <Box
+        p={3}
+        key={key}
+        sx={{
+          borderRadius: "8px",
+          backgroundColor: "#4a4a6c",
+          marginBottom: "2rem",
+        }}
+      >
         <Grid container>
           <Grid xs={1.3}>
-            <Avatar sizes="large" sx={{ height: "50px", width: "50px" }} alt="" src={picture} />
+            <Avatar
+              sizes="large"
+              sx={{ height: "50px", width: "50px" }}
+              alt=""
+              src={picture}
+            />
           </Grid>
           <Grid xs={10.7}>
             <Grid container justifyContent={"center"}>
@@ -24,7 +46,10 @@ export default function Question({ name, firstname, key, content, createdDate, t
                 <Typography variant="h6" sx={{ fontWeight: "600" }}>
                   {name + " " + firstname}
                 </Typography>
-                <Typography variant="body1" sx={{ textAlign: "start", fontSize: "1.2rem" }}>
+                <Typography
+                  variant="body1"
+                  sx={{ textAlign: "start", fontSize: "1.2rem" }}
+                >
                   Asked :{" "}
                   <Box component={"span"} sx={{ fontWeight: "600" }}>
                     {createdDate}
@@ -36,13 +61,26 @@ export default function Question({ name, firstname, key, content, createdDate, t
                   onClick={() => setOpen(true)}
                   color="success"
                   variant="contained"
-                  sx={{ position: "relative", backgroundColor: "#55e575", float: "right", borderRadius: "20px" }}
+                  sx={{
+                    position: "relative",
+                    backgroundColor: "#55e575",
+                    float: "right",
+                    borderRadius: "20px",
+                  }}
                 >
                   Answer
                 </Button>
               </Grid>
             </Grid>
-            <Typography variant="h4" mt={"20px"} style={{ fontWeight: "600", fontSize: "2rem", marginBottom: "9px" }}>
+            <Typography
+              variant="h4"
+              mt={"20px"}
+              style={{
+                fontWeight: "600",
+                fontSize: "2rem",
+                marginBottom: "12px",
+              }}
+            >
               {title}
             </Typography>
             <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>

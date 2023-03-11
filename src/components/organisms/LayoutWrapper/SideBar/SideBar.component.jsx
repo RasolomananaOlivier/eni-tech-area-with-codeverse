@@ -7,10 +7,11 @@ import "./SideBar.styles.scss";
 import { Box } from "@mui/material";
 
 const SideBar = () => (
-  <Box className="side-bar-container" sx={{ bgcolor: "#22242a" }}>
+  <Box
+    className="side-bar-container"
+    sx={{ bgcolor: "#16173A", position: "static" }}
+  >
     <div className="side-bar-tabs">
-      <SideBarItem isHome={true} link="/" text="Home" />
-
       <div className="public-tabs">
         {SideBarData.map(({ link, icon, text }, index) => (
           <SideBarItem key={index} link={link} icon={icon} text={text} />

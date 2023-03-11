@@ -11,55 +11,61 @@ import handleFilter from "../../utils/handleFilter";
 import Tags from "../../components/Tags";
 
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import Question from "../QuestionsPage/Question";
 
 const AskQuest = () => {
   const [sortType, setSortType] = useState("Month");
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
+
+  const Array = [
+    {
+      id: 1,
+      picture: Image,
+      name: "John",
+      firstname: "Doe",
+      title: "How to efficiently sort a large dataset in Python ?",
+      content:
+        "  I have a large dataset with millions of records that I need to sort in python. I've tried using the build-in  sort function , but it takes too long to complete...",
+      createdDate: "10 days ago",
+      answer: [
+        {
+          id: 1,
+          name: "John",
+          firstname: "Doe",
+          picture: Image,
+          comment: "I have a large dataset with millions of records ",
+          createdDate: "10 days ago",
+        },
+      ],
+    },
+  ];
   return (
     <>
-      <Box id="mainbar" className="homepage fc-black-800" sx={{ bgcolor: "#323741", pr: 2 }}>
-        <Box className="questions-grid" sx={{ pr: 3 }}>
-          <h3 className="questions-headline">Questions You May Know.</h3>
-          <div className="questions-btn">
-            <LinkButton text={"Ask Question"} link={"/add/question"} type={"s-btn__primary"} />
+      <Box sx={{ bgcolor: "#313250", width: "230rem", px: 2 }}>
+        <Box sx={{ position: "relative", mt: "3.7rem", display: "flex" }}>
+          <div>
+            <Stack spacing={1.5}>
+              <Typography variant="h3">Questions You May Know.</Typography>
+              <Box>
+                {Array?.map((List) => (
+                  <Question
+                    key={List.id}
+                    name={List.name}
+                    firstname={List.firstname}
+                    content={List.content}
+                    createdDate={List.createdDate}
+                    picture={List.picture}
+                  />
+                ))}
+              </Box>
+            </Stack>
           </div>
         </Box>
-        <Box display="flex" justifyContent="space-between" alignItems="center" sx={{ px: 3, pr: 4.5 }}>
-          <span>{/* {new Intl.NumberFormat("en-IN").format(posts.length)} questions */}</span>
-          <div className="btns-filter">
-            <ButtonGroup buttons={["Today", "Week", "Month", "Year"]} selected={sortType} setSelected={setSortType} />
-          </div>
-        </Box>
-        <Box className="questions" sx={{ pr: 3 }}>
-          <div className="postQues">
-            {/*   {posts
-              .sort(handleSorting(sortType))
-              .filter(handleFilter(sortType))
-              .slice(
-                (page - 1) * itemsPerPage,
-                (page - 1) * itemsPerPage + itemsPerPage
-              )
-              .map((post, index) => (
-                <PostItem key={index} post={post} />
-              ))} */}
-            {/* {posts.map((post, index) => (
-              <PostItem key={index} post={post} />
-            ))} */}
-          </div>
-        </Box>
-        {/* <Pagination
-          page={page}
-          itemList={posts
-            .sort(handleSorting(sortType))
-            .filter(handleFilter(sortType))}
-          itemsPerPage={itemsPerPage}
-          handlePaginationChange={handlePaginationChange}
-        /> */}
-        <ChangePassword open={open} setOpen={setOpen} setTagsOpen={setTagsOpen} />
-        <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} />
       </Box>
+      <ChangePassword open={open} setOpen={setOpen} setTagsOpen={setTagsOpen} />
+      {/* <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} /> */}
     </>
   );
 };

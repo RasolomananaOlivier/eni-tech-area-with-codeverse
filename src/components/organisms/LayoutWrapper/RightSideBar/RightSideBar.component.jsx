@@ -8,12 +8,10 @@ import { Box } from "@mui/material";
 
 const RightSideBar = () => {
   return (
-    <Fragment>
-      <Box id="sidebar" className="side-bar" sx={{ bgcolor: "#22242a" }}>
-        <SideBarWidget />
-        <TagsWidget />
-      </Box>
-    </Fragment>
+    <Box sx={{ bgcolor: "#16173A", px: 1.5, position: "relative" }}>
+      <SideBarWidget />
+      {/* <TagsWidget /> */}
+    </Box>
   );
 };
 
