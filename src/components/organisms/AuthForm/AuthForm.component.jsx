@@ -20,8 +20,7 @@ const AuthForm = () => {
 
   const { email, password } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -65,9 +64,7 @@ const AuthForm = () => {
               />
             </div>
             <div>
-              <label className="form-label s-label fc-black-600">
-                Password
-              </label>
+              <label className="form-label s-label fc-black-600">Password</label>
               <input
                 className="form-input s-input"
                 type="password"
@@ -79,37 +76,22 @@ const AuthForm = () => {
               />
             </div>
             <div className="grid gs4 gsy fd-column js-auth-item ">
-              <Button
-                variant="contained"
-                color="success"
-                disableElevation
-                type="submit"
-              >
+              <Button variant="contained" color="success" disableElevation type="submit">
                 Login
               </Button>
             </div>
           </form>
           <div className="fs-caption license fc-black-500">
             By clicking action, you agree to our{" "}
-            <Link
-              to="https://stackoverflow.com/legal/terms-of-service/public"
-              className="-link"
-            >
+            <Link to="https://stackoverflow.com/legal/terms-of-service/public" className="-link">
               terms of service
             </Link>
             ,{" "}
-            <Link
-              to="https://stackoverflow.com/legal/privacy-policy"
-              name="privacy"
-              className="-link"
-            >
+            <Link to="https://stackoverflow.com/legal/privacy-policy" name="privacy" className="-link">
               privacy policy
             </Link>{" "}
             and{" "}
-            <Link
-              to="https://stackoverflow.com/legal/cookie-policy"
-              className="-link"
-            >
+            <Link to="https://stackoverflow.com/legal/cookie-policy" className="-link">
               cookie policy
             </Link>
             <input type="hidden" name="legalLinksShown" value="1" />

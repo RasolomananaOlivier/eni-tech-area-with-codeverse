@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { Fragment } from "react";
 
 import AuthForm from "../../components/organisms/AuthForm/AuthForm.component";
