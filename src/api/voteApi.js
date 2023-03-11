@@ -29,8 +29,8 @@ export const countVotes = async (questionId, answerId) => {
 
   const res = await axios.get(
     getVotesCountUrl
-      .replace("{questionId}", questionId)
-      .replace("{answerId}", answerId),
+      .replace(":questionId", questionId)
+      .replace(":answerId", answerId),
     config
   );
 

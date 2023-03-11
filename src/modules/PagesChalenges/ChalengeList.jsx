@@ -127,7 +127,7 @@ const ChalengeList = () => {
             {challenge?.content}
           </Typography>
 
-          <Box mt={"20px"} sx={{ display: "flex" }}>
+          <Box mt={"20px"} sx={{ display: "flex", flexWrap: "wrap" }}>
             {challenge?.tags.map((tag) => (
               <TagsOptions
                 py={0.7}
@@ -135,6 +135,7 @@ const ChalengeList = () => {
                 sx={{
                   backgroundColor: tag?.bgColor,
                   color: tag?.textColor,
+                  mb: 1.2,
                 }}
               >
                 {tag?.name}

@@ -16,7 +16,10 @@ const Header = () => {
 
   return (
     <Box position="relative">
-      <img src={Image} alt="" width="100%" height={260} />
+      {location.pathname !== "/profile" && (
+        <img src={Image} alt="" width="100%" height={260} />
+      )}
+
       {location.pathname === "/profile" ? (
         <Profile />
       ) : (

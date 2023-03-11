@@ -1,16 +1,17 @@
 import React from "react";
 import { Box, Typography, Grid, Avatar, styled, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
-  width: "7rem",
   borderRadius: "12px",
-  fontSize: "1.2rem",
   textAlign: "center",
   marginRight: "12px",
 }));
 
-export default function Question({ question }) {
+export default function Question({ question, setOpen }) {
+  const navigate = useNavigate();
   return (
     <>
       <Box
@@ -42,13 +43,13 @@ export default function Question({ question }) {
                 >
                   Asked :{" "}
                   <Box component={"span"} sx={{ fontWeight: "600" }}>
-                    {question?.createdAt}
+                    {" " + moment(question?.createdAt).fromNow(true) + " ago"}
                   </Box>
                 </Typography>
               </Grid>
               <Grid xs={4}>
                 <Button
-                  // onClick={() => setOpen(true)}
+                  onClick={() => setOpen(true)}
                   color="success"
                   variant="contained"
                   disableElevation
@@ -70,20 +71,29 @@ export default function Question({ question }) {
                 fontWeight: "600",
                 fontSize: "2rem",
                 marginBottom: "12px",
+                cursor: "pointer",
               }}
+              onClick={() => navigate(`/questions/${question?.id}`)}
             >
               {question?.title}
             </Typography>
-            <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>
-              {question?.content}
-            </Typography>
-            <Box mt={"20px"} sx={{ display: "flex" }}>
-              {question?.tags.map((tag) => (
+            <Typography
+              // className="post-text fc-black-800"
+              style={{ whiteSpace: "pre-wrap" }}
+              dangerouslySetInnerHTML={{
+                __html: question?.content?.slice(0, 300) + "...",
+              }}
+            ></Typography>
+
+            <Box mt={"20px"} sx={{ display: "flex", flexWrap: "wrap" }}>
+              {question?.tags?.map((tag) => (
                 <TagsOptions
-                  p={0.4}
+                  py={0.8}
+                  px={1.5}
                   sx={{
                     backgroundColor: tag?.bgColor,
                     color: tag?.textColor,
+                    fontWeight: "bold",
                   }}
                 >
                   {tag?.name}

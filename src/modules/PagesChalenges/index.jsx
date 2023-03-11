@@ -11,7 +11,7 @@ export default function PagesChalenges() {
   useAuth();
   return (
     <LayoutWrapper>
-      <Box sx={{ bgcolor: "#22242a", width: "230rem" }}>
+      <Box sx={{ bgcolor: "#22242a", width: "230rem " }}>
         <Box sx={{ position: "relative" }}>
           <Box sx={{ bgcolor: "#313250" }}>
             <Box p={3}>
