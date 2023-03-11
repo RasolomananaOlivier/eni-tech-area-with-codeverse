@@ -4,6 +4,7 @@ import { badWordsFilter } from "../../../utils/censorBadWords";
 
 import "./AskForm.styles.scss";
 import { AppTagsInput } from "../../../components/Tags";
+import { TagsInput } from "react-tag-input-component";
 
 const AskForm = () => {
   const [formData, setFormData] = useState({
@@ -119,6 +120,7 @@ const AskForm = () => {
                 />
               </div>
             </div>
+            w
             <div className="tag-grid">
               <label className="form-label s-label">
                 Tag Name
@@ -126,7 +128,11 @@ const AskForm = () => {
                   Add up to 5 tags to describe what your question is about
                 </p>
               </label>
-              <AppTagsInput array={formData.tagName} setArray={setTagName} />
+              <TagsInput
+                classNames={{ tag: "tag-style" }}
+                array={formData.tagName}
+                setArray={setTagName}
+              />
               {/* <input
                 className="tag-input s-input"
                 type="text"
