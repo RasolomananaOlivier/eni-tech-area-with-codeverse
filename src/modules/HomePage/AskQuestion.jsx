@@ -17,11 +17,19 @@ import { useQueries, useQuery } from "@tanstack/react-query";
 import { getQuestionsByUserTags, getQuestionTags } from "../../api/questionApi";
 import { getUserById } from "../../api/usersApi";
 import { getAnswers } from "../../api/answersApi";
+import { useLocation } from "react-router-dom";
 
 const AskQuest = () => {
   const [sortType, setSortType] = useState("Month");
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (location.search === "?first=true") {
+      setOpen(true);
+    }
+  }, []);
 
   const questionsQuery = useQuery({
     queryKey: ["questions", "suggestions"],
@@ -83,23 +91,23 @@ const AskQuest = () => {
             <Stack spacing={1.5}>
               <Typography variant="h3">Questions You May Know.</Typography>
               <Box>
-                {Array?.map((List) => (
-                 /*  <Question
+                {/* {Array?.map((List) => (
+                  <Question
                     key={List.id}
                     name={List.name}
                     firstname={List.firstname}
                     content={List.content}
                     createdDate={List.createdDate}
                     picture={List.picture}
-                  /> */
-                ))}
+                  />
+                ))} */}
               </Box>
             </Stack>
           </div>
         </Box>
       </Box>
       <ChangePassword open={open} setOpen={setOpen} setTagsOpen={setTagsOpen} />
-      {/* <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} /> */}
+      <Tags TagsOpen={TagsOpen} setTagsOpen={setTagsOpen} />
     </>
   );
 };

@@ -1,31 +1,20 @@
 import React, { useState } from "react";
 import { TagsInput } from "react-tag-input-component";
-import {
-  Dialog,
-  DialogContent,
-  Typography,
-  DialogTitle,
-  DialogActions,
-  Button,
-} from "@mui/material";
+import { Dialog, DialogContent, Typography, DialogTitle, DialogActions, Button } from "@mui/material";
 import axios from "axios";
 import { allTagsData } from "../../api/urls";
 import "./index.css";
 
 export const AppTagsInput = ({ array, setArray }) => {
-  return (
-    <TagsInput
-      value={array}
-      onChange={setArray}
-      name="tag"
-      placeHolder="write your tag"
-    />
-  );
+  return <TagsInput value={array} onChange={setArray} name="tag" placeHolder="write your tag" />;
 };
 
 export default function Tags({ TagsOpen, setTagsOpen }) {
   const [array, setArray] = useState(null);
   const [currentDisable, setCurrentDisable] = useState(true);
+  // const handleClose = () => {
+  //   setTagsOpen(false);
+  // };
 
   React.useEffect(() => {
     if (array === null) {
@@ -53,6 +42,7 @@ export default function Tags({ TagsOpen, setTagsOpen }) {
     <div>
       <Dialog
         open={TagsOpen}
+        // onClose={handleClose}
         keepMounted
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
