@@ -25,6 +25,8 @@ export const getQuestionByIdUrl =
   config.BASE_URL + "/api/v1/questions/:questionId";
 export const getUserQuestionsUrl =
   config.BASE_URL + "/api/v1/users/:userId/questions";
+export const getQuestionTagsUrl =
+  config.BASE_URL + "/api/v1/questions/:questionId/questiontags";
 
 // Answers
 export const getAnswersUrl =

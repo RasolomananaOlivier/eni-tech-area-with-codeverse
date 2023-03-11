@@ -5,6 +5,7 @@ import {
   createQuestionUrl,
   getQuestionByIdUrl,
   getQuestionsUrl,
+  getQuestionTagsUrl,
   getUserQuestionsUrl,
   questionsByUserTagsUrl,
 } from "./urls";
@@ -70,5 +71,13 @@ export const getUserQuestions = async (userId) => {
     config
   );
   // console.log("called", res);
+  return res.data;
+};
+
+export const getQuestionTags = async (questionId) => {
+  const res = await axios.get(
+    getQuestionTagsUrl.replace(":questionId", questionId)
+  );
+
   return res.data;
 };

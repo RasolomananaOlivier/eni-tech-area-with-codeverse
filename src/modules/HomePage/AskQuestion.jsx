@@ -13,11 +13,45 @@ import Tags from "../../components/Tags";
 import ChangePassword from "../../components/ChangePasswordModal/Dialog";
 import { Box, Stack, Typography } from "@mui/material";
 import Question from "../QuestionsPage/Question";
+import { useQueries, useQuery } from "@tanstack/react-query";
+import { getQuestionsByUserTags, getQuestionTags } from "../../api/questionApi";
+import { getUserById } from "../../api/usersApi";
+import { getAnswers } from "../../api/answersApi";
 
 const AskQuest = () => {
   const [sortType, setSortType] = useState("Month");
   const [open, setOpen] = React.useState(false);
   const [TagsOpen, setTagsOpen] = React.useState(false);
+
+  const questionsQuery = useQuery({
+    queryKey: ["questions", "suggestions"],
+    queryFn: getQuestionsByUserTags,
+  });
+
+  const questionsOwnersQueries = useQueries({
+    queries: (questionsQuery?.data?.data?.questions ?? []).map((question) => {
+      return {
+        queryKey: ["user", question.userId],
+        queryFn: async () => {
+          const user = await getUserById(question.userId);
+          const answers = await getAnswers(question.id);
+          const tags = await getQuestionTags(question.id);
+
+          console.log("q", tags);
+          return {
+            ...question,
+            username: user.data.user.name.full,
+            imageUrl: user.data.user.imageUrl ?? "",
+            answersCount: answers.data.answers.length,
+          };
+        },
+        enabled: !!questionsQuery.data,
+      };
+    }),
+  });
+
+  const questions = questionsOwnersQueries.map((userQuery) => userQuery.data);
+  console.log(questions, "query");
 
   const Array = [
     {
@@ -50,14 +84,14 @@ const AskQuest = () => {
               <Typography variant="h3">Questions You May Know.</Typography>
               <Box>
                 {Array?.map((List) => (
-                  <Question
+                 /*  <Question
                     key={List.id}
                     name={List.name}
                     firstname={List.firstname}
                     content={List.content}
                     createdDate={List.createdDate}
                     picture={List.picture}
-                  />
+                  /> */
                 ))}
               </Box>
             </Stack>

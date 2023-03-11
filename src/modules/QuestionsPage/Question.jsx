@@ -10,16 +10,7 @@ const TagsOptions = styled(Typography)(({ theme }) => ({
   marginRight: "12px",
 }));
 
-export default function Question({
-  name,
-  firstname,
-  key,
-  content,
-  createdDate,
-  title,
-  picture,
-  setOpen,
-}) {
+export default function Question({ question }) {
   return (
     <>
       <Box
