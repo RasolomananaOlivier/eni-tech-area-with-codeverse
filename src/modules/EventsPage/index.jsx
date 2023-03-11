@@ -5,8 +5,10 @@ import SideBar from "../../components/organisms/LayoutWrapper/SideBar/SideBar.co
 import Image from "../../assets/home-students-2.jpg";
 import CreateCardEvent from "./CreateCardEvent";
 import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function EventsPage() {
+  useAuth();
   const Header = () => {
     return (
       <Box position="relative">

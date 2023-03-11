@@ -5,8 +5,10 @@ import ChalengeList from "./ChalengeList";
 import RightSideBar from "../../components/organisms/LayoutWrapper/RightSideBar/RightSideBar.component";
 import SideBar from "../../components/organisms/LayoutWrapper/SideBar/SideBar.component";
 import LayoutWrapper from "../../components/organisms/LayoutWrapper/LayoutWrapper.component";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function PagesChalenges() {
+  useAuth();
   return (
     <LayoutWrapper>
       <Box sx={{ bgcolor: "#22242a", width: "230rem" }}>
@@ -23,7 +25,7 @@ export default function PagesChalenges() {
                       marginBottom: "32px",
                     }}
                   >
-                    Your Challenges.
+                    Solve challenges and improve your skills.
                   </Typography>
                 </Grid>
                 <Grid xs={5}>

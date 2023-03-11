@@ -45,12 +45,12 @@ const AskQuest = () => {
           const answers = await getAnswers(question.id);
           const tags = await getQuestionTags(question.id);
 
-          console.log("q", tags);
           return {
             ...question,
             username: user.data.user.name.full,
             imageUrl: user.data.user.imageUrl ?? "",
             answersCount: answers.data.answers.length,
+            tags: tags.data.tags,
           };
         },
         enabled: !!questionsQuery.data,
@@ -91,16 +91,9 @@ const AskQuest = () => {
             <Stack spacing={1.5}>
               <Typography variant="h3">Questions You May Know.</Typography>
               <Box>
-                {/* {Array?.map((List) => (
-                  <Question
-                    key={List.id}
-                    name={List.name}
-                    firstname={List.firstname}
-                    content={List.content}
-                    createdDate={List.createdDate}
-                    picture={List.picture}
-                  />
-                ))} */}
+                {questions?.map((question) => (
+                  <Question question={question} />
+                ))}
               </Box>
             </Stack>
           </div>

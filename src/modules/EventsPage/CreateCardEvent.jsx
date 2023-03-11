@@ -1,8 +1,17 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import ImageCard from "../../assets/change-pwd.jpg";
+import { getEvents } from "../../api/eventApi";
+import { useQuery } from "@tanstack/react-query";
 
 export default function CreateCardEvent() {
+  const eventsQuery = useQuery({
+    queryKey: ["events"],
+    queryFn: getEvents,
+  });
+
+  console.log("eventsQuery", eventsQuery);
+
   const Array = [
     {
       id: 1,
@@ -29,10 +38,10 @@ export default function CreateCardEvent() {
           >
             Events.
           </Typography>
-          {Array?.map((List) => (
+          {eventsQuery.data?.data?.events?.map((event) => (
             <Box
               p={4}
-              key={List.id}
+              key={event?.id}
               mt={"20px"}
               sx={{
                 backgroundColor: "hsl(238.24deg 18.68% 35.69%)",
@@ -40,17 +49,17 @@ export default function CreateCardEvent() {
               }}
             >
               <Typography sx={{ fontSize: "1.7rem", fontWeight: "600" }}>
-                {List.title}
+                {event?.title}
               </Typography>
               <Typography
                 sx={{ fontSize: "1.2rem", mt: "12px", fontWeight: "400" }}
               >
-                {List.content}
+                {event?.content}
               </Typography>
               <Box
                 mt={3}
                 component={"img"}
-                src={List.picture}
+                src={event?.images ?? ImageCard}
                 sx={{
                   width: "100%",
                   height: "26rem",

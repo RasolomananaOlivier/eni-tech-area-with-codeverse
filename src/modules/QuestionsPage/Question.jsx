@@ -15,7 +15,6 @@ export default function Question({ question }) {
     <>
       <Box
         p={3}
-        key={key}
         sx={{
           borderRadius: "8px",
           backgroundColor: "#4a4a6c",
@@ -28,14 +27,14 @@ export default function Question({ question }) {
               sizes="large"
               sx={{ height: "50px", width: "50px" }}
               alt=""
-              src={picture}
+              src={question?.imageUrl}
             />
           </Grid>
           <Grid xs={10.7}>
             <Grid container justifyContent={"center"}>
               <Grid xs={8}>
                 <Typography variant="h6" sx={{ fontWeight: "600" }}>
-                  {name + " " + firstname}
+                  {question?.username}
                 </Typography>
                 <Typography
                   variant="body1"
@@ -43,13 +42,13 @@ export default function Question({ question }) {
                 >
                   Asked :{" "}
                   <Box component={"span"} sx={{ fontWeight: "600" }}>
-                    {createdDate}
+                    {question?.createdAt}
                   </Box>
                 </Typography>
               </Grid>
               <Grid xs={4}>
                 <Button
-                  onClick={() => setOpen(true)}
+                  // onClick={() => setOpen(true)}
                   color="success"
                   variant="contained"
                   disableElevation
@@ -73,36 +72,23 @@ export default function Question({ question }) {
                 marginBottom: "12px",
               }}
             >
-              {title}
+              {question?.title}
             </Typography>
             <Typography variant="body1" sx={{ fontSize: "1.3rem" }}>
-              {content}
+              {question?.content}
             </Typography>
             <Box mt={"20px"} sx={{ display: "flex" }}>
-              <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#d2e127",
-                }}
-              >
-                React
-              </TagsOptions>
-              <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#e14927",
-                }}
-              >
-                Laravel
-              </TagsOptions>
-              <TagsOptions
-                p={0.4}
-                sx={{
-                  backgroundColor: "#8427e1",
-                }}
-              >
-                Full stack
-              </TagsOptions>
+              {question?.tags.map((tag) => (
+                <TagsOptions
+                  p={0.4}
+                  sx={{
+                    backgroundColor: tag?.bgColor,
+                    color: tag?.textColor,
+                  }}
+                >
+                  {tag?.name}
+                </TagsOptions>
+              ))}
             </Box>
           </Grid>
         </Grid>

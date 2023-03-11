@@ -2,13 +2,11 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Grid, styled } from "@mui/material";
 import { useQueries, useQuery } from "@tanstack/react-query";
-import { getChallenges } from "../../api/challengesApi";
+import { getChallenges, getChallengeTags } from "../../api/challengesApi";
 import { getUserById } from "../../api/usersApi";
 const TagsOptions = styled(Typography)(({ theme }) => ({
   color: "white",
-  width: "7rem",
   borderRadius: "12px",
-  fontSize: "1.2rem",
   textAlign: "center",
   marginRight: "12px",
 }));
@@ -19,26 +17,32 @@ const ChalengeList = () => {
     queryFn: getChallenges,
   });
 
-  const challenges = useQueries({
-    queries: (challengesQuery?.data?.data?.challenges ?? []).map((challenge) => {
-      return {
-        queryKey: ["challenge", challenge.userId],
-        queryFn: async () => {
-          const user = await getUserById(challenge?.userId);
-          // TODO: get challenges tags
-          return {
-            ...challenge,
-            username: user?.data?.user?.name?.full,
-            tags: ["React", "JS"],
-          };
-        },
-        enabled: challengesQuery.data !== undefined,
-      };
-    }),
+  const challengesQueries = useQueries({
+    queries: (challengesQuery?.data?.data?.challenges ?? []).map(
+      (challenge) => {
+        return {
+          queryKey: ["challenge", challenge.userId],
+          queryFn: async () => {
+            const user = await getUserById(challenge?.userId);
+            const tags = await getChallengeTags(challenge.id);
+
+            console.log(tags, "challenge tags");
+            return {
+              ...challenge,
+              username: user?.data?.user?.name?.full,
+              tags: tags?.data?.tags,
+            };
+          },
+          enabled: challengesQuery.data !== undefined,
+        };
+      }
+    ),
   });
 
-  console.log(challenges);
-
+  const challenges = challengesQueries.map(
+    (challengeQuery) => challengeQuery.data
+  );
+  console.log("challenges", challenges);
   const Array = [
     {
       id: 2,
@@ -65,7 +69,7 @@ const ChalengeList = () => {
   ];
   return (
     <>
-      {Array?.map((List) => (
+      {challenges?.map((challenge) => (
         <Box
           p={3}
           sx={{
@@ -80,7 +84,7 @@ const ChalengeList = () => {
                 Time Left :
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
                   {" "}
-                  {List.TimeLeft}
+                  {challenge?.endAt}
                 </Box>
               </Typography>
             </Grid>
@@ -89,7 +93,12 @@ const ChalengeList = () => {
                 p={1}
                 px={2}
                 sx={{
-                  backgroundColor: "hsl(7.42deg 75.61% 51.76%)",
+                  backgroundColor:
+                    challenge?.difficulty === "difficult"
+                      ? "darkorange"
+                      : challenge?.difficulty === "medium"
+                      ? "darkcyan"
+                      : "darkgray",
                   textAlign: "center",
                   display: "inline",
                   position: "relative",
@@ -99,7 +108,7 @@ const ChalengeList = () => {
                 }}
                 variant="body1"
               >
-                {List.difficult}
+                {challenge?.difficulty}
               </Typography>
             </Grid>
           </Grid>
@@ -112,52 +121,43 @@ const ChalengeList = () => {
               marginTop: "12px",
             }}
           >
-            {List.title}
+            {challenge?.title}
           </Typography>
           <Typography mt={"12px"} variant="body1" sx={{ fontSize: "1.3rem" }}>
-            {List.content}
+            {challenge?.content}
           </Typography>
 
           <Box mt={"20px"} sx={{ display: "flex" }}>
-            <TagsOptions
-              p={0.4}
-              sx={{
-                backgroundColor: "#d2e127",
-              }}
-            >
-              {List.tag}
-            </TagsOptions>
-            {/* <TagsOptions
-             p={0.4}
-             sx={{
-               backgroundColor: "#e14927",
-             }}
-           >
-             Laravel
-           </TagsOptions>
-           <TagsOptions
-             p={0.4}
-             sx={{
-               backgroundColor: "#8427e1",
-             }}
-           >
-             Full stack
-           </TagsOptions> */}
+            {challenge?.tags.map((tag) => (
+              <TagsOptions
+                py={0.7}
+                px={1.2}
+                sx={{
+                  backgroundColor: tag?.bgColor,
+                  color: tag?.textColor,
+                }}
+              >
+                {tag?.name}
+              </TagsOptions>
+            ))}
           </Box>
           <Grid container justifyContent={"center"} mt={"12px"}>
             <Grid xs={9}>
               <Typography variant="body1" sx={{ fontSize: "1.2rem" }}>
                 Challenger :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
-                  {List.username}
+                  {challenge?.username}
                 </Box>
               </Typography>
             </Grid>
             <Grid xs={3}>
-              <Typography variant="body" sx={{ textAlign: "end", fontSize: "1.2rem" }}>
+              <Typography
+                variant="body"
+                sx={{ textAlign: "end", fontSize: "1.2rem" }}
+              >
                 Created :{" "}
                 <Box component={"span"} sx={{ fontWeight: "600" }}>
-                  {List.updatedAt}
+                  {challenge?.updatedAt}
                 </Box>
               </Typography>
             </Grid>

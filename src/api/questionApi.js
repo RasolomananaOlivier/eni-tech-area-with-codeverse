@@ -75,8 +75,15 @@ export const getUserQuestions = async (userId) => {
 };
 
 export const getQuestionTags = async (questionId) => {
+  const config = {
+    headers: {
+      Authorization: "Bearer " + token.get(),
+    },
+  };
+
   const res = await axios.get(
-    getQuestionTagsUrl.replace(":questionId", questionId)
+    getQuestionTagsUrl.replace(":questionId", questionId),
+    config
   );
 
   return res.data;
