@@ -1,4 +1,4 @@
-import { TextareaAutosize, Typography } from "@mui/material";
+import { Box, Button, TextareaAutosize, Typography } from "@mui/material";
 import React from "react";
 import "./cardStyle.css";
 import { TextField, RadioGroup, FormControlLabel, Radio } from "@mui/material";
@@ -19,7 +19,17 @@ export default function RuleComponent() {
   ];
   return (
     <div style={{ backgroundColor: "#16173a", width: "100%" }}>
-      <div className="box2" style={{ borderRadius: "5px" }}>
+      <Box
+        sx={{
+          borderRadius: "5px",
+          position: "absolute",
+          top: 230,
+          left: 110,
+          backgroundColor: "#313250",
+          width: "52%",
+          p: 3,
+        }}
+      >
         <div className="Input">
           <h1>Challenge</h1>
           <TextField fullWidth id="fullWidth" style={{ width: "100%" }} />
@@ -71,12 +81,37 @@ export default function RuleComponent() {
               <FormControlLabel value="Easy" control={<Radio />} label="Easy" />
             </RadioGroup>
           </div>
+
+          <div className="button">
+            <Button
+              onClick={() => {}}
+              color="success"
+              variant="contained"
+              disableElevation
+              sx={{
+                backgroundColor: "#55e575",
+                borderRadius: "20px",
+              }}
+            >
+              Publish event
+            </Button>
+          </div>
         </div>
-      </div>
+      </Box>
 
       <div className="flexbox">
         <div></div>
-        <div className="box">
+        <Box
+          sx={{
+            borderRadius: "5px",
+            position: "relative",
+            top: -45,
+            left: -40,
+            backgroundColor: "#313250",
+            width: "75%",
+            p: 3,
+          }}
+        >
           <h1 style={{ fontWeight: "bold", fontSize: "medium" }}>Rules</h1>
           {table.map((param, i) => (
             <div className="box-child" key={i}>
@@ -91,7 +126,7 @@ export default function RuleComponent() {
               </div>
             </div>
           ))}
-        </div>
+        </Box>
       </div>
     </div>
   );

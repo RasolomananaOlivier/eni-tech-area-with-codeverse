@@ -58,3 +58,6 @@ export const getChallengesUrl = config.BASE_URL + "/api/v1/challenges";
 export const getChallengeByIdUrl =
   config.BASE_URL + "/api/v1/challenges/:challengeId";
 export const createChallengeUrl = config.BASE_URL + "/api/v1/challenges";
+
+export const searchUrl =
+  config.BASE_URL + "/api/v1/questions/search?both=:query";

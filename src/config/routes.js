@@ -8,6 +8,8 @@ import EventsPage from "../modules/EventsPage";
 import QuestionPage from "../modules/QuestionsPage/QuestionsPage.component";
 import Notification from "../modules/NotificationPage/NotificationPage";
 import QuestionPageList from "../modules/QuestionsListPage";
+import CreateQuestionPage from "../modules/CreateQuestion/CreateQuestionPage";
+import SearchResultPage from "../components/SearchResultPage";
 // test
 const ROUTES = [
   {
@@ -22,12 +24,12 @@ const ROUTES = [
   },
   {
     title: "Create Event",
-    path: "/events/create",
+    path: "/create-event",
     element: <CreateEvents />,
   },
   {
     title: "Create Challenge",
-    path: "/challenges/create",
+    path: "/create-challenge",
     element: <CreateChallengePage />,
   },
   {
@@ -56,9 +58,19 @@ const ROUTES = [
     element: <QuestionPageList />,
   },
   {
+    title: "Ask Question",
+    path: "/ask-question",
+    element: <CreateQuestionPage />,
+  },
+  {
     title: "Questions",
     path: "/questions/:id",
     element: <QuestionPage />,
+  },
+  {
+    title: "Search",
+    path: "/search",
+    element: <SearchResultPage />,
   },
 ];
 

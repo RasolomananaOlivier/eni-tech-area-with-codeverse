@@ -61,6 +61,7 @@ export default function Question({
                   onClick={() => setOpen(true)}
                   color="success"
                   variant="contained"
+                  disableElevation
                   sx={{
                     position: "relative",
                     backgroundColor: "#55e575",

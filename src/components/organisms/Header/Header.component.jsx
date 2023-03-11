@@ -12,6 +12,7 @@ import Logo from "../../../assets/logo.png";
 import "./Header.styles.scss";
 import { useSelector } from "react-redux";
 import { selectAuth } from "../../../redux/selectors/authSelector";
+import { Button } from "@mui/material";
 
 const Header = () => {
   const [searchState, setSearchState] = useState(false);
@@ -19,12 +20,18 @@ const Header = () => {
 
   const authLinks = (
     <div className="btns">
-      <LinkButton
-        text={"Log out"}
-        link={"/login"}
-        type={"s-btn__filled"}
-        // handleClick={logout}
-      />
+      <Button
+        onClick={() => {}}
+        color="success"
+        variant="contained"
+        disableElevation
+        sx={{
+          backgroundColor: "#55e575",
+          borderRadius: "20px",
+        }}
+      >
+        Logout
+      </Button>
     </div>
   );
 
@@ -59,7 +66,14 @@ const Header = () => {
 
   const SearchBar = () => {
     return (
-      <form className="small-search-form" autoComplete="off">
+      <form
+        className="small-search-form"
+        autoComplete="off"
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log("searching");
+        }}
+      >
         <input
           className="small-search"
           autoComplete="off"
@@ -90,6 +104,10 @@ const Header = () => {
           id="search"
           className={`grid--cell fl-grow1 searchbar px12 js-searchbar`}
           autoComplete="off"
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("searching");
+          }}
         >
           <div className="ps-relative search-frame">
             <input
@@ -111,7 +129,6 @@ const Header = () => {
           <Fragment>{auth.isLogged ? authLinks : guestLinks}</Fragment>
         </div>
       </nav>
-      {searchState && <SearchBar />}
     </Fragment>
   );
 };
